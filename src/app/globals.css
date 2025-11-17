@@ -3,13 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #0057FF;
+  --color-navy: #0A1A2F;
+  --color-lightgrey: #E9ECEF;
+  --color-sky: #D6E9FF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +26,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 }
