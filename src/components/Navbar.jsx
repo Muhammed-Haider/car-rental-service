@@ -30,10 +30,71 @@ export default function Navbar() {
           <span className="text-white/60">▾</span>
         </button>
         {carsOpen && (
-          <div className="absolute left-0 mt-2 w-48 rounded-lg border border-white/10 bg-[#0A1A2F] p-2 shadow-xl">
-            <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">Sedan</Link>
-            <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">SUV</Link>
-            <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">Sports</Link>
+          <div className="absolute left-1/2 top-full z-30 mt-2 w-screen max-w-5xl -translate-x-1/2 rounded-lg border border-white/10 bg-[#0A1A2F] p-6 shadow-xl">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {/* Column 1: Browse by type */}
+              <div>
+                <h4 className="mb-3 text-sm font-semibold text-white">Browse by Type</h4>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Sedan</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">SUV</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Sports</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Convertible</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Luxury</Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 2: Popular models */}
+              <div>
+                <h4 className="mb-3 text-sm font-semibold text-white">Popular Models</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { src: '/lamborghini.png', label: 'Lamborghini' },
+                    { src: '/ferrari.png', label: 'Ferrari' },
+                    { src: '/porsche.png', label: 'Porsche' },
+                    { src: '/mercedes.png', label: 'Mercedes' },
+                  ].map((m) => (
+                    <Link key={m.label} href="#" className="flex items-center gap-3 rounded p-2 hover:bg-white/6">
+                      <img src={m.src} alt={m.label} className="h-10 w-10 object-contain" loading="eager" />
+                      <span className="text-sm text-white/80">{m.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Locations & Offers */}
+              <div>
+                <h4 className="mb-3 text-sm font-semibold text-white">Locations & Offers</h4>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Dubai</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Abu Dhabi</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Sharjah</Link>
+                  </li>
+                  <li className="mt-3">
+                    <Link href="#" className="inline-flex items-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-medium text-white">Special Deals</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-4 flex justify-end">
+              <Link href="/cars" className="text-sm text-white/80 hover:text-white">View all cars →</Link>
+            </div>
           </div>
         )}
       </li>
