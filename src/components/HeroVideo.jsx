@@ -2,18 +2,16 @@ export default function HeroVideo() {
   return (
     <>
     <section className="relative min-h-svh w-full overflow-hidden">
-      <video
+      <img
+        src="/hero.png"
+        alt="Hero"
         className="absolute inset-0 h-full w-full object-cover"
-        src="/bg-3.mp4"
-        autoPlay
-        playsInline
-        muted
-        loop
+        loading="eager"
       />
       <div className="absolute inset-0 bg-[#0A1A2F]/40" />
       <div className="relative z-10 mx-auto flex min-h-svh max-w-5xl flex-col items-center justify-center px-6 text-center">
         <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
-          Luxury Car Rentalin Dubai
+          Luxury Car Rental In Dubai
         </h1>
         <form role="search" action="#search" className="mb-6 w-full max-w-2xl">
           <div className="relative">
