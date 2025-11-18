@@ -1,70 +1,73 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 
 export default function Carousel() {
   const slides = [
     {
-      img: "/lamborghini-hero.png",
-      title: "Lamborghini Urus",
-      color: "Matte Black",
-      year: 2023,
-      pax: 5,
-      miles: 100,
-    },
-    {
-      img: "/rolls-royce.png",
-      title: "Rolls-Royce Cullina",
-      color: "Gunmetal",
-      year: 2023,
-      pax: 5,
-      miles: 100,
-    },
-    {
-      img: "/mercedes.png",
-      title: "Mercedes Benz G63",
-      color: "Gunmetal",
-      year: 2024,
-      pax: 5,
-      miles: 100,
-    },
-    {
-      img: "/bentley.png",
-      title: "Bentley Bentayga",
-      color: "Alpine Green",
-      year: 2024,
-      pax: 4,
-      miles: 100,
-    },
-    {
-      img: "/porsche.png",
-      title: "Porsche 911",
-      color: "Black",
+      img: "/rollsroycecarasoul.png",
+      title: "ROLLS-ROYCE",
+      model: "PHANTOM",
       year: 2022,
-      pax: 4,
+      pax: 5,
+      miles: 100,
+    },
+    {
+      img: "/rollsroycecarasoul.png",
+      title: "ROLLS-ROYCE",
+      model: "CULLINA",
+      year: 2023,
+      pax: 5,
+      miles: 100,
+    },
+    {
+      img: "/lambocarasoul.png",
+      title: "LAMBORGHINI",
+      model: "URUS",
+      color: "MATTE BLACK",
+      year: 2023,
+      pax: 5,
+      miles: 100,
+    },
+    {
+      img: "/mercedezcarasoul.png",
+      title: "MERCEDES BENZ",
+      model: "G63",
+      color: "GUNMETAL",
+      year: 2024,
+      pax: 5,
+      miles: 100,
+    },
+    {
+      img: "/lambocarasoul.png",
+      title: "LAMBORGHINI",
+      model: "REVUELTO",
+      color: "NERO NOCTIS",
+      year: 2024,
+      pax: 2,
       miles: 100,
     },
   ];
 
   const trackRef = useRef(null);
-  const [current, setCurrent] = useState(1); // start from first real slide when using clones
+  const [current, setCurrent] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [cardWidth, setCardWidth] = useState(320);
+  const [cardWidth, setCardWidth] = useState(340);
   const autoplayRef = useRef(null);
-  const pointer = useRef({ startX: 0, currentX: 0, dragging: false });
+  const pointerRef = useRef({ startX: 0, currentX: 0, dragging: false });
 
-  // Prepare slides with clones for seamless loop
+  // Cloned slides for seamless loop
   const extended = [slides[slides.length - 1], ...slides, slides[0]];
 
+  // Responsive sizing on mount and resize
   useEffect(() => {
-    const resize = () => {
+    const updateCardWidth = () => {
       const container = trackRef.current?.parentElement;
       if (!container) return;
       const w = container.clientWidth;
-      // card size responsive: mobile smaller
-      const cw = w < 640 ? Math.round(w * 0.8) : w < 1024 ? 300 : 340;
+      let cw = 340;
+      if (w < 640) cw = Math.round(w * 0.85);
+      else if (w < 1024) cw = 300;
       setCardWidth(cw);
-      // set initial translate to show first real slide
       requestAnimationFrame(() => {
         if (trackRef.current) {
           trackRef.current.style.transition = "none";
@@ -73,9 +76,9 @@ export default function Carousel() {
       });
     };
 
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    updateCardWidth();
+    window.addEventListener("resize", updateCardWidth);
+    return () => window.removeEventListener("resize", updateCardWidth);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -87,8 +90,9 @@ export default function Carousel() {
 
   function startAutoplay() {
     stopAutoplay();
-    autoplayRef.current = setInterval(() => moveTo(current + 1), 3500);
+    autoplayRef.current = setInterval(() => moveTo(current + 1), 4000);
   }
+
   function stopAutoplay() {
     if (autoplayRef.current) clearInterval(autoplayRef.current);
   }
@@ -98,20 +102,18 @@ export default function Carousel() {
     setIsAnimating(true);
     const track = trackRef.current;
     if (!track) return;
-    track.style.transition = "transform 500ms cubic-bezier(.2,.9,.2,1)";
+    track.style.transition = "transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94)";
     track.style.transform = `translateX(${-cardWidth * index}px)`;
     setCurrent(index);
-    // after transition handle loop reset
+
     const onEnd = () => {
       track.removeEventListener("transitionend", onEnd);
       setIsAnimating(false);
       if (index === 0) {
-        // jumped to clone of last -> reset to real last
         track.style.transition = "none";
-        track.style.transform = `translateX(${-cardWidth * (slides.length)}px)`;
+        track.style.transform = `translateX(${-cardWidth * slides.length}px)`;
         setCurrent(slides.length);
       } else if (index === slides.length + 1) {
-        // jumped to clone of first -> reset to real first
         track.style.transition = "none";
         track.style.transform = `translateX(${-cardWidth * 1}px)`;
         setCurrent(1);
@@ -120,129 +122,189 @@ export default function Carousel() {
     track.addEventListener("transitionend", onEnd);
   }
 
-  // Controls
   function prev() {
     moveTo(current - 1);
   }
+
   function next() {
     moveTo(current + 1);
   }
 
-  // Pointer / touch support
+  // Touch/drag support
   function onPointerDown(e) {
     stopAutoplay();
-    pointer.current.dragging = true;
-    pointer.current.startX = e.clientX ?? e.touches?.[0].clientX;
-    pointer.current.currentX = pointer.current.startX;
-    trackRef.current.style.transition = "none";
+    pointerRef.current.dragging = true;
+    pointerRef.current.startX = e.clientX ?? e.touches?.[0].clientX;
+    pointerRef.current.currentX = pointerRef.current.startX;
+    if (trackRef.current) trackRef.current.style.transition = "none";
   }
+
   function onPointerMove(e) {
-    if (!pointer.current.dragging) return;
+    if (!pointerRef.current.dragging) return;
     const x = e.clientX ?? e.touches?.[0].clientX;
-    const dx = x - pointer.current.startX;
-    pointer.current.currentX = x;
+    const dx = x - pointerRef.current.startX;
+    pointerRef.current.currentX = x;
     if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(${ -cardWidth * current + dx }px)`;
+      trackRef.current.style.transform = `translateX(${-cardWidth * current + dx}px)`;
     }
   }
+
   function onPointerUp() {
-    if (!pointer.current.dragging) return;
-    pointer.current.dragging = false;
-    const dx = pointer.current.currentX - pointer.current.startX;
-    // threshold for swipe
+    if (!pointerRef.current.dragging) return;
+    pointerRef.current.dragging = false;
+    const dx = pointerRef.current.currentX - pointerRef.current.startX;
     if (dx > 50) {
       prev();
     } else if (dx < -50) {
       next();
     } else {
-      // snap back
       moveTo(current);
     }
     startAutoplay();
   }
 
   return (
-    <section className="relative z-20 -mt-3 w-full">
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="rounded-2xl bg-[#0A1A2F] p-6 shadow-xl ring-1 ring-black/5">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-white">The Fleet</h3>
-            <div className="hidden sm:flex items-center gap-2">
-              <button
-                aria-label="Previous"
-                onClick={prev}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/6 text-white/90 hover:bg-white/10"
-              >
-                ‹
-              </button>
-              <button
-                aria-label="Next"
-                onClick={next}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/6 text-white/90 hover:bg-white/10"
-              >
-                ›
-              </button>
-            </div>
-          </div>
-
-          <div className="relative mt-6 overflow-hidden">
-            <div
-              className="flex items-stretch gap-6 touch-pan-y"
-              ref={trackRef}
-              onMouseDown={onPointerDown}
-              onMouseMove={onPointerMove}
-              onMouseUp={onPointerUp}
-              onMouseLeave={onPointerUp}
-              onTouchStart={onPointerDown}
-              onTouchMove={onPointerMove}
-              onTouchEnd={onPointerUp}
-              style={{ transform: `translateX(${-cardWidth * current}px)` }}
+    <section className="relative w-full bg-gradient-to-b from-black via-black to-slate-950 py-16 md:py-24">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
+        {/* Section title */}
+        <div className="mb-12 flex items-center justify-between">
+          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white" style={{ fontFamily: "var(--font-heading)" }}>
+            THE FLEET
+          </h2>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={prev}
+              aria-label="Previous slide"
+              className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 hover:border-white/40 hover:text-white transition-all"
             >
-              {extended.map((s, idx) => (
-                <article
-                  key={idx}
-                  className="relative flex-shrink-0 rounded-2xl bg-black/60 shadow-xl"
-                  style={{ width: `${cardWidth}px` }}
-                >
-                  <div className="h-44 overflow-hidden rounded-t-2xl bg-black/40">
-                    <img src={s.img} alt={s.title} className="h-full w-full object-cover" loading="eager" />
-                  </div>
-                  <div className="p-4">
-                    <h4 className="text-sm font-semibold text-white">{s.title}</h4>
-                    <p className="mt-1 text-xs text-white/70">{s.color}</p>
-
-                    <div className="mt-4 flex gap-3">
-                      <div className="flex w-1/3 flex-col items-start gap-1 rounded-lg bg-white/5 p-2 text-xs text-white/80">
-                        <span className="text-[10px]">{s.year}</span>
-                        <span className="text-[10px] text-white/60">Year</span>
-                      </div>
-                      <div className="flex w-1/3 flex-col items-start gap-1 rounded-lg bg-white/5 p-2 text-xs text-white/80">
-                        <span className="text-[10px]">{s.pax}</span>
-                        <span className="text-[10px] text-white/60">Passengers</span>
-                      </div>
-                      <div className="flex w-1/3 flex-col items-start gap-1 rounded-lg bg-white/5 p-2 text-xs text-white/80">
-                        <span className="text-[10px]">{s.miles}</span>
-                        <span className="text-[10px] text-white/60">Miles/Day</span>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 flex items-center justify-between">
-                      <Link href="#" className="text-sm text-white/80 hover:text-white">View</Link>
-                      <Link href="#" className="inline-flex items-center rounded-full bg-[var(--color-primary)] px-3 py-1 text-sm font-medium text-white">Book</Link>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            {/* Mobile arrows */}
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 sm:hidden">
-              <button onClick={prev} className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/6 text-white/90">‹</button>
-            </div>
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 sm:hidden">
-              <button onClick={next} className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/6 text-white/90">›</button>
-            </div>
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next slide"
+              className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 hover:border-white/40 hover:text-white transition-all"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
+        </div>
+
+        {/* Carousel container */}
+        <div className="relative overflow-hidden rounded-3xl">
+          <div
+            ref={trackRef}
+            className="flex gap-6 touch-pan-y will-change-transform"
+            onMouseDown={onPointerDown}
+            onMouseMove={onPointerMove}
+            onMouseUp={onPointerUp}
+            onMouseLeave={onPointerUp}
+            onTouchStart={onPointerDown}
+            onTouchMove={onPointerMove}
+            onTouchEnd={onPointerUp}
+            style={{
+              transform: `translateX(${-cardWidth * current}px)`,
+            }}
+          >
+            {extended.map((slide, idx) => (
+              <article
+                key={idx}
+                className="group relative flex-shrink-0 transition-transform"
+                style={{ width: `${cardWidth}px` }}
+              >
+                {/* Card wrapper with elevated effect */}
+                <div className="relative h-full rounded-2xl bg-gradient-to-br from-slate-900 via-black to-slate-950 border border-white/10 shadow-2xl overflow-hidden">
+                  {/* Background glow */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+                  {/* Image container */}
+                  <div className="relative h-56 md:h-64 overflow-hidden flex items-center justify-center bg-black/40">
+                    <img
+                      src={slide.img}
+                      alt={`${slide.title} ${slide.model}`}
+                      className="h-full w-full object-contain drop-shadow-lg"
+                      loading="eager"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative p-6 text-center">
+                    {/* Title & Model */}
+                    <h3 className="text-xs md:text-sm font-light tracking-widest text-white/90 uppercase">
+                      {slide.title}
+                    </h3>
+                    <h4 className="mt-2 text-lg md:text-xl font-light tracking-wider text-white uppercase">
+                      {slide.model}
+                    </h4>
+
+                    {/* Color indicator (if present) */}
+                    {slide.color && (
+                      <p className="mt-2 text-xs text-white/60 uppercase tracking-wide">{slide.color}</p>
+                    )}
+
+                    {/* Specs row */}
+                    <div className="mt-6 flex items-center justify-between gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-3 backdrop-blur-sm">
+                      <div className="flex-1 text-center">
+                        <p className="text-sm md:text-base font-light text-white">{slide.year}</p>
+                        <p className="text-xs text-white/50 uppercase tracking-wide">Year</p>
+                      </div>
+                      <div className="w-px h-4 bg-white/20" />
+                      <div className="flex-1 text-center">
+                        <p className="text-sm md:text-base font-light text-white">{slide.pax}</p>
+                        <p className="text-xs text-white/50 uppercase tracking-wide">Passengers</p>
+                      </div>
+                      <div className="w-px h-4 bg-white/20" />
+                      <div className="flex-1 text-center">
+                        <p className="text-sm md:text-base font-light text-white">{slide.miles}</p>
+                        <p className="text-xs text-white/50 uppercase tracking-wide">Miles/Day</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Mobile nav buttons */}
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden z-10">
+            <button
+              onClick={prev}
+              aria-label="Previous slide"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur text-white hover:bg-white/20"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          </div>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 md:hidden z-10">
+            <button
+              onClick={next}
+              aria-label="Next slide"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur text-white hover:bg-white/20"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Pagination dots (optional) */}
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => moveTo(i + 1)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-2 rounded-full transition-all ${
+                current === i + 1 ? "bg-white w-8" : "bg-white/30 w-2 hover:bg-white/50"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
