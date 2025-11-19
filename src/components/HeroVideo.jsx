@@ -2,12 +2,15 @@ export default function HeroVideo() {
   return (
     <>
     <section className="relative min-h-svh w-full overflow-hidden">
-      <img
-        src="/herosection.png"
-        alt="Hero"
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
         className="absolute inset-0 h-full w-full object-cover"
-        loading="eager"
-      />
+      >
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-[#0A1A2F]/40" />
       <div className="relative z-10 mx-auto flex min-h-svh max-w-5xl flex-col items-center justify-center px-6 text-center">
         <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>

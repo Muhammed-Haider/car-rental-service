@@ -2,6 +2,7 @@ import HeroVideo from "@/components/HeroVideo";
 import AboutUs from "@/components/AboutUs";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import VisionMission from "@/components/VisionMission";
+import CarListing from "@/components/CarListing";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <WhyChooseUs />
       </div>
       <VisionMission />
+      <CarListing />
     </>
   );
 }
