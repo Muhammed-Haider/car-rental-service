@@ -68,6 +68,9 @@ export default function CarListing() {
                   alt={car.name}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  onError={(e) => {
+                    e.target.src = '/car.jpeg';
+                  }}
                 />
               </div>
 
