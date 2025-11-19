@@ -57,72 +57,74 @@ export default function WhyChooseUs() {
 
         {/* Layout with feature boxes on left/right of the car (desktop) */}
         <div className="mt-10 md:mt-12">
-          <div className="relative max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 items-start gap-6">
-
-            {/* Left feature column (two stacked) */}
-            <div className="flex flex-col gap-6 md:gap-8 md:pr-4 lg:pr-8">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-800/90 text-white flex items-center justify-center shadow">
-                  {/* trophy icon */}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M7 4V2h10v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M5 6h14v2a4 4 0 01-4 4H9a4 4 0 01-4-4V6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M10 14v4a2 2 0 002 2h0a2 2 0 002-2v-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900">Diverse Range of Luxury Vehicles</h4>
-                  <p className="mt-1 text-sm text-slate-600">Our fleet includes an array of high-performance, comfortable, and elegant cars tailored to different preferences.</p>
+          <div className="relative flex flex-col md:flex-row items-center justify-center py-8">
+            {/* Left features */}
+            <div className="flex flex-col gap-8 md:gap-12 items-end md:pr-24 flex-1">
+              <div className="flex items-center gap-4 text-left">
+                <div className="flex items-center gap-5 w-full">
+                  <span className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white shadow-xl rounded-lg">
+                    {/* Trophy icon */}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M7 4V2h10v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M5 6h14v2a4 4 0 01-4 4H9a4 4 0 01-4-4V6z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M10 14v4a2 2 0 002 2h0a2 2 0 002-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <div className="flex flex-col justify-center text-left">
+                    <h4 className="font-semibold text-lg md:text-xl text-slate-900 tracking-tight mb-1" style={{fontFamily: 'Poppins, sans-serif'}}>Diverse Range of Luxury Vehicles</h4>
+                    <p className="text-sm md:text-base text-slate-600/90 leading-relaxed whitespace-pre-line" style={{fontFamily: 'Inter, sans-serif'}}>
+                      Our fleet includes an array of high-performance, comfortable, and elegant cars
+tailored to different preferences.
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-800/90 text-white flex items-center justify-center shadow">
-                  {/* road icon */}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M3 7h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M5 11h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M7 15h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900">Reliable & Fast Service</h4>
-                  <p className="mt-1 text-sm text-slate-600">Enjoy a seamless rental experience, from an easy booking process to prompt delivery at your preferred location.</p>
+              <div className="flex items-center gap-4 text-left">
+                <div className="flex items-center gap-5 w-full">
+                  <span className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-400 via-teal-400 to-blue-400 text-white shadow-xl rounded-lg">
+                    {/* Speed icon */}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <div className="flex flex-col justify-center text-left">
+                    <h4 className="font-semibold text-lg md:text-xl text-slate-900 tracking-tight mb-1" style={{fontFamily: 'Poppins, sans-serif'}}>Reliable & Fast Service</h4>
+                    <p className="text-sm md:text-base text-slate-600/90 leading-relaxed" style={{fontFamily: 'Inter, sans-serif'}}>Experience seamless booking and prompt delivery for a truly hassle-free journey.</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right feature column (two stacked) */}
-            <div className="flex flex-col gap-6 md:gap-8 md:pl-4 lg:pl-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-slate-900">Flexible Rental Plans</h4>
-                    <p className="mt-1 text-sm text-slate-600">We offer daily, weekly, and monthly rental options with convenient payment solutions to fit your needs.</p>
-                  </div>
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-800/90 text-white flex items-center justify-center shadow">
-                    {/* tag icon (moved to outer side) */}
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path d="M20 10v6a2 2 0 01-2 2h-6l-8-8 8-8h6a2 2 0 012 2v6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M7 7h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
+            {/* Car image centered */}
+            <div className="flex-1 flex justify-center items-center">
+              <img
+                src="/car_black.png"
+                alt="Luxury car"
+                className="mx-auto max-w-[220%] md:max-w-[200%] lg:max-w-[180%] h-auto object-contain"
+              />
+            </div>
 
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="font-semibold text-slate-900">Commitment to Excellence</h4>
-                  <p className="mt-1 text-sm text-slate-600">We prioritize top-tier service and exceptional vehicle quality, ensuring a smooth and luxurious driving experience.</p>
+            {/* Right features */}
+            <div className="flex flex-col gap-8 md:gap-12 items-start md:pl-40 flex-1">
+              <div className="flex items-center gap-4 text-left">
+                <div className="flex items-center gap-5 w-full">
+                  <span className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-yellow-400 via-orange-400 to-pink-400 text-white shadow-xl rounded-lg">
+                    {/* Tag icon */}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M20 10v6a2 2 0 01-2 2h-6l-8-8 8-8h6a2 2 0 012 2v6z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M7 7h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <div className="flex flex-col justify-center text-left">
+                    <h4 className="font-semibold text-lg md:text-xl text-slate-900 tracking-tight mb-1" style={{fontFamily: 'Poppins, sans-serif'}}>Flexible Rental Plans</h4>
+                    <p className="text-sm md:text-base text-slate-600/90 leading-relaxed" style={{fontFamily: 'Inter, sans-serif'}}>Daily, weekly, or monthly—choose a plan that fits your lifestyle, with easy payment options.</p>
+                  </div>
                 </div>
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-800/90 text-white flex items-center justify-center shadow">
-                  {/* key icon (moved to outer side) */}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M21 13l-6.5-6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M3 11a6 6 0 1012 0 6 6 0 00-12 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+              </div>
+              <div className="flex items-center gap-4 text-left">
+                <div className="flex items-center gap-5 w-full">
+                  <span className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-400 via-indigo-400 to-blue-400 text-white shadow-xl rounded-lg">
+                    {/* Key icon */}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M21 13l-6.5-6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="15" r="3" stroke="currentColor" strokeWidth="2"/></svg>
+                  </span>
+                  <div className="flex flex-col justify-center text-left">
+                    <h4 className="font-semibold text-lg md:text-xl text-slate-900 tracking-tight mb-1" style={{fontFamily: 'Poppins, sans-serif'}}>Commitment to Excellence</h4>
+                    <p className="text-sm md:text-base text-slate-600/90 leading-relaxed" style={{fontFamily: 'Inter, sans-serif'}}>Expect top-tier service and pristine vehicles—your luxury experience is our promise.</p>
+                  </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
