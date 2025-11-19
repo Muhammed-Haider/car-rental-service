@@ -9,6 +9,7 @@ export default function VisionMission() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Dark overlay for readability */}
