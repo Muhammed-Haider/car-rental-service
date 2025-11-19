@@ -90,7 +90,7 @@ export default function HeroVideo() {
     <div className="relative z-30 -mt-3 w-full">
       <div className="mx-auto w-full max-w-5xl px-6">
         <div className="rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3 overflow-x-auto sm:justify-between sm:flex-wrap" role="list">
             {[
               { label: 'SUV', src: '/suv.png' },
               { label: 'Sports', src: '/sports.png' },
@@ -98,18 +98,24 @@ export default function HeroVideo() {
               { label: 'Convertible', src: '/convertible-1.png' },
               { label: 'All', isAll: true },
             ].map((item, idx, arr) => (
-              <div key={item.label} className="flex items-center gap-2">
+              <div
+                key={item.label}
+                role="listitem"
+                className="group flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none"
+                tabIndex={0}
+                aria-label={`${item.label} category`}
+              >
                 {/* Icon/Image */}
                 {item.src ? (
                   <img
                     src={item.src}
                     alt={item.label}
-                    className="h-8 w-auto object-contain"
+                    className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
                     loading="eager"
                   />
                 ) : null}
                 {/* Label */}
-                <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm`}>{item.label}</span>
+                <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm sm:text-base group-hover:text-[#0057FF]`}>{item.label}</span>
                 {/* Arrow for All */}
                 {item.isAll && (
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
