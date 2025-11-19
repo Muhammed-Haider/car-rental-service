@@ -46,7 +46,7 @@ export default function AboutUs() {
                   className="text-[18px] md:text-[20px] leading-[1.9] text-slate-700/95 tracking-[0.01em]"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  <span>Experience premium car rentals crafted for comfort, performance, and style. Whether it's a quick business trip </span>
+                  <span>Experience premium car rentals crafted for comfort, performance, and style. Whether it&apos;s a quick business trip </span>
                   <span className="bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent transition-colors duration-500 group-hover:from-slate-700 group-hover:to-slate-500">or a long weekend getaway, our fleet is designed to elevate your journey.</span>
                 </p>
               </div>
