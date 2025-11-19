@@ -3,7 +3,7 @@ export default function HeroVideo() {
     <>
     <section className="relative min-h-svh w-full overflow-hidden">
       <img
-        src="/hero.png"
+        src="/herosection.png"
         alt="Hero"
         className="absolute inset-0 h-full w-full object-cover"
         loading="eager"
