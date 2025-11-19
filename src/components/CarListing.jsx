@@ -55,47 +55,64 @@ const cars = [
 
 export default function CarListing() {
   return (
-    <section className="w-full bg-gradient-to-b from-amber-50 to-slate-900 py-12 md:py-16 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24 text-[#0A1A2F]">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {cars.map((car) => (
             <div
               key={car.id}
-              className="bg-[#1A1A1A] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.02]"
+              className="bg-white rounded-2xl overflow-hidden shadow-[0_6px_18px_rgba(2,6,23,0.06)] ring-1 ring-slate-200/70 transition-all duration-300 hover:shadow-[0_12px_24px_rgba(2,6,23,0.12)] hover:-translate-y-1"
             >
               {/* Car Image */}
-              <div className="relative w-full h-64 md:h-80 bg-slate-800">
+              <div className="relative w-full h-64 md:h-72 bg-slate-100">
                 <Image
                   src={car.image}
                   alt={car.name}
                   fill
-                  className="object-cover rounded-t-2xl"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
 
               {/* Card Content */}
-              <div className="p-6 md:p-8 space-y-4">
+              <div className="p-6 md:p-8 space-y-5">
                 {/* Car Name */}
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                <h3
+                  className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 leading-tight"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                >
                   {car.name}
                 </h3>
 
                 {/* Specs */}
-                <p className="text-sm md:text-base text-slate-400 leading-relaxed">
+                <p
+                  className="text-sm md:text-base text-slate-600 leading-relaxed"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
                   {car.specs}
                 </p>
 
                 {/* Pricing Section */}
-                <div className="space-y-2 pt-2">
+                <div className="space-y-2 pt-2 border-t border-slate-200">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-3xl md:text-4xl font-bold text-teal-400">
+                    <span
+                      className="text-3xl md:text-4xl font-bold text-[#0057FF]"
+                      style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
                       from {car.price.toLocaleString()}AED
                     </span>
-                    <span className="text-sm text-slate-400">per day</span>
+                    <span
+                      className="text-sm text-slate-500"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      per day
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm md:text-base text-slate-400">
+                    <span
+                      className="text-sm md:text-base text-slate-600"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
                       1-3 days: {car.durationPrice.toLocaleString()}AED
                     </span>
                     <svg
@@ -118,7 +135,7 @@ export default function CarListing() {
                 <div className="flex items-center gap-3 pt-2">
                   <a
                     href="tel:+1234567890"
-                    className="flex items-center justify-center w-11 h-11 bg-teal-500 rounded-full hover:bg-teal-600 transition-colors duration-200"
+                    className="flex items-center justify-center w-12 h-12 bg-[#0057FF] rounded-full hover:bg-[#0048d1] transition-colors duration-200 shadow-md"
                     aria-label="Call"
                   >
                     <svg
@@ -139,7 +156,7 @@ export default function CarListing() {
                     href="https://wa.me/1234567890"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-11 h-11 bg-green-500 rounded-full hover:bg-green-600 transition-colors duration-200"
+                    className="flex items-center justify-center w-12 h-12 bg-green-500 rounded-full hover:bg-green-600 transition-colors duration-200 shadow-md"
                     aria-label="WhatsApp"
                   >
                     <svg
@@ -153,14 +170,23 @@ export default function CarListing() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-row gap-3 pt-3">
-                  <button className="flex-1 px-4 py-2.5 bg-transparent border border-teal-500 text-white font-semibold text-sm rounded-lg hover:bg-teal-500/10 transition-all duration-200">
+                <div className="flex flex-row gap-3 pt-2">
+                  <button
+                    className="flex-1 px-4 py-2.5 bg-transparent border border-[#0057FF] text-[#0057FF] font-semibold text-sm rounded-lg hover:bg-[#0057FF]/10 transition-all duration-200"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
                     Rent
                   </button>
-                  <button className="flex-1 px-4 py-2.5 bg-teal-500 text-white font-semibold text-sm rounded-lg hover:bg-teal-600 transition-colors duration-200">
+                  <button
+                    className="flex-1 px-4 py-2.5 bg-[#0057FF] text-white font-semibold text-sm rounded-lg hover:bg-[#0048d1] transition-colors duration-200 shadow-md"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
                     Details
                   </button>
-                  <button className="flex-1 px-4 py-2.5 bg-transparent border border-teal-500 text-white font-semibold text-sm rounded-lg hover:bg-teal-500/10 transition-all duration-200">
+                  <button
+                    className="flex-1 px-4 py-2.5 bg-transparent border border-[#0057FF] text-[#0057FF] font-semibold text-sm rounded-lg hover:bg-[#0057FF]/10 transition-all duration-200"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
                     Compare
                   </button>
                 </div>
