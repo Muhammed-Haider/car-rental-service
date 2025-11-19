@@ -88,7 +88,7 @@ export default function HeroVideo() {
 
     {/* Categories bar under the brand strip */}
     <div className="relative z-30 -mt-3 w-full">
-      <div className="mx-auto w-full max-w-5xl px-6">
+      <div className="mx-auto w-full max-w-6xl px-6">
         <div className="rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5">
           <div className="flex items-center gap-3 flex-wrap sm:justify-between" role="list">
             {[
