@@ -90,7 +90,7 @@ export default function HeroVideo() {
     <div className="relative z-30 -mt-3 w-full">
       <div className="mx-auto w-full max-w-5xl px-6">
         <div className="rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5">
-          <div className="flex items-center gap-3 overflow-x-auto sm:justify-between sm:flex-wrap" role="list">
+          <div className="flex items-center gap-3 flex-wrap sm:justify-between" role="list">
             {[
               { label: 'SUV', src: '/suv.png' },
               { label: 'Sports', src: '/sports.png' },
