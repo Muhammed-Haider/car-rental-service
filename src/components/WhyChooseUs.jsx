@@ -2,7 +2,7 @@
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full bg-gradient-to-b from-white to-[#F8FAFC] text-[#0A1A2F] py-20 md:py-24">
+    <section className="w-full bg-gradient-to-b from-white to-[#F8FAFC] text-[#0A1A2F] pt-20 pb-12 md:pt-24 md:pb-16">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         {/* Top label */}
         <div className="text-center mb-6">
@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
 
         {/* Main headline */}
         <h3
-          className="text-center text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.02em] mb-6 md:mb-8 text-slate-900 px-4"
+          className="text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.1] tracking-[-0.02em] mb-6 md:mb-8 text-slate-900 px-4"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Unmatched Service,<br className="hidden md:block" />
@@ -51,14 +51,14 @@ export default function WhyChooseUs() {
 
         {/* Supporting paragraph */}
         <p
-          className="mx-auto max-w-2xl text-center text-base md:text-lg text-slate-600/90 leading-[1.7] mb-12 md:mb-16 px-4"
+          className="mx-auto max-w-2xl text-center text-base md:text-lg text-slate-600/90 leading-[1.7] mb-0 px-4"
           style={{ fontFamily: "Inter, sans-serif", letterSpacing: "0.01em" }}
         >
           Choosing us means experiencing unparalleled luxury with reliable service, ensuring an exceptional driving experience in every detail.
         </p>
 
         {/* Layout with feature boxes on left/right of the car (desktop) */}
-        <div className="mt-10 md:mt-12">
+        <div className="mt-0 -mt-12 md:-mt-16 lg:-mt-20">
           <div className="relative flex flex-col md:flex-row items-center justify-center py-8">
             {/* Left features */}
             <div className="flex flex-col gap-8 md:gap-12 items-end md:pr-20 lg:pr-28 flex-1 justify-center">
