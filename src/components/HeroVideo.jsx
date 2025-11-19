@@ -49,7 +49,7 @@ export default function HeroVideo() {
       {/* Brand logos strip pinned to hero bottom; does not affect centered content */}
       <div className="pointer-events-auto absolute inset-x-0 bottom-0 z-20">
         <div className="w-full">
-          <div className="grid grid-cols-9 items-center gap-4 rounded-none bg-white/10 p-4 backdrop-blur-md ring-1 ring-white/15 shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 items-center gap-3 sm:gap-4 rounded-none bg-white/10 p-3 sm:p-4 backdrop-blur-md ring-1 ring-white/15 shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
             {[
               { src: '/lamborghini.png', alt: 'Lamborghini' },
               { src: '/ferrari.png', alt: 'Ferrari' },
@@ -61,17 +61,23 @@ export default function HeroVideo() {
               { src: '/nissan.png', alt: 'Nissan' },
               { src: '/audi.png', alt: 'Audi' },
             ].map((b) => (
-              <div key={b.alt} className="rounded-xl bg-white/5 px-3 py-3 ring-1 ring-white/10">
-                <div className="flex h-20 flex-col items-center justify-center text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-black/20 ring-1 ring-white/10">
+              <div
+                key={b.alt}
+                tabIndex={0}
+                role="button"
+                aria-label={`${b.alt} brand logo`}
+                className="group cursor-pointer rounded-xl bg-white/5 px-2 py-2 ring-1 ring-white/10 transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 focus:scale-105 focus:-translate-y-1"
+              >
+                <div className="flex h-16 sm:h-20 flex-col items-center justify-center text-center">
+                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg bg-black/20 ring-1 ring-white/10 transition-colors transition-shadow duration-300 group-hover:bg-[#0057FF]/20 group-hover:ring-2 group-hover:ring-white/25 group-hover:shadow-lg group-focus:bg-[#0057FF]/20">
                     <img
                       src={b.src}
                       alt={b.alt}
-                      className="h-8 w-8 object-contain"
+                      className="h-6 w-6 sm:h-8 sm:w-8 object-contain transition-transform duration-300 group-hover:scale-110 group-focus:scale-110"
                       loading="eager"
                     />
                   </div>
-                  <span className="mt-2 block truncate text-xs font-medium text-white/90 sm:text-sm">{b.alt}</span>
+                  <span className="mt-2 block truncate text-xs font-medium text-white/90 sm:text-sm group-hover:text-white/100">{b.alt}</span>
                 </div>
               </div>
             ))}
