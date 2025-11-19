@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 const cars = [
   {
     id: 1,
@@ -64,13 +62,12 @@ export default function CarListing() {
               className="bg-white rounded-2xl overflow-hidden shadow-[0_6px_18px_rgba(2,6,23,0.06)] ring-1 ring-slate-200/70 transition-all duration-300 hover:shadow-[0_12px_24px_rgba(2,6,23,0.12)] hover:-translate-y-1"
             >
               {/* Car Image */}
-              <div className="relative w-full h-64 md:h-72 bg-slate-100">
-                <Image
+              <div className="relative w-full h-64 md:h-72 bg-slate-100 overflow-hidden">
+                <img
                   src={car.image}
                   alt={car.name}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
 
