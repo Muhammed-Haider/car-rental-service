@@ -5,7 +5,7 @@ export default function VisionMission() {
     <section
       className="relative w-full py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: "url('/vision-mission.png')",
+        backgroundImage: "url('/missionsection.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
