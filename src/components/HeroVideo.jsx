@@ -11,7 +11,7 @@ export default function HeroVideo() {
       <div className="absolute inset-0 bg-[#0A1A2F]/40" />
       <div className="relative z-10 mx-auto flex min-h-svh max-w-5xl flex-col items-center justify-center px-6 text-center">
         <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
-          Luxury Car Rental In Dubai
+          Drive Your Dream Car in Dubai Anytime
         </h1>
         <form role="search" action="#search" className="mb-6 w-full max-w-2xl">
           <div className="relative">
@@ -36,13 +36,13 @@ export default function HeroVideo() {
           </div>
         </form>
         <p className="mb-8 max-w-2xl text-base text-white/90 sm:text-lg">
-          Your perfect ride - premium quality and affordable prices, ready to blend seamlessly with your lifestyle and make every occasion special.
+          We offer curated luxury cars, quick booking, and seamless delivery for an unforgettable ride.
         </p>
         <a
           href="#get-started"
-          className="inline-flex items-center rounded-full bg-[#0057FF] px-6 py-3 text-base font-medium text-white shadow-md transition-colors hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0A1A2F]"
+          className="inline-flex items-center rounded-full bg-[#0057FF] px-6 py-3 text-base font-medium text-white shadow-md transition-colors hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0A1A2F] mb-6"
         >
-          Get Started
+          Book Your Ride
         </a>
       </div>
 
