@@ -3,7 +3,7 @@
 export default function VisionMission() {
   return (
     <section
-      className="relative w-full py-20 md:py-32 overflow-hidden"
+      className="relative w-full py-16 md:py-20 lg:py-32 overflow-hidden"
       style={{
         backgroundImage: "url('/missionsection.png')",
         backgroundSize: "cover",
@@ -17,42 +17,45 @@ export default function VisionMission() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top section: Title, description, and button */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-12 md:mb-16 lg:mb-24">
           <h2
-            className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 md:mb-6 tracking-tight"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             We are Luxury Car Rental in UAE
           </h2>
 
           <p
-            className="max-w-2xl text-base md:text-lg text-white/90 leading-relaxed mb-8"
+            className="max-w-2xl text-sm md:text-base lg:text-lg text-white/90 leading-relaxed mb-6 md:mb-8"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             We strive to offer an unparalleled luxury car rental experience, combining quality, comfort, and innovation to ensure customer satisfaction and exceed expectations.
           </p>
 
-          <a
-            href="#contact"
-            className="inline-flex items-center rounded-full bg-[#0057FF] px-8 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0A1A2F]"
-            style={{ fontFamily: "Poppins, sans-serif" }}
-          >
-            Contact Now
-          </a>
+          {/* Contact Now Button - Centered */}
+          <div className="flex justify-center md:justify-start">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center rounded-full bg-[#0057FF] px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold text-white text-center shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0A1A2F]"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Contact Now
+            </a>
+          </div>
         </div>
 
         {/* Bottom section: Vision and Mission cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
           {/* Vision Card */}
-          <div className="group bg-white/95 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 ease-out hover:scale-105 border border-white/20 hover:border-white/40">
+          <div className="group bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 ease-out hover:scale-105 border border-white/20 hover:border-white/40">
             <h3
-              className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 group-hover:text-[#0057FF] transition-colors duration-300"
+              className="text-xl md:text-2xl lg:text-3xl font-extrabold text-slate-900 mb-3 md:mb-4 lg:mb-6 group-hover:text-[#0057FF] transition-colors duration-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Vision
             </h3>
             <p
-              className="text-base md:text-lg text-slate-700 leading-relaxed group-hover:text-slate-800 transition-colors duration-300"
+              className="text-sm md:text-base lg:text-lg text-slate-700 leading-relaxed group-hover:text-slate-800 transition-colors duration-300"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               To become Dubai's leading luxury car rental provider, offering a seamless blend of quality, convenience, and innovation.
@@ -60,15 +63,15 @@ export default function VisionMission() {
           </div>
 
           {/* Mission Card */}
-          <div className="group bg-white/95 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 ease-out hover:scale-105 border border-white/20 hover:border-white/40">
+          <div className="group bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 ease-out hover:scale-105 border border-white/20 hover:border-white/40">
             <h3
-              className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 group-hover:text-[#0057FF] transition-colors duration-300"
+              className="text-xl md:text-2xl lg:text-3xl font-extrabold text-slate-900 mb-3 md:mb-4 lg:mb-6 group-hover:text-[#0057FF] transition-colors duration-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Mission
             </h3>
             <p
-              className="text-base md:text-lg text-slate-700 leading-relaxed group-hover:text-slate-800 transition-colors duration-300"
+              className="text-sm md:text-base lg:text-lg text-slate-700 leading-relaxed group-hover:text-slate-800 transition-colors duration-300"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               To deliver world-class car rental services with a strong focus on customer satisfaction and exceptional experiences.
@@ -77,8 +80,8 @@ export default function VisionMission() {
         </div>
       </div>
 
-      {/* Floating Social/Nav Bar */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+      {/* Floating Social/Nav Bar - Hidden on mobile */}
+      <div className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 flex-col gap-3 z-20">
         {/* Up Arrow */}
         <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
