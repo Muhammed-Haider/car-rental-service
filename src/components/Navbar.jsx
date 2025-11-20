@@ -35,8 +35,8 @@ export default function Navbar() {
         {/* Dropdown Menu */}
         <div
           className={`fixed left-1/2 top-[80px] z-40 w-[90vw] max-w-5xl -translate-x-1/2 transform transition-all duration-300 ease-out ${carsOpen
-              ? "visible translate-y-0 opacity-100"
-              : "invisible -translate-y-4 opacity-0"
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-4 opacity-0"
             }`}
         >
           <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0A1A2F]/95 backdrop-blur-xl shadow-2xl ring-1 ring-black/5">
@@ -160,28 +160,26 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mt-3 rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
-          <nav className="flex items-center justify-between px-4 py-2">
-            {/* Left: Brand */}
-            <div className="flex items-center gap-3">
+        <div className="mt-3 rounded-2xl md:rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
+          <nav className="relative flex items-center justify-between px-4 py-2 md:px-4 md:py-2">
+            {/* Desktop: Brand on left */}
+            <div className="hidden md:flex items-center gap-3">
               <Link href="/" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
                 WTB DXB
               </Link>
-              {/* Mobile toggle */}
-              <button
-                className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md text-white/80 hover:text-white"
-                onClick={() => setMobileOpen((v) => !v)}
-                aria-expanded={mobileOpen}
-                aria-label="Toggle menu"
-              >
-                <span className="text-xl">☰</span>
-              </button>
             </div>
 
-            {/* Center: Links */}
+            {/* Mobile: Centered Brand */}
+            <div className="md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Link href="/" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                WTB DXB
+              </Link>
+            </div>
+
+            {/* Center: Links (Desktop only) */}
             {MenuLinks}
 
-            {/* Right: Contact + Auth */}
+            {/* Right: Contact + Auth (Desktop only) */}
             <div className="hidden md:flex items-center gap-2">
               <a
                 href="tel:+971554079239"
@@ -204,37 +202,95 @@ export default function Navbar() {
                 Sign In
               </Link>
             </div>
+
+            {/* Mobile: Menu Toggle (Right) */}
+            <button
+              className="md:hidden ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-expanded={mobileOpen}
+              aria-label="Toggle menu"
+            >
+              <span className="text-xl">{mobileOpen ? '✕' : '☰'}</span>
+            </button>
           </nav>
 
-          {/* Mobile drawer */}
-          {mobileOpen && (
-            <div className="md:hidden border-t border-white/10 px-4 pb-4">
-              <ul className="flex flex-col py-2">
+          {/* Mobile drawer with smooth expansion */}
+          <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${mobileOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="px-4 pb-4 pt-2">
+              <ul className="flex flex-col space-y-1">
                 <li>
-                  <Link href="#" className="block px-2 py-2 text-sm text-white/90">Home</Link>
+                  <Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Home</Link>
                 </li>
                 <li>
-                  <details className="px-2 py-2">
-                    <summary className="cursor-pointer list-none text-sm text-white/90">Cars</summary>
-                    <div className="mt-1 pl-3">
-                      <Link href="#" className="block py-1 text-sm text-white/80">Sedan</Link>
-                      <Link href="#" className="block py-1 text-sm text-white/80">SUV</Link>
-                      <Link href="#" className="block py-1 text-sm text-white/80">Sports</Link>
+                  <div className="rounded-lg bg-white/5 px-3 py-2.5">
+                    <button
+                      onClick={() => setCarsOpen(!carsOpen)}
+                      className="flex w-full items-center justify-between text-sm font-medium text-white/90"
+                    >
+                      Cars
+                      <span className={`transition-transform duration-300 ${carsOpen ? 'rotate-180' : ''}`}>▾</span>
+                    </button>
+                    <div className={`grid transition-all duration-300 ease-in-out ${carsOpen ? 'grid-rows-[1fr] mt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                      <div className="overflow-hidden">
+                        {/* Browse by Type */}
+                        <div className="mb-3">
+                          <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Browse by Type</h5>
+                          <div className="grid grid-cols-2 gap-2">
+                            {['Sedan', 'SUV', 'Sports', 'Luxury'].map((type) => (
+                              <Link key={type} href="#" className="rounded-lg bg-white/5 px-2 py-1.5 text-center text-xs text-white/80 hover:bg-white/10 transition-colors">{type}</Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Popular Models with Logos */}
+                        <div className="mb-3">
+                          <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Popular Models</h5>
+                          <div className="grid grid-cols-2 gap-2">
+                            {[
+                              { src: '/lamborghini.png', label: 'Lamborghini' },
+                              { src: '/ferrari.png', label: 'Ferrari' },
+                              { src: '/porsche.png', label: 'Porsche' },
+                              { src: '/mercedes.png', label: 'Mercedes' },
+                            ].map((m) => (
+                              <Link
+                                key={m.label}
+                                href="#"
+                                className="flex flex-col items-center gap-1.5 rounded-lg bg-white/5 p-2 text-center transition-all hover:bg-white/10"
+                              >
+                                <div className="h-6 w-full flex items-center justify-center">
+                                  <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain" loading="lazy" />
+                                </div>
+                                <span className="text-[10px] font-medium text-white/90">{m.label}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        <Link href="/cars" className="block w-full rounded-lg border border-white/10 py-2 text-center text-xs font-medium text-[#0057FF] hover:bg-white/5 transition-colors">View All Cars</Link>
+                      </div>
                     </div>
-                  </details>
+                  </div>
                 </li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">Partnership</Link></li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">Services</Link></li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">About</Link></li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">Contact</Link></li>
-                <li className="mt-2 flex gap-2">
-                  <a href="tel:+971554079239" className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90">☎ Call</a>
-                  <a href="https://wa.me/971554079239" className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90">💬 WhatsApp</a>
-                  <Link href="#signin" className="ml-auto inline-flex items-center rounded-full bg-[var(--color-primary)] px-3 py-1.5 text-xs font-medium text-white">Sign In</Link>
-                </li>
+                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Partnership</Link></li>
+                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Services</Link></li>
+                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">About</Link></li>
+                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Contact</Link></li>
               </ul>
+
+              {/* Contact buttons */}
+              <div className="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
+                <a href="tel:+971554079239" className="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-2 text-xs font-medium text-white hover:bg-white/10 transition-colors">
+                  <span>☎</span> Call
+                </a>
+                <a href="https://wa.me/971554079239" className="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-2 text-xs font-medium text-white hover:bg-white/10 transition-colors">
+                  <span>💬</span> WhatsApp
+                </a>
+                <Link href="#signin" className="col-span-2 flex items-center justify-center rounded-lg bg-[var(--color-primary)] py-2.5 text-xs font-bold text-white shadow-lg hover:bg-[#0048d1] transition-colors">
+                  Sign In
+                </Link>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </header>
