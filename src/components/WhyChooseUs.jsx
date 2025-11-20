@@ -59,8 +59,8 @@ export default function WhyChooseUs() {
         {/* Layout with feature boxes on left/right of the car (desktop) */}
         <div className="mt-2 md:mt-4 lg:mt-6">
           <div className="relative flex flex-col md:flex-row items-center justify-center py-0">
-            {/* Left features */}
-            <div className="flex flex-col gap-6 md:gap-10 items-end md:pr-12 lg:pr-20 flex-1 justify-center z-20">
+            {/* Left features - order-2 on mobile, order-1 on desktop */}
+            <div className="flex flex-col gap-6 md:gap-10 items-end md:pr-12 lg:pr-20 flex-1 justify-center z-20 order-2 md:order-1">
               <div className="group flex items-start gap-4 text-left max-w-xs md:max-w-sm transition-all duration-300 hover:-translate-x-1">
                 <span className="flex items-center justify-center w-14 h-14 bg-white border border-slate-100 rounded-xl shadow-sm flex-shrink-0 transition-all duration-300 group-hover:shadow-md group-hover:border-[#0057FF]/20 group-hover:bg-[#0057FF]/5">
                   {/* Trophy icon */}
@@ -92,8 +92,8 @@ export default function WhyChooseUs() {
               </div>
             </div>
 
-            {/* Car image centered */}
-            <div className="flex-[2] flex justify-center items-center px-4 md:px-0 relative z-10">
+            {/* Car image centered - order-1 on mobile, order-2 on desktop */}
+            <div className="flex-[2] flex justify-center items-center px-4 md:px-0 relative z-10 order-1 md:order-2">
               <img
                 src="/car_black.png"
                 alt="Luxury car"
@@ -101,8 +101,8 @@ export default function WhyChooseUs() {
               />
             </div>
 
-            {/* Right features */}
-            <div className="flex flex-col gap-6 md:gap-10 items-start md:pl-12 lg:pl-20 flex-1 justify-center z-20">
+            {/* Right features - order-3 on both mobile and desktop */}
+            <div className="flex flex-col gap-6 md:gap-10 items-start md:pl-12 lg:pl-20 flex-1 justify-center z-20 order-3">
               <div className="group flex items-start gap-4 text-left max-w-xs md:max-w-sm transition-all duration-300 hover:translate-x-1">
                 <span className="flex items-center justify-center w-14 h-14 bg-white border border-slate-100 rounded-xl shadow-sm flex-shrink-0 transition-all duration-300 group-hover:shadow-md group-hover:border-[#0057FF]/20 group-hover:bg-[#0057FF]/5">
                   {/* Tag icon */}
