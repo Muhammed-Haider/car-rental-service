@@ -26,9 +26,9 @@ export default function AboutUs() {
 
                 <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <g transform="translate(64,0) scale(-1,1)">
-                    <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.9"/>
-                    <circle cx="18" cy="20" r="3" fill="#0F172A"/>
-                    <circle cx="46" cy="20" r="3" fill="#0F172A"/>
+                    <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.9" />
+                    <circle cx="18" cy="20" r="3" fill="#0F172A" />
+                    <circle cx="46" cy="20" r="3" fill="#0F172A" />
                   </g>
                 </svg>
               </span>
@@ -53,24 +53,24 @@ export default function AboutUs() {
 
               <div className="mt-6 pt-6 border-t border-slate-200"></div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
-                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px]">
+              <div className="flex flex-wrap justify-center sm:grid sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
+                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px] w-[calc(50%-0.375rem)] sm:w-auto">
                   <div className="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">50+</div>
                   <div className="mt-1 text-[11px] text-slate-500 leading-tight break-words">Luxury Cars</div>
                 </div>
-                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px]">
+                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px] w-[calc(50%-0.375rem)] sm:w-auto">
                   <div className="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">24/7</div>
                   <div className="mt-1 text-[11px] text-slate-500 leading-tight break-words">Road Assistance</div>
                 </div>
-                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px]">
+                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px] w-[calc(50%-0.375rem)] sm:w-auto">
                   <div className="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">100%</div>
                   <div className="mt-1 text-[11px] text-slate-500 leading-tight break-words">Service Guarantee</div>
                 </div>
-                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px]">
+                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px] w-[calc(50%-0.375rem)] sm:w-auto">
                   <div className="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">60+</div>
                   <div className="mt-1 text-[11px] text-slate-500 leading-tight break-words">Pickup Locations</div>
                 </div>
-                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px]">
+                <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/70 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px] w-[calc(50%-0.375rem)] sm:w-auto">
                   <div className="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">800+</div>
                   <div className="mt-1 text-[11px] text-slate-500 leading-tight break-words">Satisfied Clients</div>
                 </div>
