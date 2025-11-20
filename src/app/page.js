@@ -12,12 +12,12 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <HeroVideo />
+      <AboutUs />
       <div className="relative z-10">
         <WhyChooseUs />
       </div>
-      <AboutUs />
-      <VisionMission />
       <CarListing />
+      <VisionMission />
       <HowItWorks />
       <ClientReviews />
       <FAQ />

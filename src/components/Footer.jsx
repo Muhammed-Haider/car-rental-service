@@ -18,8 +18,8 @@ export default function Footer() {
                     <div className="space-y-6 lg:pr-4 text-center md:text-left">
                         <div className="space-y-3">
                             <h3 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ fontFamily: "Poppins, sans-serif" }}>
-                                <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">Speed</span>
-                                <span className="bg-gradient-to-r from-[#0057FF] to-[#0080FF] bg-clip-text text-transparent">Zone</span>
+                                <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">WTB</span>
+                                <span className="bg-gradient-to-r from-[#0057FF] to-[#0080FF] bg-clip-text text-transparent">DXB</span>
                             </h3>
                             <div className="flex items-center gap-2 justify-center md:justify-start">
                                 <div className="h-0.5 w-12 bg-gradient-to-r from-[#0057FF] via-[#0080FF] to-transparent rounded-full" />
@@ -45,7 +45,7 @@ export default function Footer() {
                                     </div>
                                 </a>
 
-                                <a href="mailto:info@speedzone.ae" className="group flex items-center gap-3 text-slate-400 hover:text-[#0057FF] transition-all duration-300 text-left">
+                                <a href="mailto:info@wtbdxb.ae" className="group flex items-center gap-3 text-slate-400 hover:text-[#0057FF] transition-all duration-300 text-left">
                                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:bg-[#0057FF]/10 group-hover:border-[#0057FF]/30 transition-all duration-300">
                                         <svg className="h-5 w-5 text-[#0057FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -53,7 +53,7 @@ export default function Footer() {
                                     </div>
                                     <div>
                                         <p className="text-xs text-slate-500 font-medium" style={{ fontFamily: "Inter, sans-serif" }}>Email Us</p>
-                                        <p className="text-sm font-semibold" style={{ fontFamily: "Poppins, sans-serif" }}>info@speedzone.ae</p>
+                                        <p className="text-sm font-semibold" style={{ fontFamily: "Poppins, sans-serif" }}>info@wtbdxb.ae</p>
                                     </div>
                                 </a>
                             </div>
@@ -69,7 +69,7 @@ export default function Footer() {
                             <div className="h-0.5 w-10 bg-gradient-to-r from-[#0057FF] to-transparent rounded-full mx-auto md:mx-0" />
                         </div>
                         <ul className="space-y-3.5">
-                            {['About SpeedZone', 'Our Premium Fleet', 'Luxury Services', 'Testimonials', 'Contact & Location'].map((item) => (
+                            {['About WTB DXB', 'Our Premium Fleet', 'Luxury Services', 'Testimonials', 'Contact & Location'].map((item) => (
                                 <li key={item}>
                                     <a
                                         href="#"
@@ -184,7 +184,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-6">
                     <p className="text-sm text-slate-500 font-light" style={{ fontFamily: "Inter, sans-serif", letterSpacing: '0.02em' }}>
-                        © 2025 <span className="text-slate-300 font-semibold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">SpeedZone</span>. Handcrafted with passion in Dubai, UAE.
+                        © 2025 <span className="text-slate-300 font-semibold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">WTB DXB</span>. Handcrafted with passion in Dubai, UAE.
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-4">
                         {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Sitemap'].map((item, idx, arr) => (
