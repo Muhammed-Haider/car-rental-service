@@ -18,45 +18,60 @@ export default function Navbar() {
           Home
         </Link>
       </li>
-      <li className="relative"
-          onMouseEnter={() => setCarsOpen(true)}
-          onMouseLeave={() => setCarsOpen(false)}>
+      <li
+        className="relative"
+        onMouseEnter={() => setCarsOpen(true)}
+        onMouseLeave={() => setCarsOpen(false)}
+      >
         <button
-          className={`${navLinkBase} gap-1`}
+          className={`${navLinkBase} gap-1 group`}
           onClick={() => setCarsOpen((v) => !v)}
           aria-expanded={carsOpen}
         >
           Cars
-          <span className="text-white/60">▾</span>
+          <span className={`text-white/60 transition-transform duration-300 ${carsOpen ? 'rotate-180' : ''}`}>▾</span>
         </button>
-        {carsOpen && (
-          <div className="absolute left-1/2 top-full z-30 mt-2 w-screen max-w-5xl -translate-x-1/2 rounded-lg border border-white/10 bg-[#0A1A2F] p-6 shadow-xl">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-              {/* Column 1: Browse by type */}
-              <div>
-                <h4 className="mb-3 text-sm font-semibold text-white">Browse by Type</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Sedan</Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">SUV</Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Sports</Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Convertible</Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Luxury</Link>
-                  </li>
+
+        {/* Dropdown Menu */}
+        <div
+          className={`fixed left-1/2 top-[80px] z-40 w-[90vw] max-w-5xl -translate-x-1/2 transform transition-all duration-300 ease-out ${carsOpen
+              ? "visible translate-y-0 opacity-100"
+              : "invisible -translate-y-4 opacity-0"
+            }`}
+        >
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0A1A2F]/95 backdrop-blur-xl shadow-2xl ring-1 ring-black/5">
+            <div className="grid grid-cols-1 gap-8 p-8 sm:grid-cols-12">
+              {/* Column 1: Browse by type (3 cols) */}
+              <div className="sm:col-span-3">
+                <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  Browse by Type
+                </h4>
+                <ul className="space-y-1">
+                  {['Sedan', 'SUV', 'Sports', 'Convertible', 'Luxury'].map((type) => (
+                    <li key={type}>
+                      <Link
+                        href="#"
+                        className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white hover:pl-5"
+                      >
+                        {type}
+                        <span className="opacity-0 transition-opacity group-hover:opacity-100">→</span>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* Column 2: Popular models */}
-              <div>
-                <h4 className="mb-3 text-sm font-semibold text-white">Popular Models</h4>
+              {/* Column 2: Popular Models (5 cols) */}
+              <div className="sm:col-span-5 border-l border-white/5 pl-8">
+                <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Popular Models
+                </h4>
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { src: '/lamborghini.png', label: 'Lamborghini' },
@@ -64,39 +79,60 @@ export default function Navbar() {
                     { src: '/porsche.png', label: 'Porsche' },
                     { src: '/mercedes.png', label: 'Mercedes' },
                   ].map((m) => (
-                    <Link key={m.label} href="#" className="flex items-center gap-3 rounded p-2 hover:bg-white/6">
-                      <img src={m.src} alt={m.label} className="h-10 w-10 object-contain" loading="eager" />
-                      <span className="text-sm text-white/80">{m.label}</span>
+                    <Link
+                      key={m.label}
+                      href="#"
+                      className="group flex flex-col items-center gap-3 rounded-xl bg-white/5 p-4 text-center transition-all hover:bg-white/10 hover:scale-105"
+                    >
+                      <div className="h-12 w-12 flex items-center justify-center">
+                        <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain drop-shadow-lg" loading="lazy" />
+                      </div>
+                      <span className="text-sm font-medium text-white/90 group-hover:text-white">{m.label}</span>
                     </Link>
                   ))}
                 </div>
               </div>
 
-              {/* Column 3: Locations & Offers */}
-              <div>
-                <h4 className="mb-3 text-sm font-semibold text-white">Locations & Offers</h4>
+              {/* Column 3: Locations & Offers (4 cols) */}
+              <div className="sm:col-span-4 border-l border-white/5 pl-8">
+                <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Locations & Offers
+                </h4>
                 <ul className="space-y-2">
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Dubai</Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Abu Dhabi</Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/6 hover:text-white">Sharjah</Link>
-                  </li>
-                  <li className="mt-3">
-                    <Link href="#" className="inline-flex items-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-medium text-white">Special Deals</Link>
+                  {['Dubai', 'Abu Dhabi', 'Sharjah'].map((loc) => (
+                    <li key={loc}>
+                      <Link href="#" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#0057FF]"></span>
+                        {loc}
+                      </Link>
+                    </li>
+                  ))}
+                  <li className="mt-6">
+                    <Link
+                      href="#"
+                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0057FF] to-[#0048d1] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-blue-500/25 hover:scale-[1.02]"
+                    >
+                      <span>View Special Deals</span>
+                      <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-4 flex justify-end">
-              <Link href="/cars" className="text-sm text-white/80 hover:text-white">View all cars →</Link>
+            <div className="bg-white/5 px-8 py-4 flex justify-between items-center border-t border-white/5">
+              <p className="text-xs text-white/40">Find your perfect drive today.</p>
+              <Link href="/cars" className="text-sm font-medium text-[#0057FF] hover:text-white transition-colors flex items-center gap-1">
+                View all cars
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
             </div>
           </div>
-        )}
+        </div>
       </li>
       <li>
         <Link href="#" className={`${navLinkBase} ${underline}`}>
@@ -123,7 +159,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mt-3 rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
           <nav className="flex items-center justify-between px-4 py-2">
             {/* Left: Brand */}

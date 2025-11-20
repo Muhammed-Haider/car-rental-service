@@ -5,7 +5,7 @@ export default function AboutUs() {
     <section className="w-full relative overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-24 text-[#0A1A2F]">
       <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#E6F0FF] blur-3xl opacity-60"></div>
       <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-[#EAF6FF] blur-3xl opacity-60"></div>
-      <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start md:items-center">
 
           {/* LEFT SIDE -------------------------------------------------------- */}

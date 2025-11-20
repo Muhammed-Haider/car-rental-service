@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <HeroVideo />
       <AboutUs />
-      <div className="relative isolate z-0 mt-8 md:mt-12">
+      <div className="relative isolate z-0">
         <WhyChooseUs />
       </div>
       <VisionMission />
