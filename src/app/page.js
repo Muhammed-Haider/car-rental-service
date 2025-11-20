@@ -6,6 +6,7 @@ import CarListing from "@/components/CarListing";
 import HowItWorks from "@/components/HowItWorks";
 import ClientReviews from "@/components/ClientReviews";
 import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <HowItWorks />
       <ClientReviews />
       <FAQ />
+      <Footer />
     </main>
   );
 }
