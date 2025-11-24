@@ -14,7 +14,7 @@ export default function HeroVideo() {
         <div className="absolute inset-0 bg-[#0A1A2F]/40" />
         <div className="relative z-10 mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
           <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
-            Drive Your Dream Car in Dubai Anytime
+            Drive Your Dream Car Today
           </h1>
           <form role="search" action="#search" className="mb-6 w-full max-w-2xl">
             <div className="relative">
