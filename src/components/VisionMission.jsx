@@ -36,7 +36,7 @@ export default function VisionMission() {
           <div className="flex justify-center md:justify-start">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#0057FF] px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold text-white text-center shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0A1A2F]"
+              className="inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm md:text-base rounded-full hover:bg-transparent hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Contact Now

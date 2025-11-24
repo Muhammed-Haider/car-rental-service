@@ -197,7 +197,7 @@ export default function Navbar() {
               </a>
               <Link
                 href="#signin"
-                className="ml-2 inline-flex items-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#0048d1]"
+                className="ml-2 inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-xs md:text-sm rounded-full hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               >
                 Sign In
               </Link>
@@ -285,7 +285,7 @@ export default function Navbar() {
                 <a href="https://wa.me/971554079239" className="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-2 text-xs font-medium text-white hover:bg-white/10 transition-colors">
                   <span>💬</span> WhatsApp
                 </a>
-                <Link href="#signin" className="col-span-2 flex items-center justify-center rounded-lg bg-[var(--color-primary)] py-2.5 text-xs font-bold text-white shadow-lg hover:bg-[#0048d1] transition-colors">
+                <Link href="#signin" className="col-span-2 flex items-center justify-center px-4 py-2.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-xs rounded-lg hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
                   Sign In
                 </Link>
               </div>

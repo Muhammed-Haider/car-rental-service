@@ -136,7 +136,7 @@ export default function Footer() {
                                 />
                                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#0057FF]/0 to-[#0057FF]/0 group-hover:from-[#0057FF]/5 group-hover:to-transparent pointer-events-none transition-all duration-300" />
                             </div>
-                            <button className="w-full px-4 py-3.5 bg-gradient-to-r from-[#0057FF] to-[#0048d1] text-white rounded-xl font-semibold text-sm hover:shadow-xl hover:shadow-[#0057FF]/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0" style={{ fontFamily: "Poppins, sans-serif" }}>
+                            <button className="w-full md:w-auto flex items-center justify-center px-6 py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 md:px-8" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Subscribe Now
                             </button>
                         </div>

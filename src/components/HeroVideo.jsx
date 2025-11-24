@@ -43,7 +43,7 @@ export default function HeroVideo() {
           </p>
           <a
             href="#get-started"
-            className="inline-flex items-center justify-center rounded-lg bg-[#0057FF] px-12 py-3 text-lg font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0A1A2F] mb-6"
+            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-6"
           >
             Book Your Ride
           </a>

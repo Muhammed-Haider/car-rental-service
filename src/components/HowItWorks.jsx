@@ -67,7 +67,7 @@ export default function HowItWorks() {
                             </h2>
                         </div>
 
-                        <button className="inline-flex items-center gap-2 rounded-lg bg-[#0057FF] px-5 py-2.5 md:px-6 md:py-3 lg:px-8 lg:py-3.5 text-sm md:text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#0048d1] hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#0057FF]/70 focus:ring-offset-2 focus:ring-offset-white" style={{ fontFamily: "Poppins, sans-serif" }}>
+                        <button className="inline-flex items-center justify-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm md:text-base rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25" style={{ fontFamily: "Poppins, sans-serif" }}>
                             Rent a car
                             <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
