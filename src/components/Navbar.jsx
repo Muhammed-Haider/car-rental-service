@@ -150,7 +150,7 @@ export default function Navbar() {
         </Link>
       </li>
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+        <Link href="/contact" className={`${navLinkBase} ${underline}`}>
           Contact
         </Link>
       </li>
@@ -274,7 +274,7 @@ export default function Navbar() {
                 <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Partnership</Link></li>
                 <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Services</Link></li>
                 <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">About</Link></li>
-                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Contact</Link></li>
+                <li><Link href="/contact" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Contact</Link></li>
               </ul>
 
               {/* Contact buttons */}
