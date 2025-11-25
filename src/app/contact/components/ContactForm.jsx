@@ -3,9 +3,9 @@ import BusinessHours from "./BusinessHours";
 
 export default function ContactForm() {
   return (
-    <section className="w-full bg-gradient-to-b from-[#F8FAFC] to-white py-16 md:py-24">
+    <section className="w-full bg-gradient-to-b from-[#F8FAFC] to-white pt-12 md:pt-16">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Side: Form */}
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg ring-1 ring-slate-100">
             <h2 

@@ -1,14 +1,24 @@
 export default function GoogleMap() {
   return (
-    <section className="w-full bg-white py-16 md:py-24">
+    <section className="w-full bg-white pt-6 md:pt-10 pb-16 md:pb-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 
-            className="text-3xl md:text-4xl font-bold text-slate-900"
+            className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            Find us on Map
+            Where to Find Us
           </h2>
+          <div className="flex justify-center items-center">
+            <div className="relative w-24 h-px bg-slate-300">
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white flex items-center justify-center">
+                <svg className="h-5 w-5 text-[#0057FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-100">
           <iframe
