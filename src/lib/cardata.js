@@ -1,0 +1,80 @@
+export const cars = [
+  {
+    id: 1,
+    image: "/F1.jpeg",
+    name: "Ferrari Roma",
+    price: 2940,
+    durationPrice: 4900,
+    specs: {
+      seats: 2,
+      horsepower: 612,
+      engine: "3.9L V8",
+      acceleration: 3.4, // 0-100 in seconds
+    },
+  },
+  {
+    id: 2,
+    image: "/F2.jpeg",
+    name: "Lamborghini Urus",
+    price: 2580,
+    durationPrice: 4300,
+    specs: {
+      seats: 5,
+      horsepower: 641,
+      engine: "4.0L V8",
+      acceleration: 3.6,
+    },
+  },
+  {
+    id: 3,
+    image: "/F3.jpeg",
+    name: "McLaren Artura",
+    price: 3200,
+    durationPrice: 5400,
+    specs: {
+      seats: 2,
+      horsepower: 671,
+      engine: "3.0L V6 Hybrid",
+      acceleration: 3.0,
+    },
+  },
+  {
+    id: 4,
+    image: "/F4.jpeg",
+    name: "Rolls-Royce Cullinan",
+    price: 2800,
+    durationPrice: 4800,
+    specs: {
+      seats: 5,
+      horsepower: 563,
+      engine: "6.75L V12",
+      acceleration: 5.2,
+    },
+  },
+  {
+    id: 5,
+    image: "/F5.jpeg",
+    name: "McLaren 750S Spider",
+    price: 2600,
+    durationPrice: 4500,
+    specs: {
+      seats: 2,
+      horsepower: 740,
+      engine: "4.0L V8",
+      acceleration: 2.8,
+    },
+  },
+  {
+    id: 6,
+    image: "/F6.jpeg",
+    name: "Mercedes G63 Black 2025",
+    price: 2400,
+    durationPrice: 4200,
+    specs: {
+      seats: 5,
+      horsepower: 577,
+      engine: "4.0L V8",
+      acceleration: 4.5,
+    },
+  },
+];

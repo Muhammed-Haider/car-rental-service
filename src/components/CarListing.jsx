@@ -1,59 +1,45 @@
 "use client";
 
-const cars = [
-  {
-    id: 1,
-    image: "/F1.jpeg",
-    name: "Ferrari Roma",
-    specs: "2 seats, 612 horse power, 3.9l, 0-100: 3.4sec",
-    price: 2940,
-    durationPrice: 4900,
-  },
-  {
-    id: 2,
-    image: "/F2.jpeg",
-    name: "Lamborghini Urus",
-    specs: "5 seats, 641 horse power, 4.0l, 0-100: 3.6sec",
-    price: 2580,
-    durationPrice: 4300,
-  },
-  {
-    id: 3,
-    image: "/F3.jpeg",
-    name: "McLaren Artura",
-    specs: "2 seats, 671 horse power, 3.0l, 0-100: 3.0sec",
-    price: 3200,
-    durationPrice: 5400,
-  },
-  {
-    id: 4,
-    image: "/F4.jpeg",
-    name: "Rolls-Royce Cullinan",
-    specs: "5 seats, 563 horse power, 6.75l, 0-100: 5.2sec",
-    price: 2800,
-    durationPrice: 4800,
-  },
-  {
-    id: 5,
-    image: "/F5.jpeg",
-    name: "McLaren 750S Spider",
-    specs: "2 seats, 740 horse power, 4.0l, 0-100: 2.8sec",
-    price: 2600,
-    durationPrice: 4500,
-  },
-  {
-    id: 6,
-    image: "/F6.jpeg",
-    name: "Mercedes G63 Black 2025",
-    specs: "5 seats, 577 horse power, 4.0l, 0-100: 4.5sec",
-    price: 2400,
-    durationPrice: 4200,
-  },
-];
+"use client";
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import RentalModal from './RentalModal';
+import { cars } from '../lib/cardata';
 
 export default function CarListing() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
+
+  const openModal = (car) => {
+    setSelectedCar(car);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCar(null);
+  };
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.car-card');
+    const handleMouseMove = (e) => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--x', `${x}px`);
+        card.style.setProperty('--y', `${y}px`);
+      });
+    };
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
   return (
-        <section className="w-full bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24 text-[#0A1A2F]">
+        <section id="car-listings" className="w-full bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24 text-[#0A1A2F]">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading Block */}
         <div className="text-center mb-12 md:mb-16">
@@ -109,11 +95,22 @@ export default function CarListing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+        >
           {cars.map((car) => (
-            <div
+            <motion.div
               key={car.id}
-              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl ring-1 ring-slate-100 transition-all duration-500 hover:-translate-y-2"
+              className="group car-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl ring-1 ring-slate-100 transition-all duration-500 hover:-translate-y-2"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
             >
               {/* Car Image */}
               <div className="relative w-full h-64 md:h-72 bg-slate-50 overflow-hidden">
@@ -144,7 +141,7 @@ export default function CarListing() {
                     className="text-sm md:text-base text-slate-500 leading-relaxed font-medium"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
-                    {car.specs}
+                    {car.specs.seats} seats, {car.specs.horsepower}hp, {car.specs.engine}, 0-100: {car.specs.acceleration}s
                   </p>
                 </div>
 
@@ -204,29 +201,33 @@ export default function CarListing() {
                 {/* Action Buttons */}
                 <div className="flex flex-row gap-3 pt-2">
                   <button
+                    onClick={() => openModal(car)}
                     className="flex-1 px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Rent
                   </button>
-                  <button
-                    className="flex-[2] px-4 py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                  <Link
+                    href={`/cars/${car.id}`}
+                    className="shine-button flex-[2] text-center px-4 py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Details
-                  </button>
-                  <button
-                    className="flex-1 px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300"
+                  </Link>
+                  <Link
+                    href="/compare"
+                    className="flex-1 text-center px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Compare
-                  </button>
+                  </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
+      <RentalModal car={selectedCar} show={isModalOpen} onClose={closeModal} />
     </section>
   );
 }
