@@ -199,10 +199,14 @@ export default function CarListing() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-row gap-3 pt-2">
+                <div className="flex flex-row gap-3 pt-2 relative z-10">
                   <button
-                    onClick={() => openModal(car)}
-                    className="flex-1 px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      console.log('Rent button clicked for:', car.name);
+                      openModal(car);
+                    }}
+                    className="flex-1 px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Rent

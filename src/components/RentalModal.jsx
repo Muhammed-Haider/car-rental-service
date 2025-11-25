@@ -51,10 +51,26 @@ export default function RentalModal({ car, show, onClose }) {
       >
         <button
           onClick={onClose}
-          className="absolute -top-3 -right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
+          className="absolute -top-4 -right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white transition-all hover:bg-white/30 hover:scale-110 active:scale-95 shadow-lg"
           aria-label="Close modal"
+          style={{
+            border: '2px solid rgba(255, 255, 255, 0.3)'
+          }}
         >
-          ✕
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="text-white"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
@@ -136,19 +152,39 @@ export default function RentalModal({ car, show, onClose }) {
           </div>
 
           {/* Right Side: Car Image */}
-          <div className="relative hidden md:block">
-            <img
-              src={car?.image || '/car.jpeg'}
-              alt={car?.name || 'Car'}
-              className="h-full w-full object-cover rounded-r-3xl"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div className="absolute bottom-0 left-0 p-8">
-              <h3 className="text-3xl font-bold text-white shadow-black/50 [text-shadow:_0_2px_10px_var(--tw-shadow-color)]" style={{ fontFamily: 'var(--font-heading)' }}>
-                {car?.name}
-              </h3>
-            </div>
+          <div className="relative h-full min-h-[300px] md:min-h-0">
+            {car?.image ? (
+              <>
+                <img
+                  src={car.image}
+                  alt={car.name || 'Car'}
+                  className="h-full w-full object-cover object-center rounded-r-3xl"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {car.name}
+                  </h3>
+                  <div className="flex items-center space-x-4 text-white/90">
+                    <div className="flex items-center">
+                      <span className="text-xl md:text-2xl font-semibold">${car.price}</span>
+                      <span className="ml-1 text-sm md:text-base opacity-80">/day</span>
+                    </div>
+                    {car.specs && (
+                      <div className="flex items-center space-x-2 text-sm md:text-base">
+                        <span className="opacity-70">•</span>
+                        <span className="opacity-80">{car.specs.engine}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="h-full w-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center rounded-r-3xl">
+                <span className="text-white/50 text-lg">No image available</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
