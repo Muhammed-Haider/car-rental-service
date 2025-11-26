@@ -53,7 +53,7 @@ const features = [
 
 export default function AboutHero() {
   return (
-    <section className="w-full bg-white text-slate-900 pt-32 pb-16 md:pt-40 md:pb-24">
+    <section className="w-full bg-white text-slate-900 pt-32 pb-8 md:pt-40 md:pb-12">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
@@ -65,7 +65,7 @@ export default function AboutHero() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {features.map((feature) => (
-            <div key={feature.num} className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center flex flex-col items-center">
+            <div key={feature.num} className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center flex flex-col items-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
               <div className="mb-4">{feature.icon}</div>
               <p className="text-sm font-semibold text-slate-500 mb-2" style={{ fontFamily: "Poppins, sans-serif" }}>{`<${feature.num}>`}</p>
               <h3 className="text-lg font-bold text-slate-900 mb-2" style={{ fontFamily: "Poppins, sans-serif" }}>{feature.title}</h3>

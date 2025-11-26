@@ -35,7 +35,7 @@ export default function VisionMission() {
           {/* Contact Now Button - Centered */}
           <div className="flex justify-center md:justify-start">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm md:text-base rounded-full hover:bg-transparent hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >

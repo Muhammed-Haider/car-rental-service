@@ -15,8 +15,8 @@ export default function GallerySection() {
   return (
     <section className="w-full bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading highlight="Cars">
-          Our
+        <SectionHeading>
+          Our Cars
         </SectionHeading>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {galleryImages.map((image, index) => (
