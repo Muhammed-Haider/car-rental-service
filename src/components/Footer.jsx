@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -69,19 +70,25 @@ export default function Footer() {
                             <div className="h-0.5 w-10 bg-gradient-to-r from-[#0057FF] to-transparent rounded-full mx-auto md:mx-0" />
                         </div>
                         <ul className="space-y-3.5">
-                            {['About WTB DXB', 'Our Premium Fleet', 'Luxury Services', 'Testimonials', 'Contact & Location'].map((item) => (
-                                <li key={item}>
-                                    <a
-                                        href="#"
-                                        className="group flex items-center gap-3 text-[15px] text-slate-400 hover:text-white transition-all duration-300 justify-center md:justify-start"
-                                        style={{ fontFamily: "Inter, sans-serif" }}
-                                    >
-                                        <svg className="h-1.5 w-1.5 text-[#0057FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 8 8">
-                                            <circle cx="4" cy="4" r="3" />
-                                        </svg>
-                                        <span className="group-hover:translate-x-1 transition-transform duration-300">{item}</span>
-                                    </a>
-                                </li>
+                            {[
+                            { text: 'About WTB DXB', link: '/about' },
+                            { text: 'Our Premium Fleet', link: '/compare' },
+                            { text: 'Luxury Services', link: '/#car-listings' },
+                            { text: 'Testimonials', link: '/#clientreview' },
+                            { text: 'Contact & Location', link: '/contact' }
+                        ].map((item) => (
+                            <li key={item.text}>
+                                <Link
+                                    href={item.link}
+                                    className="group flex items-center gap-3 text-[15px] text-slate-400 hover:text-white transition-all duration-300 justify-center md:justify-start"
+                                    style={{ fontFamily: "Inter, sans-serif" }}
+                                >
+                                    <svg className="h-1.5 w-1.5 text-[#0057FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 8 8">
+                                        <circle cx="4" cy="4" r="3" />
+                                    </svg>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{item.text}</span>
+                                </Link>
+                            </li>
                             ))}
                         </ul>
                     </div>

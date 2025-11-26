@@ -179,6 +179,20 @@ export default function Navbar() {
         </Link>
       </li>
       <li>
+        <Link 
+          href="/#clientreview" 
+          className={`${navLinkBase} ${underline}`}
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault();
+              document.getElementById('clientreview')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          Testimonials
+        </Link>
+      </li>
+      <li>
         <Link href="/contact" className={`${navLinkBase} ${underline}`}>
           Contact
         </Link>

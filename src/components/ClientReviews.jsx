@@ -26,7 +26,7 @@ export default function ClientReviews() {
     ];
 
     return (
-        <section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24">
+        <section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24" id="clientreview">
             {/* Gradient overlays */}
             <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#0057FF]/5 blur-3xl" />
             <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#0057FF]/5 blur-3xl" />
