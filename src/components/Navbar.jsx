@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 // Map car types to their corresponding car IDs for navigation
 const carTypeToIdMap = {
@@ -12,8 +13,18 @@ const carTypeToIdMap = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [carsOpen, setCarsOpen] = useState(false);
+
+  const handleHomeClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      router.refresh();
+    }
+  };
 
   const navLinkBase =
     "relative inline-flex h-10 items-center rounded-md px-3 text-sm font-medium leading-none text-white/80 hover:text-white transition-colors";
@@ -23,7 +34,11 @@ export default function Navbar() {
   const MenuLinks = (
     <ul className="hidden md:flex items-center gap-2">
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+        <Link 
+          href="/" 
+          className={`${navLinkBase} ${underline}`}
+          onClick={handleHomeClick}
+        >
           Home
         </Link>
       </li>
@@ -233,7 +248,20 @@ export default function Navbar() {
             <div className="px-4 pb-4 pt-2">
               <ul className="flex flex-col space-y-1">
                 <li>
-                  <Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Home</Link>
+                  <Link 
+                    href="/" 
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={(e) => {
+                      if (pathname === '/') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        router.refresh();
+                      }
+                      setMobileOpen(false);
+                    }}
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li>
                   <div className="rounded-lg bg-white/5 px-3 py-2.5">
