@@ -23,8 +23,12 @@ export default function LuxuryCarsCTA() {
               View all vehicles
             </button>
           </div>
-          <div>
-            <img src="aboutuscar.png" alt="Luxury Car Fleet" className="w-full h-auto rounded-xl shadow-md" />
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img 
+              src="/car_black.png" 
+              alt="Luxury Car Fleet" 
+              className="w-full h-auto max-w-md mx-auto"
+            />
           </div>
         </div>
       </div>
