@@ -79,20 +79,28 @@ export default function CarListing() {
           </div>
 
           {/* Main headline */}
-          <h3
+          <div className="text-center mb-12 md:mb-16">
+            <p
+              className="text-sm font-semibold uppercase tracking-widest text-slate-500 mb-4"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              DRIVE LUXURY LIVE FREEDOM
+            </p>
+            <h3
             className="text-center text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-[-0.02em] mb-6 text-slate-900 px-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Our Vehicle Fleet
           </h3>
 
-          {/* Supporting paragraph */}
-          <p
-            className="mx-auto max-w-2xl text-center text-base md:text-lg text-slate-600/90 leading-[1.7] mb-0 px-4"
-            style={{ fontFamily: "Inter, sans-serif", letterSpacing: "0.01em" }}
-          >
-            Driving your dreams to reality with an exquisite fleet of versatile vehicles for unforgettable journeys.
-          </p>
+            {/* Supporting paragraph */}
+            <p
+              className="mx-auto max-w-2xl text-center text-base md:text-lg text-slate-600/90 leading-[1.7] mb-0 px-4"
+              style={{ fontFamily: "Inter, sans-serif", letterSpacing: "0.01em" }}
+            >
+              Driving your dreams to reality with an exquisite fleet of versatile vehicles for unforgettable journeys.
+            </p>
+          </div>
         </div>
 
         <motion.div 
