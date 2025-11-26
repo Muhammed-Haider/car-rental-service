@@ -2,6 +2,15 @@
 import { useState } from "react";
 import Link from "next/link";
 
+// Map car types to their corresponding car IDs for navigation
+const carTypeToIdMap = {
+  'Sedan': 1,        // Ferrari Roma
+  'SUV': 2,          // Lamborghini Urus
+  'Sports': 3,       // McLaren Artura
+  'Luxury': 4,       // Rolls-Royce Cullinan
+  'Convertible': 5   // McLaren 750S Spider
+};
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [carsOpen, setCarsOpen] = useState(false);
@@ -50,17 +59,21 @@ export default function Navbar() {
                   Browse by Type
                 </h4>
                 <ul className="space-y-1">
-                  {['Sedan', 'SUV', 'Sports', 'Convertible', 'Luxury'].map((type) => (
-                    <li key={type}>
-                      <Link
-                        href="#"
-                        className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white hover:pl-5"
-                      >
-                        {type}
-                        <span className="opacity-0 transition-opacity group-hover:opacity-100">→</span>
-                      </Link>
-                    </li>
-                  ))}
+                  {['Sedan', 'SUV', 'Sports', 'Convertible', 'Luxury'].map((type) => {
+                    const carId = carTypeToIdMap[type];
+                    return (
+                      <li key={type}>
+                        <Link
+                          href={`/cars/${carId}`}
+                          className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white hover:pl-5"
+                          onClick={() => setCarsOpen(false)}
+                        >
+                          {type}
+                          <span className="opacity-0 transition-opacity group-hover:opacity-100">→</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
@@ -113,8 +126,9 @@ export default function Navbar() {
                   ))}
                   <li className="mt-6">
                     <Link
-                      href="#"
+                      href="/compare"
                       className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0057FF] to-[#0048d1] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-blue-500/25 hover:scale-[1.02]"
+                      onClick={() => setCarsOpen(false)}
                     >
                       <span>View Special Deals</span>
                       <span className="transition-transform group-hover:translate-x-1">→</span>
