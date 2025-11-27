@@ -159,8 +159,8 @@ export default function Navbar() {
         </div>
       </li>
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
-          Partnership
+        <Link href="/membership" className={`${navLinkBase} ${underline}`}>
+          Membership
         </Link>
       </li>
       <li
@@ -393,7 +393,7 @@ export default function Navbar() {
                     </div>
                   </div>
                 </li>
-                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Partnership</Link></li>
+                <li><Link href="/membership" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Membership</Link></li>
                 <li>
                   <div className="rounded-lg bg-white/5 px-3 py-2.5">
                     <button
