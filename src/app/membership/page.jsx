@@ -157,12 +157,12 @@ export default function MembershipPage() {
   };
 
   return (
-    <main className="pt-28 pb-20 bg-gradient-to-b from-white to-[#F7FAFF] text-[#0A1A2F]">
+    <main className="min-h-screen overflow-x-hidden pt-28 pb-20 bg-gradient-to-b from-white to-[#F7FAFF] text-[#0A1A2F]">
       {/* Choose a Plan Section */}
-      <section className="mx-auto mb-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto mb-16 sm:mb-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Choose a plan</p>
-          <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl" style={{ fontFamily: "Poppins, sans-serif" }}>
+          <h1 className="mt-4 text-2xl sm:text-4xl font-bold text-slate-900" style={{ fontFamily: "Poppins, sans-serif" }}>
             CHOOSE A PLAN
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-500">
@@ -171,8 +171,8 @@ export default function MembershipPage() {
         </div>
 
         {/* Mobile slider */}
-        <div className="mt-10 md:hidden">
-          <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar snap-x snap-mandatory">
+        <div className="mt-8 md:hidden">
+          <div className="flex gap-4 overflow-x-auto pb-4 -mx-1 px-1 hide-scrollbar snap-x snap-mandatory">
             {plans.map((plan) => (
               <div key={plan.name} className="snap-center shrink-0 basis-[85%]">
                 {renderPlanCard(plan)}
@@ -188,10 +188,10 @@ export default function MembershipPage() {
       </section>
 
       {/* Final Member vs Non-Member Discount Section */}
-      <section className="mx-auto mt-16 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto mt-10 sm:mt-16 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
           {/* Left: image styled like WhyChooseUs car, constrained */}
-          <div className="flex justify-center items-center px-4 md:px-0 lg:pr-10">
+          <div className="flex justify-center items-center px-4 sm:px-6 md:px-0 lg:pr-10">
             <Image
               src="/car_black.png"
               alt="Membership discount example car"
@@ -200,8 +200,8 @@ export default function MembershipPage() {
               className="mx-auto w-full max-w-lg h-auto object-contain scale-100 drop-shadow-2xl"
             />
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl">
-            <div className="rounded-2xl border border-slate-200 p-5">
+          <div className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-xl">
+            <div className="rounded-2xl border border-slate-200 p-4 sm:p-5">
               {activeRateTab === "member" ? (
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Member rate</p>
