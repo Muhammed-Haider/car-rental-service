@@ -1,6 +1,7 @@
 "use client";
 import { useState, useContext } from "react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabaseClient";
 import { usePathname, useRouter } from "next/navigation";
 import { useHighlight } from "@/context/HighlightContext";
 
@@ -20,6 +21,14 @@ export default function Navbar() {
   const [carsOpen, setCarsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const { triggerHighlight } = useHighlight();
+
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault();
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: window.location.origin }
+    });
+  };
 
   const handleHomeClick = (e) => {
     if (pathname === '/') {
@@ -295,6 +304,7 @@ export default function Navbar() {
               </a>
               <Link
                 href="#signin"
+                onClick={handleGoogleLogin}
                 className="ml-2 inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-xs md:text-sm rounded-full hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               >
                 Sign In
