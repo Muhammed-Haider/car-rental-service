@@ -152,14 +152,6 @@ export default function Navbar() {
                 </ul>
               </div>
             </div>
-
-            <div className="bg-white/5 px-8 py-4 flex justify-between items-center border-t border-white/5">
-              <p className="text-xs text-white/40">Find your perfect drive today.</p>
-              <Link href="/cars" className="text-sm font-medium text-[#0057FF] hover:text-white transition-colors flex items-center gap-1">
-                View all cars
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </Link>
-            </div>
           </div>
         </div>
       </li>
@@ -292,9 +284,22 @@ export default function Navbar() {
                         <div className="mb-3">
                           <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Browse by Type</h5>
                           <div className="grid grid-cols-2 gap-2">
-                            {['Sedan', 'SUV', 'Sports', 'Luxury'].map((type) => (
-                              <Link key={type} href="#" className="rounded-lg bg-white/5 px-2 py-1.5 text-center text-xs text-white/80 hover:bg-white/10 transition-colors">{type}</Link>
-                            ))}
+                            {['Sedan', 'SUV', 'Sports', 'Luxury'].map((type) => {
+                              const carId = carTypeToIdMap[type];
+                              return (
+                                <Link 
+                                  key={type} 
+                                  href={`/cars/${carId}`} 
+                                  className="rounded-lg bg-white/5 px-2 py-1.5 text-center text-xs text-white/80 hover:bg-white/10 transition-colors"
+                                  onClick={() => {
+                                    setCarsOpen(false);
+                                    setMobileOpen(false);
+                                  }}
+                                >
+                                  {type}
+                                </Link>
+                              );
+                            })}
                           </div>
                         </div>
 
@@ -321,8 +326,6 @@ export default function Navbar() {
                             ))}
                           </div>
                         </div>
-
-                        <Link href="/cars" className="block w-full rounded-lg border border-white/10 py-2 text-center text-xs font-medium text-[#0057FF] hover:bg-white/5 transition-colors">View All Cars</Link>
                       </div>
                     </div>
                   </div>

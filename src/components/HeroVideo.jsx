@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function HeroVideo() {
   return (
     <>
@@ -41,12 +43,12 @@ export default function HeroVideo() {
           <p className="mb-8 max-w-2xl text-base text-white/90 sm:text-lg">
             We offer curated luxury cars, quick booking, and seamless delivery for an unforgettable ride.
           </p>
-          <a
-            href="#get-started"
+          <Link
+            href="/contact"
             className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-6"
           >
             Book Your Ride
-          </a>
+          </Link>
         </div>
 
         {/* Brand logos strip pinned to hero bottom; does not affect centered content */}

@@ -13,7 +13,7 @@ export default function Footer() {
 
             {/* Main Footer Content */}
             <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-14 mb-16">
 
                     {/* Column 1 - Brand & Contact */}
                     <div className="space-y-6 lg:pr-4 text-center md:text-left">
@@ -93,33 +93,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Column 3 - Support */}
-                    <div className="space-y-6 text-center md:text-left">
-                        <div className="space-y-3">
-                            <h4 className="text-lg font-bold text-white tracking-wide" style={{ fontFamily: "Poppins, sans-serif" }}>
-                                Support
-                            </h4>
-                            <div className="h-0.5 w-10 bg-gradient-to-r from-[#0057FF] to-transparent rounded-full mx-auto md:mx-0" />
-                        </div>
-                        <ul className="space-y-3.5">
-                            {['Help Center & FAQ', 'Booking Guide', 'Insurance Coverage', 'Terms of Service', 'Privacy Policy'].map((item) => (
-                                <li key={item}>
-                                    <a
-                                        href="#"
-                                        className="group flex items-center gap-3 text-[15px] text-slate-400 hover:text-white transition-all duration-300 justify-center md:justify-start"
-                                        style={{ fontFamily: "Inter, sans-serif" }}
-                                    >
-                                        <svg className="h-1.5 w-1.5 text-[#0057FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 8 8">
-                                            <circle cx="4" cy="4" r="3" />
-                                        </svg>
-                                        <span className="group-hover:translate-x-1 transition-transform duration-300">{item}</span>
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Column 4 - Newsletter & Social */}
+                    {/* Column 3 - Newsletter & Social */}
                     <div className="space-y-6 text-center md:text-left">
                         <div className="space-y-3">
                             <h4 className="text-lg font-bold text-white tracking-wide" style={{ fontFamily: "Poppins, sans-serif" }}>
