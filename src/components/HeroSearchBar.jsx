@@ -104,7 +104,7 @@ export default function HeroSearchBar() {
   return (
     <div 
       ref={searchRef}
-      className="relative w-full max-w-2xl px-2 sm:px-0"
+      className="relative w-full max-w-2xl px-2 sm:px-0 z-[70]"
     >
       {/* Elegant Search Input with Zoom Animation */}
       <motion.div
@@ -213,7 +213,7 @@ export default function HeroSearchBar() {
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             className="absolute top-full left-0 right-0 mt-2 sm:mt-3 bg-white/95 backdrop-blur-xl 
                      border border-white/20 rounded-2xl shadow-2xl shadow-black/10 
-                     overflow-hidden z-50"
+                     overflow-hidden z-[60]"
           >
             <div className="max-h-64 sm:max-h-96 overflow-y-auto">
               {/* Results Header */}
@@ -299,7 +299,7 @@ export default function HeroSearchBar() {
             exit={{ opacity: 0, y: -20, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             className="absolute top-full left-0 right-0 mt-2 sm:mt-3 bg-white/95 backdrop-blur-xl 
-                     border border-white/20 rounded-2xl shadow-2xl shadow-black/10 p-4 sm:p-6 z-50"
+                     border border-white/20 rounded-2xl shadow-2xl shadow-black/10 p-4 sm:p-6 z-[60]"
           >
             <div className="text-center">
               <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">

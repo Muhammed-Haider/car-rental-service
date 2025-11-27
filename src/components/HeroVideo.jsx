@@ -15,7 +15,7 @@ export default function HeroVideo() {
           <source src="/herovideo.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[#0A1A2F]/40" />
-        <div className="relative z-10 mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
+        <div className="relative z-[50] mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
           <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
             Drive Your Dream Car Today
           </h1>
