@@ -75,67 +75,42 @@ export default function HeroVideo() {
       <div className="relative z-30 mt-0 w-full bg-white">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl bg-white p-4 md:p-5 shadow-xl ring-1 ring-black/5">
-            <div className="flex items-center gap-6 sm:gap-8 overflow-x-auto sm:flex-wrap sm:justify-center hide-scrollbar" role="list">
+            <div className="grid grid-cols-2 gap-4 md:flex md:flex-row md:items-center md:justify-center md:gap-6" role="list">
               {[
                 { label: 'SUV', src: '/suv.png' },
                 { label: 'Sports', src: '/sports.png' },
                 { label: 'Luxury', src: '/luxury.png' },
                 { label: 'Convertible', src: '/convertible-1.png' },
-                { label: 'All', isAll: true },
-              ].map((item, idx, arr) => (
-                item.isAll && (
-                  <div
-                    key={item.label}
-                    role="listitem"
-                    className="hidden sm:flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none"
-                    tabIndex={0}
-                    aria-label={`${item.label} category`}
-                  >
-                    {/* Label */}
-                    <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm sm:text-base group-hover:text-[#0057FF]`}>{item.label}</span>
-                    {/* Arrow for All */}
-                    {item.isAll && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
-                        <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                    {/* Divider except last */}
-                    {idx < arr.length - 1 && (
-                      <span className="ml-2 hidden h-8 w-px bg-black/10 last:hidden sm:block" />
-                    )}
-                  </div>
-                ) || (
-                  <div
-                    key={item.label}
-                    role="listitem"
-                    className={`group flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none`}
-                    tabIndex={0}
-                    aria-label={`${item.label} category`}
-                  >
-                    {/* Icon/Image */}
-                    {item.src ? (
-                      <img
-                        src={item.src}
-                        alt={item.label}
-                        className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
-                        loading="eager"
-                      />
-                    ) : null}
-                    {/* Label */}
-                    <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm sm:text-base group-hover:text-[#0057FF]`}>{item.label}</span>
-                    {/* Arrow for All */}
-                    {item.isAll && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
-                        <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                    {/* Divider except last */}
-                    {idx < arr.length - 1 && (
-                      <span className="ml-2 hidden h-8 w-px bg-black/10 last:hidden sm:block" />
-                    )}
-                  </div>
-                )
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  role="listitem"
+                  className="group flex flex-col items-center justify-center gap-2 rounded-lg p-3 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none md:flex-row md:w-auto md:px-4 md:py-2"
+                  tabIndex={0}
+                  aria-label={`${item.label} category`}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110 md:h-12"
+                    loading="eager"
+                  />
+                  <span className="text-sm font-medium text-[#0A1A2F] group-hover:text-[#0057FF] md:text-base">
+                    {item.label}
+                  </span>
+                </div>
               ))}
+              <div
+                role="listitem"
+                className="col-span-2 flex items-center justify-center gap-2 rounded-lg p-3 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none md:col-auto md:w-auto md:px-4 md:py-2"
+                tabIndex={0}
+                aria-label="All categories"
+              >
+                <span className="font-semibold text-orange-600 text-sm md:text-base">All</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
+                  <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
