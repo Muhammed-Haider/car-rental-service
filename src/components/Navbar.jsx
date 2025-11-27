@@ -17,6 +17,7 @@ export default function Navbar() {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [carsOpen, setCarsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const handleHomeClick = (e) => {
     if (pathname === '/') {
@@ -160,10 +161,57 @@ export default function Navbar() {
           Partnership
         </Link>
       </li>
-      <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+      <li
+        className="relative"
+        onMouseEnter={() => setServicesOpen(true)}
+        onMouseLeave={() => setServicesOpen(false)}
+      >
+        <button
+          className={`${navLinkBase} gap-1 group`}
+          onClick={() => setServicesOpen((v) => !v)}
+          aria-expanded={servicesOpen}
+        >
           Services
-        </Link>
+          <span className={`text-white/60 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}>▾</span>
+        </button>
+
+        {/* Services Dropdown Menu */}
+        <div
+          className={`fixed left-1/2 top-[80px] z-40 w-[90vw] max-w-md -translate-x-1/2 transform transition-all duration-300 ease-out ${servicesOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-4 opacity-0"
+            }`}
+        >
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0A1A2F]/95 backdrop-blur-xl">
+            <div className="p-6">
+              <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                Rental Services
+              </h4>
+              <ul className="space-y-2">
+                {[
+                  { label: 'Daily Basis Rental', icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                  { label: 'Weekly Basis Rental', icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                  { label: 'Monthly Basis Rental', icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                  { label: 'Daily Rental with Chauffeuring', icon: 'M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM16 14H8C6.89543 14 6 14.8954 6 16V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V16C18 14.8954 17.1046 14 16 14ZM20 8L22 10L20 12M12 11V14' }
+                ].map((service, index) => (
+                  <li key={index}>
+                    <div className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white">
+                      <div className="flex items-center gap-3">
+                        <svg className="h-5 w-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                        </svg>
+                        {service.label}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </li>
       <li>
         <Link href="/about" className={`${navLinkBase} ${underline}`}>
@@ -331,7 +379,40 @@ export default function Navbar() {
                   </div>
                 </li>
                 <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Partnership</Link></li>
-                <li><Link href="#" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Services</Link></li>
+                <li>
+                  <div className="rounded-lg bg-white/5 px-3 py-2.5">
+                    <button
+                      onClick={() => setServicesOpen(!servicesOpen)}
+                      className="flex w-full items-center justify-between text-sm font-medium text-white/90"
+                    >
+                      Services
+                      <span className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}>▾</span>
+                    </button>
+                    <div className={`grid transition-all duration-300 ease-in-out ${servicesOpen ? 'grid-rows-[1fr] mt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                      <div className="overflow-hidden">
+                        <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Rental Services</h5>
+                        <div className="space-y-1">
+                          {[
+                            { label: 'Daily Basis Rental', icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                            { label: 'Weekly Basis Rental', icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                            { label: 'Monthly Basis Rental', icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                            { label: 'Daily Rental with Chauffeuring', icon: 'M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM16 14H8C6.89543 14 6 14.8954 6 16V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V16C18 14.8954 17.1046 14 16 14ZM20 8L22 10L20 12M12 11V14' }
+                          ].map((service, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1.5 text-xs text-white/80 hover:bg-white/10 transition-colors"
+                            >
+                              <svg className="h-4 w-4 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                              </svg>
+                              {service.label}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
                 <li><Link href="/about" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">About</Link></li>
                 <li><Link href="/contact" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Contact</Link></li>
               </ul>
