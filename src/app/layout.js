@@ -1,6 +1,7 @@
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import { HighlightProvider } from "@/context/HighlightContext";
 
 const inter = Inter({
   variable: "--font-body",
@@ -24,8 +25,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${poppins.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        <HighlightProvider>
+          <Navbar />
+          {children}
+        </HighlightProvider>
       </body>
     </html>
   );

@@ -1,18 +1,18 @@
 "use client";
 
-"use client";
-
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import RentalModal from './RentalModal';
 import { cars } from '../lib/cardata';
+import { useHighlight } from '@/context/HighlightContext';
 
 export default function CarListing() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const paginationRef = useRef(null);
+  const { highlight } = useHighlight();
   
   const carsPerPage = 6;
   const totalPages = Math.ceil(cars.length / carsPerPage);
@@ -187,7 +187,7 @@ export default function CarListing() {
                       / day
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg">
+                  <div className={`flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg ${highlight ? 'animate-pulse ring-2 ring-blue-500' : ''}`}>
                     <span
                       className="text-sm font-medium"
                       style={{ fontFamily: "Inter, sans-serif" }}

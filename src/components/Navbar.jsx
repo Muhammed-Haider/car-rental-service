@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useHighlight } from "@/context/HighlightContext";
 
 // Map car types to their corresponding car IDs for navigation
 const carTypeToIdMap = {
@@ -18,6 +19,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [carsOpen, setCarsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const { triggerHighlight } = useHighlight();
 
   const handleHomeClick = (e) => {
     if (pathname === '/') {
@@ -192,12 +194,25 @@ export default function Navbar() {
               </h4>
               <ul className="space-y-2">
                 {[
-                  { label: 'Daily Basis Rental', icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
-                  { label: 'Weekly Basis Rental', icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
+                  {
+                    label: 'Daily Basis Rental',
+                    icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                    action: () => {
+                      document.getElementById('car-listings')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  },
+                  {
+                    label: 'Weekly Basis Rental',
+                    icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                    action: () => {
+                      document.getElementById('car-listings')?.scrollIntoView({ behavior: 'smooth' });
+                      triggerHighlight();
+                    }
+                  },
                   { label: 'Monthly Basis Rental', icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' },
                   { label: 'Daily Rental with Chauffeuring', icon: 'M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM16 14H8C6.89543 14 6 14.8954 6 16V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V16C18 14.8954 17.1046 14 16 14ZM20 8L22 10L20 12M12 11V14' }
                 ].map((service, index) => (
-                  <li key={index}>
+                  <li key={index} onClick={service.action}>
                     <div className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white">
                       <div className="flex items-center gap-3">
                         <svg className="h-5 w-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
