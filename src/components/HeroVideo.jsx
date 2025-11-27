@@ -103,35 +103,58 @@ export default function HeroVideo() {
                 { label: 'Convertible', src: '/convertible-1.png' },
                 { label: 'All', isAll: true },
               ].map((item, idx, arr) => (
-                <div
-                  key={item.label}
-                  role="listitem"
-                  className="group flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none"
-                  tabIndex={0}
-                  aria-label={`${item.label} category`}
-                >
-                  {/* Icon/Image */}
-                  {item.src ? (
-                    <img
-                      src={item.src}
-                      alt={item.label}
-                      className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
-                      loading="eager"
-                    />
-                  ) : null}
-                  {/* Label */}
-                  <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm sm:text-base group-hover:text-[#0057FF]`}>{item.label}</span>
-                  {/* Arrow for All */}
-                  {item.isAll && (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
-                      <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
-                  {/* Divider except last */}
-                  {idx < arr.length - 1 && (
-                    <span className="ml-2 hidden h-8 w-px bg-black/10 last:hidden sm:block" />
-                  )}
-                </div>
+                item.isAll && (
+                  <div
+                    key={item.label}
+                    role="listitem"
+                    className="hidden sm:flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none"
+                    tabIndex={0}
+                    aria-label={`${item.label} category`}
+                  >
+                    {/* Label */}
+                    <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm sm:text-base group-hover:text-[#0057FF]`}>{item.label}</span>
+                    {/* Arrow for All */}
+                    {item.isAll && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
+                        <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                    {/* Divider except last */}
+                    {idx < arr.length - 1 && (
+                      <span className="ml-2 hidden h-8 w-px bg-black/10 last:hidden sm:block" />
+                    )}
+                  </div>
+                ) || (
+                  <div
+                    key={item.label}
+                    role="listitem"
+                    className={`group flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none ${item.label === 'Sports' ? 'ml-8' : ''}`}
+                    tabIndex={0}
+                    aria-label={`${item.label} category`}
+                  >
+                    {/* Icon/Image */}
+                    {item.src ? (
+                      <img
+                        src={item.src}
+                        alt={item.label}
+                        className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                        loading="eager"
+                      />
+                    ) : null}
+                    {/* Label */}
+                    <span className={`${item.isAll ? 'font-semibold text-orange-600' : 'text-[#0A1A2F]'} text-sm sm:text-base group-hover:text-[#0057FF]`}>{item.label}</span>
+                    {/* Arrow for All */}
+                    {item.isAll && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
+                        <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                    {/* Divider except last */}
+                    {idx < arr.length - 1 && (
+                      <span className="ml-2 hidden h-8 w-px bg-black/10 last:hidden sm:block" />
+                    )}
+                  </div>
+                )
               ))}
             </div>
           </div>

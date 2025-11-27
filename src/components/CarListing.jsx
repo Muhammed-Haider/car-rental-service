@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import RentalModal from './RentalModal';
@@ -11,6 +11,16 @@ import { cars } from '../lib/cardata';
 export default function CarListing() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const paginationRef = useRef(null);
+  
+  const carsPerPage = 6;
+  const totalPages = Math.ceil(cars.length / carsPerPage);
+  
+  // Get current page cars
+  const indexOfLastCar = currentPage * carsPerPage;
+  const indexOfFirstCar = indexOfLastCar - carsPerPage;
+  const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar);
 
   const openModal = (car) => {
     setSelectedCar(car);
@@ -20,6 +30,25 @@ export default function CarListing() {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedCar(null);
+  };
+
+  // Store scroll position before page change
+  const handlePageChange = (newPage) => {
+    // Store current scroll position
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Change page
+    setCurrentPage(newPage);
+    
+    // Use requestAnimationFrame to ensure DOM is updated before restoring scroll
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollPosition);
+      
+      // Double-check after a small delay to ensure it stays
+      setTimeout(() => {
+        window.scrollTo(0, scrollPosition);
+      }, 50);
+    });
   };
 
   useEffect(() => {
@@ -37,7 +66,7 @@ export default function CarListing() {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [currentPage]);
   return (
         <section id="car-listings" className="w-full bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24 text-[#0A1A2F]">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -103,22 +132,11 @@ export default function CarListing() {
           </div>
         </div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } },
-          }}
-        >
-          {cars.map((car) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 min-h-[800px]">
+          {currentCars.map((car) => (
+            <div
               key={car.id}
               className="group car-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl ring-1 ring-slate-100 transition-all duration-500 hover:-translate-y-2"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-              }}
             >
               {/* Car Image */}
               <div className="relative w-full h-64 md:h-72 bg-slate-50 overflow-hidden">
@@ -235,9 +253,75 @@ export default function CarListing() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
+        
+        {/* Pagination */}
+        <div ref={paginationRef} className="flex justify-center items-center mt-12 space-x-2">
+          {/* Previous Button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handlePageChange(Math.max(currentPage - 1, 1));
+              return false;
+            }}
+            disabled={currentPage === 1}
+            className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
+              currentPage === 1 
+                ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
+                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-[#0057FF]'
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Page Numbers */}
+          {[...Array(totalPages)].map((_, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handlePageChange(pageNumber);
+                  return false;
+                }}
+                className={`w-10 h-10 rounded-lg flex items-center justify-center font-semibold transition-all duration-200 ${
+                  currentPage === pageNumber
+                    ? 'bg-[#0057FF] text-white shadow-lg'
+                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-[#0057FF]'
+                }`}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+          
+          {/* Next Button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handlePageChange(Math.min(currentPage + 1, totalPages));
+              return false;
+            }}
+            disabled={currentPage === totalPages}
+            className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
+              currentPage === totalPages 
+                ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
+                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-[#0057FF]'
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
       <RentalModal car={selectedCar} show={isModalOpen} onClose={closeModal} />
     </section>
