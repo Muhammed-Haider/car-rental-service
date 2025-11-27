@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { useFormSubmission } from '../lib/emailService';
 
 export default function RentalModal({ car, show, onClose }) {
+  const { submitForm } = useFormSubmission();
   const [phone, setPhone] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === 'Escape') onClose();
@@ -28,10 +31,30 @@ export default function RentalModal({ car, show, onClose }) {
     };
   }, [show, onClose]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic here (e.g., API call)
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+
+    // Collect form data
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Add car information and phone
+    data.phone = phone;
+    data.carName = car?.name || 'Unknown Car';
+    data.carPrice = car?.price || 'Price not available';
+    data.formType = 'Car Rental Request';
+
+    // Send email with form data
+    const result = await submitForm(data, 'Car Rental Request');
+
+    if (result.success) {
+      setIsSubmitted(true);
+    } else {
+      alert('Failed to submit rental request. Please try again.');
+    }
+
+    setIsSubmitting(false);
   };
 
   if (!show) {
@@ -106,11 +129,16 @@ export default function RentalModal({ car, show, onClose }) {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Hidden fields for car info */}
+                  <input type="hidden" name="carName" value={car?.name || ''} />
+                  <input type="hidden" name="carPrice" value={car?.price || ''} />
+                  
                   <div className="space-y-2">
                     <label htmlFor="name" className="block text-sm font-medium text-white/80">Full Name</label>
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       placeholder="Enter your full name*"
                       required
                       className="w-full rounded-xl border border-white/20 bg-white/5 px-6 py-4 text-white placeholder-white/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all backdrop-blur-sm text-lg"
@@ -162,9 +190,10 @@ export default function RentalModal({ car, show, onClose }) {
 
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-center text-lg font-bold text-white transition-all hover:from-white hover:to-white hover:text-blue-600 hover:border-2 hover:border-blue-600 active:scale-95 shadow-lg shadow-blue-500/25"
+                    disabled={isSubmitting}
+                    className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-center text-lg font-bold text-white transition-all hover:from-white hover:to-white hover:text-blue-600 hover:border-2 hover:border-blue-600 active:scale-95 shadow-lg shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Contact Me Now
+                    {isSubmitting ? 'Submitting...' : 'Contact Me Now'}
                   </button>
                 </form>
               </div>
@@ -185,7 +214,7 @@ export default function RentalModal({ car, show, onClose }) {
                 <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
                   <div className="space-y-4">
                     <h3 className="text-2xl lg:text-3xl font-bold text-white">
-                      {car.name}
+                      {car?.name || 'Car Details'}
                     </h3>
                     
                     <div className="flex items-center space-x-6 text-white/90">
@@ -195,12 +224,12 @@ export default function RentalModal({ car, show, onClose }) {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         </div>
-                        <span className="text-xl lg:text-2xl font-bold">{car.price}</span>
+                        <span className="text-xl lg:text-2xl font-bold">{car?.price || '0'}</span>
                         <span className="text-sm lg:text-base opacity-80">/day</span>
                       </div>
                     </div>
 
-                    {car.specs && (
+                    {car?.specs && (
                       <div className="grid grid-cols-2 gap-3">
                         <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
                           <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

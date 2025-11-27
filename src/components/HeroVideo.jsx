@@ -25,7 +25,7 @@ export default function HeroVideo() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-6"
+            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-32 md:mb-6"
           >
             Book Your Ride
           </Link>
