@@ -74,8 +74,8 @@ export default function HeroVideo() {
       {/* Categories bar under the brand strip */}
       <div className="relative z-30 mt-0 w-full bg-white">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5">
-            <div className="flex items-center gap-3 flex-wrap sm:justify-between" role="list">
+          <div className="rounded-2xl bg-white p-4 md:p-5 shadow-xl ring-1 ring-black/5">
+            <div className="flex items-center gap-6 sm:gap-8 overflow-x-auto sm:flex-wrap sm:justify-center hide-scrollbar" role="list">
               {[
                 { label: 'SUV', src: '/suv.png' },
                 { label: 'Sports', src: '/sports.png' },
@@ -108,7 +108,7 @@ export default function HeroVideo() {
                   <div
                     key={item.label}
                     role="listitem"
-                    className={`group flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none ${item.label === 'Sports' ? 'ml-8' : ''}`}
+                    className={`group flex w-auto items-center gap-2 rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none`}
                     tabIndex={0}
                     aria-label={`${item.label} category`}
                   >

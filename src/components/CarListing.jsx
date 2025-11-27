@@ -1,18 +1,18 @@
 "use client";
 
-"use client";
-
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import RentalModal from './RentalModal';
 import { cars } from '../lib/cardata';
+import { useHighlight } from '@/context/HighlightContext';
 
 export default function CarListing() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const paginationRef = useRef(null);
+  const { highlight } = useHighlight();
   
   const carsPerPage = 6;
   const totalPages = Math.ceil(cars.length / carsPerPage);
@@ -136,7 +136,7 @@ export default function CarListing() {
           {currentCars.map((car) => (
             <div
               key={car.id}
-              className="group car-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl ring-1 ring-slate-100 transition-all duration-500 hover:-translate-y-2"
+              className="group car-card bg-white rounded-3xl shadow-sm hover:shadow-2xl ring-1 ring-slate-100 transition-all duration-500 hover:-translate-y-2"
             >
               {/* Car Image */}
               <div className="relative w-full h-64 md:h-72 bg-slate-50 overflow-hidden">
@@ -187,7 +187,7 @@ export default function CarListing() {
                       / day
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg">
+                  <div className={`relative flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg transition-all duration-500 ease-in-out ${highlight ? 'scale-125 bg-white shadow-2xl z-10' : ''}`}>
                     <span
                       className="text-sm font-medium"
                       style={{ fontFamily: "Inter, sans-serif" }}
