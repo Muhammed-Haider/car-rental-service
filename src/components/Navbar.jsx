@@ -256,7 +256,7 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-[60]">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mt-3 rounded-2xl md:rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
           <nav className="relative flex items-center justify-between px-4 py-2 md:px-4 md:py-2">
@@ -313,7 +313,7 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile drawer with smooth expansion */}
-          <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${mobileOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${mobileOpen ? 'max-h-[600px] opacity-100 pointer-events-auto' : 'max-h-0 opacity-0 pointer-events-none'}`}>
             <div className="px-4 pb-4 pt-2">
               <ul className="flex flex-col space-y-1">
                 <li>
@@ -393,7 +393,15 @@ export default function Navbar() {
                     </div>
                   </div>
                 </li>
-                <li><Link href="/membership" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Membership</Link></li>
+                <li>
+                  <Link
+                    href="/membership"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Membership
+                  </Link>
+                </li>
                 <li>
                   <div className="rounded-lg bg-white/5 px-3 py-2.5">
                     <button
@@ -450,8 +458,24 @@ export default function Navbar() {
                     </div>
                   </div>
                 </li>
-                <li><Link href="/about" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">About</Link></li>
-                <li><Link href="/contact" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors">Contact</Link></li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </li>
               </ul>
 
               {/* Contact buttons */}
