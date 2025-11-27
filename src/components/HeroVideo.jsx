@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import HeroSearchBar from './HeroSearchBar';
 
 export default function HeroVideo() {
   return (
@@ -18,28 +19,7 @@ export default function HeroVideo() {
           <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
             Drive Your Dream Car Today
           </h1>
-          <form role="search" action="#search" className="mb-6 w-full max-w-2xl">
-            <div className="relative">
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/70">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 21l-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-                </svg>
-              </span>
-              <input
-                type="text"
-                name="q"
-                placeholder="Search luxury cars, models, or brands..."
-                className="h-12 w-full rounded-full bg-white/90 pl-12 pr-36 text-sm text-[#0A1A2F] placeholder:text-[#0A1A2F]/60 shadow-lg ring-1 ring-white/20 backdrop-blur-md focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0057FF]"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-9 items-center justify-center rounded-full bg-[#0057FF] px-4 text-sm font-medium text-white shadow-md transition-colors hover:bg-[#0048d1] focus:outline-none focus:ring-2 focus:ring-white/70"
-              >
-                Search
-              </button>
-            </div>
-          </form>
+          <HeroSearchBar />
           <p className="mb-8 max-w-2xl text-base text-white/90 sm:text-lg">
             We offer curated luxury cars, quick booking, and seamless delivery for an unforgettable ride.
           </p>

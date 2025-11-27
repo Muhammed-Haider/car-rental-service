@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const specMeta = {
-  price: { name: 'Price (AED/day)', higherIsBetter: false, icon: '💰' },
-  horsepower: { name: 'Horsepower', higherIsBetter: true, icon: '⚡' },
-  acceleration: { name: '0-100km/h (s)', higherIsBetter: false, icon: '🚀' },
-  seats: { name: 'Seats', higherIsBetter: true, icon: '👥' },
-  engine: { name: 'Engine', higherIsBetter: false, icon: '⚙️' },
+  price: { name: 'Price (AED/day)', higherIsBetter: false },
+  horsepower: { name: 'Horsepower', higherIsBetter: true },
+  acceleration: { name: '0-100km/h (s)', higherIsBetter: false },
+  seats: { name: 'Seats', higherIsBetter: true },
+  engine: { name: 'Engine', higherIsBetter: false },
 };
 
 export default function CompareTable({ cars }) {
@@ -70,18 +70,13 @@ export default function CompareTable({ cars }) {
                   {Object.entries(specMeta).map(([key, meta], rowIndex) => (
                     <tr key={key} className={`hover:bg-white/5 transition-all duration-200 ${rowIndex % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
                       <td className="p-6 sticky left-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 backdrop-blur-xl z-20 border-r border-white/10">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center text-lg">
-                            {meta.icon}
-                          </div>
-                          <div>
-                            <span className="font-semibold text-white">{meta.name}</span>
-                            {meta.higherIsBetter !== undefined && (
-                              <span className="block text-xs text-blue-400 mt-1">
-                                {meta.higherIsBetter ? 'Higher is better' : 'Lower is better'}
-                              </span>
-                            )}
-                          </div>
+                        <div>
+                          <span className="font-semibold text-white">{meta.name}</span>
+                          {meta.higherIsBetter !== undefined && (
+                            <span className="block text-xs text-blue-400 mt-1">
+                              {meta.higherIsBetter ? 'Higher is better' : 'Lower is better'}
+                            </span>
+                          )}
                         </div>
                       </td>
                       {cars.map((car) => {
@@ -179,16 +174,13 @@ export default function CompareTable({ cars }) {
                   const isBest = value === bestValues[key];
                   return (
                     <div key={key} className="flex justify-between items-center p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200 border border-white/5">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-2xl">{meta.icon}</span>
-                        <div>
-                          <span className="text-white/80 font-medium text-sm">{meta.name}</span>
-                          {meta.higherIsBetter !== undefined && (
-                            <span className="block text-xs text-blue-400">
-                              {meta.higherIsBetter ? 'Higher is better' : 'Lower is better'}
-                            </span>
-                          )}
-                        </div>
+                      <div>
+                        <span className="text-white/80 font-medium text-sm">{meta.name}</span>
+                        {meta.higherIsBetter !== undefined && (
+                          <span className="block text-xs text-blue-400">
+                            {meta.higherIsBetter ? 'Higher is better' : 'Lower is better'}
+                          </span>
+                        )}
                       </div>
                       <div className="relative">
                         {isBest && (
