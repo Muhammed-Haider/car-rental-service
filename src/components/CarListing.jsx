@@ -187,14 +187,22 @@ export default function CarListing() {
                       / day
                     </span>
                   </div>
-                  <div className={`relative flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg transition-all duration-500 ease-in-out ${highlight ? 'scale-125 bg-white shadow-2xl z-10' : ''}`}>
+                  <motion.div
+                    className="relative flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg"
+                    animate={highlight ? "highlighted" : "initial"}
+                    variants={{
+                      initial: { scale: 1, zIndex: 1, boxShadow: '0px 0px 0px rgba(0,0,0,0)' },
+                      highlighted: { scale: 1.25, zIndex: 20, boxShadow: '0px 15px 25px rgba(0,0,0,0.15)' },
+                    }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                  >
                     <span
                       className="text-sm font-medium"
                       style={{ fontFamily: "Inter, sans-serif" }}
                     >
                       Weekly: {car.durationPrice.toLocaleString()} AED
                     </span>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Contact Icons - WhatsApp & Call */}
