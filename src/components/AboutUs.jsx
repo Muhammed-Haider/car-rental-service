@@ -22,7 +22,7 @@ export default function AboutUs() {
             {/* decorative underline + car icon under main heading */}
             <div className="relative inline-block mt-1 mb-7 mx-auto md:mx-0">
               <div className="h-[2px] w-44 md:w-56 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
-              <span className="absolute -right-1 -top-2 text-[#0057FF]">
+              <span className="absolute -right-32 -top-2 text-[#0057FF]">
 
                 <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <g transform="translate(64,0) scale(-1,1)">
