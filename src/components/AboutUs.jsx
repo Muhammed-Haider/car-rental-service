@@ -12,7 +12,7 @@ export default function AboutUs() {
           <div>
             {/* Main heading */}
             <h1
-              className="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-4 text-slate-900"
+              className="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-4 text-slate-900 text-center md:text-left"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Drive Luxury Live
@@ -20,7 +20,7 @@ export default function AboutUs() {
               Freedom
             </h1>
             {/* decorative underline + car icon under main heading */}
-            <div className="relative inline-block mt-1 mb-7">
+            <div className="relative inline-block mt-1 mb-7 mx-auto md:mx-0">
               <div className="h-[2px] w-44 md:w-56 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
               <span className="absolute -right-1 -top-2 text-[#0057FF]">
 
@@ -41,9 +41,9 @@ export default function AboutUs() {
             {/* Metrics moved to right column */}
             <div className="mt-10 md:mt-0 md:pl-6">
               {/* Paragraphs (moved above stats) */}
-              <div className="max-w-xl group">
+              <div className="max-w-xl group mx-auto md:mx-0">
                 <p
-                  className="text-[18px] md:text-[20px] leading-[1.9] text-slate-700/95 tracking-[0.01em]"
+                  className="text-[18px] md:text-[20px] leading-[1.9] text-slate-700/95 tracking-[0.01em] text-center md:text-left"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <span>Experience premium car rentals crafted for comfort, performance, and style. Whether it&apos;s a quick business trip </span>

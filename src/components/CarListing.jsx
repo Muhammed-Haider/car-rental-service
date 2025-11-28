@@ -82,9 +82,9 @@ export default function CarListing() {
             </h2>
 
             {/* decorative underline + car icon */}
-            <div className="relative inline-block">
+            <div className="relative inline-block mx-auto sm:mx-0">
               <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
-              <span className="absolute -right-3 -top-3 text-[#0057FF]">
+              <span className="absolute -right-3 -top-3 text-[#0057FF] sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
                 <svg
                   width="32"
                   height="14"

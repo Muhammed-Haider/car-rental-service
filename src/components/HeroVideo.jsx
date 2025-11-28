@@ -4,18 +4,19 @@ import HeroSearchBar from './HeroSearchBar';
 export default function HeroVideo() {
   return (
     <>
-      <section className="relative min-h-svh w-full overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: 'center' }}
         >
           <source src="/herovideo.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#0A1A2F]/40" />
-        <div className="relative z-[50] mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8 sm:justify-start lg:justify-center sm:items-start lg:items-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A2F]/30 to-[#0A1A2F]/50" />
+        <div className="relative z-[50] mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
           <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
             Drive Your Dream Car Today
           </h1>
@@ -25,7 +26,7 @@ export default function HeroVideo() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-64 sm:mb-48 md:mb-6"
+            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-8"
           >
             Book Your Ride
           </Link>
