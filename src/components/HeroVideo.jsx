@@ -15,24 +15,24 @@ export default function HeroVideo() {
           <source src="/herovideo.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[#0A1A2F]/40" />
-        <div className="relative z-[50] mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
+        <div className="relative z-[50] mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8 sm:justify-start lg:justify-center sm:items-start lg:items-center">
           <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
             Drive Your Dream Car Today
           </h1>
           <HeroSearchBar />
-          <p className="mb-8 max-w-2xl text-base text-white/90 sm:text-lg">
+          <p className="mt-4 mb-8 max-w-2xl text-base text-white/90 sm:text-lg sm:mt-0">
             We offer curated luxury cars, quick booking, and seamless delivery for an unforgettable ride.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-32 md:mb-6"
+            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-64 sm:mb-48 md:mb-6"
           >
             Book Your Ride
           </Link>
         </div>
 
         {/* Brand logos strip pinned to hero bottom; does not affect centered content */}
-        <div className="pointer-events-auto absolute inset-x-0 bottom-0 z-20">
+        <div className="pointer-events-auto absolute inset-x-0 bottom-0 z-20 hidden sm:block">
           <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 items-center gap-3 sm:gap-4 rounded-none bg-white/10 p-3 sm:p-4 backdrop-blur-md ring-1 ring-white/15 shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
               {[
@@ -72,7 +72,7 @@ export default function HeroVideo() {
       </section>
 
       {/* Categories bar under the brand strip */}
-      <div className="relative z-30 mt-0 w-full bg-white">
+      <div className="relative z-30 mt-20 sm:mt-24 w-full bg-white">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl bg-white p-4 md:p-5 shadow-xl ring-1 ring-black/5">
             <div className="grid grid-cols-2 gap-4 md:flex md:flex-row md:items-center md:justify-center md:gap-6" role="list">
