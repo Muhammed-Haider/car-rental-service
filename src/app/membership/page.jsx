@@ -170,18 +170,16 @@ export default function MembershipPage() {
           </p>
         </div>
 
-        {/* Mobile slider */}
-        <div className="mt-8 md:hidden">
-          <div className="flex gap-4 overflow-x-auto pb-4 -mx-1 px-1 hide-scrollbar snap-x snap-mandatory">
-            {plans.map((plan) => (
-              <div key={plan.name} className="snap-center shrink-0 basis-[85%]">
-                {renderPlanCard(plan)}
-              </div>
-            ))}
-          </div>
+        {/* Vertical stacking for mobile only */}
+        <div className="mt-8 space-y-6 md:hidden">
+          {plans.map((plan) => (
+            <div key={plan.name}>
+              {renderPlanCard(plan)}
+            </div>
+          ))}
         </div>
 
-        {/* Tablet & Desktop grid */}
+        {/* Tablet & Desktop grid - unchanged */}
         <div className="mt-10 hidden md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {plans.map(renderPlanCard)}
         </div>
