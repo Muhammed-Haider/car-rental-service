@@ -1,5 +1,6 @@
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 import { HighlightProvider } from "@/context/HighlightContext";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <HighlightProvider>
           <Navbar />
           {children}
+          <Footer />
         </HighlightProvider>
       </body>
     </html>
