@@ -328,66 +328,6 @@ function Navbar() {
           {/* Mobile Menu */}
           <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
             <div className="px-4 py-3 space-y-2">
-              <div className="rounded-lg bg-white/5 px-3 py-2.5">
-                <button
-                  onClick={() => setCarsOpen(!carsOpen)}
-                  className="flex w-full items-center justify-between text-sm font-medium text-white/90"
-                >
-                  Cars
-                  <span className={`transition-transform duration-300 ${carsOpen ? 'rotate-180' : ''}`}>▾</span>
-                </button>
-                <div className={`grid transition-all duration-300 ease-in-out ${carsOpen ? 'grid-rows-[1fr] mt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
-                  <div className="overflow-hidden">
-                    {/* Browse by Type */}
-                    <div className="mb-3">
-                      <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Browse by Type</h5>
-                      <div className="grid grid-cols-2 gap-2">
-                        {['Sedan', 'SUV', 'Sports', 'Luxury'].map((type) => {
-                          const carId = carTypeToIdMap[type];
-                          return (
-                            <Link 
-                              key={type} 
-                              href={`/cars/${carId}`} 
-                              className="rounded-lg bg-white/5 px-2 py-1.5 text-center text-xs text-white/80 hover:bg-white/10 transition-colors"
-                              onClick={() => {
-                                setCarsOpen(false);
-                                setMobileOpen(false);
-                              }}
-                            >
-                              {type}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Popular Models with Logos */}
-                    <div className="mb-3">
-                      <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Popular Models</h5>
-                      <div className="grid grid-cols-2 gap-2">
-                        {[
-                          { src: '/lamborghini.png', label: 'Lamborghini' },
-                          { src: '/ferrari.png', label: 'Ferrari' },
-                          { src: '/porsche.png', label: 'Porsche' },
-                          { src: '/mercedes.png', label: 'Mercedes' },
-                        ].map((m) => (
-                          <Link
-                            key={m.label}
-                            href="#"
-                            className="flex flex-col items-center gap-1.5 rounded-lg bg-white/5 p-2 text-center transition-all hover:bg-white/10"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            <div className="h-6 w-full flex items-center justify-center">
-                              <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain" loading="lazy" />
-                            </div>
-                            <span className="text-[10px] font-medium text-white/90">{m.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               <Link
                 href="/"
