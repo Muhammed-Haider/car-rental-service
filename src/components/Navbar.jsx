@@ -390,6 +390,44 @@ function Navbar() {
               </div>
 
               <Link
+                href="/"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Home
+              </Link>
+
+              <Link
+                href="/about"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                About
+              </Link>
+
+              <Link
+                href="/#clientreview"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={(e) => {
+                  if (pathname === '/') {
+                    e.preventDefault();
+                    document.getElementById('clientreview')?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                  setMobileOpen(false);
+                }}
+              >
+                Testimonials
+              </Link>
+
+              <Link
+                href="/contact"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Contact
+              </Link>
+
+              <Link
                 href="/membership"
                 className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
                 onClick={() => setMobileOpen(false)}
