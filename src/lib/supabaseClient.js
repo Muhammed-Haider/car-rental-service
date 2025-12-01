@@ -14,8 +14,13 @@ if (!supabaseUrl || !supabaseAnonKey) {
   `);
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: true
-  }
-});
+export const createSupabaseClient = () => {
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      persistSession: true
+    }
+  });
+};
+
+// Export the default instance for backward compatibility
+export const supabase = createSupabaseClient();

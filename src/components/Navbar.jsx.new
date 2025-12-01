@@ -1,0 +1,281 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useHighlight } from "@/context/HighlightContext";
+import { signInWithGoogle } from "@/app/auth/actions";
+
+// Map car types to their corresponding car IDs for navigation
+const carTypeToIdMap = {
+  'Sedan': 1,        // Ferrari Roma
+  'SUV': 2,          // Lamborghini Urus
+  'Sports': 3,       // McLaren Artura
+  'Luxury': 4,       // Rolls-Royce Cullinan
+  'Convertible': 5   // McLaren 750S Spider
+};
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [carsOpen, setCarsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const { triggerHighlight } = useHighlight();
+
+  const handleGoogleAuth = async (e, isSignUp = false) => {
+    e.preventDefault();
+    const { error } = await signInWithGoogle();
+    if (error) {
+      console.error('Authentication error:', error);
+    }
+  };
+
+  const handleHomeClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      router.refresh();
+    }
+  };
+
+  const navLinkBase = "relative inline-flex h-10 items-center rounded-md px-3 text-sm font-medium leading-none text-white/80 hover:text-white transition-colors";
+  const underline = "relative after:absolute after:left-0 after:bottom-0 after:block after:h-[2px] after:w-0 after:bg-white/90 after:transition-all hover:after:w-full";
+
+  const MenuLinks = (
+    <ul className="hidden md:flex items-center gap-2">
+      <li>
+        <Link 
+          href="/" 
+          className={`${navLinkBase} ${pathname === '/' ? 'text-white' : ''} ${underline}`}
+          onClick={handleHomeClick}
+        >
+          Home
+        </Link>
+      </li>
+      <li className="relative group">
+        <button 
+          className={`${navLinkBase} ${underline}`}
+          onClick={() => setCarsOpen(!carsOpen)}
+        >
+          Cars
+        </button>
+        {/* Cars Dropdown */}
+        <div className="absolute left-0 mt-2 w-96 rounded-2xl bg-[#0A1A2F]/95 backdrop-blur-md p-6 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+          {/* Dropdown content */}
+        </div>
+      </li>
+      <li>
+        <Link 
+          href="/membership" 
+          className={`${navLinkBase} ${pathname === '/membership' ? 'text-white' : ''} ${underline}`}
+        >
+          Membership
+        </Link>
+      </li>
+      <li className="relative group">
+        <button 
+          className={`${navLinkBase} ${underline}`}
+          onClick={() => setServicesOpen(!servicesOpen)}
+        >
+          Services
+        </button>
+        {/* Services Dropdown */}
+      </li>
+      <li>
+        <Link 
+          href="/about" 
+          className={`${navLinkBase} ${pathname === '/about' ? 'text-white' : ''} ${underline}`}
+        >
+          About
+        </Link>
+      </li>
+      <li>
+        <Link 
+          href="/contact" 
+          className={`${navLinkBase} ${pathname === '/contact' ? 'text-white' : ''} ${underline}`}
+        >
+          Contact
+        </Link>
+      </li>
+    </ul>
+  );
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-[60]">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mt-3 rounded-2xl md:rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
+          <nav className="relative flex items-center justify-between px-4 py-2 md:px-4 md:py-2">
+            {/* Desktop Brand */}
+            <div className="hidden md:flex items-center gap-3">
+              <Link href="/" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                WTB DXB
+              </Link>
+            </div>
+
+            {/* Mobile Brand */}
+            <div className="md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Link href="/" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                WTB DXB
+              </Link>
+            </div>
+
+            {/* Desktop Menu */}
+            {MenuLinks}
+
+            {/* Desktop Auth Buttons */}
+            <div className="hidden md:flex items-center gap-2">
+              <a
+                href="tel:+971554079239"
+                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
+              >
+                ☎ +971 55 407 9239
+              </a>
+              <a
+                href="https://wa.me/971554079239"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
+              >
+                💬 WhatsApp
+              </a>
+              <div className="flex gap-2">
+                <button
+                  onClick={(e) => handleGoogleAuth(e, false)}
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-transparent border border-white/30 text-white font-semibold text-xs md:text-sm rounded-full hover:bg-white/10 transition-all duration-300"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={(e) => handleGoogleAuth(e, true)}
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-xs md:text-sm rounded-full hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="md:hidden ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-expanded={mobileOpen}
+              aria-label="Toggle menu"
+            >
+              <span className="text-xl">{mobileOpen ? '✕' : '☰'}</span>
+            </button>
+          </nav>
+
+          {/* Mobile Menu */}
+          {mobileOpen && (
+            <div className="md:hidden p-4 border-t border-white/10">
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <div className="rounded-lg bg-white/5 px-3 py-2.5">
+                    <button
+                      onClick={() => setCarsOpen(!carsOpen)}
+                      className="flex w-full items-center justify-between text-sm font-medium text-white/90"
+                    >
+                      Cars
+                      <span className={`transition-transform duration-300 ${carsOpen ? 'rotate-180' : ''}`}>▾</span>
+                    </button>
+                    {carsOpen && (
+                      <div className="mt-3 space-y-3">
+                        {/* Cars dropdown content */}
+                      </div>
+                    )}
+                  </div>
+                </li>
+                <li>
+                  <Link
+                    href="/membership"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Membership
+                  </Link>
+                </li>
+                <li>
+                  <div className="rounded-lg bg-white/5 px-3 py-2.5">
+                    <button
+                      onClick={() => setServicesOpen(!servicesOpen)}
+                      className="flex w-full items-center justify-between text-sm font-medium text-white/90"
+                    >
+                      Services
+                      <span className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}>▾</span>
+                    </button>
+                    {servicesOpen && (
+                      <div className="mt-3 space-y-2">
+                        {/* Services dropdown content */}
+                      </div>
+                    )}
+                  </div>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+
+              {/* Mobile Auth Buttons */}
+              <div className="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-2">
+                <a 
+                  href="tel:+971554079239" 
+                  className="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-2 text-xs font-medium text-white hover:bg-white/10 transition-colors"
+                >
+                  <span>☎</span> Call
+                </a>
+                <a 
+                  href="https://wa.me/971554079239" 
+                  className="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-2 text-xs font-medium text-white hover:bg-white/10 transition-colors"
+                >
+                  <span>💬</span> WhatsApp
+                </a>
+                <button
+                  onClick={(e) => {
+                    handleGoogleAuth(e, false);
+                    setMobileOpen(false);
+                  }}
+                  className="col-span-2 flex items-center justify-center gap-2 rounded-lg border border-white/30 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={(e) => {
+                    handleGoogleAuth(e, true);
+                    setMobileOpen(false);
+                  }}
+                  className="col-span-2 flex items-center justify-center gap-2 rounded-lg bg-[#0057FF] border border-[#0057FF] px-4 py-2.5 text-sm font-semibold text-white hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                >
+                  Create Account
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}
