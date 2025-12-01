@@ -19,10 +19,12 @@ export default function SignUp() {
     setError("");
     
     try {
+      const redirectUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`;
+      
       const { error, data } = await supabaseClient.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: redirectUrl,
         },
       });
       
