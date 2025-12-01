@@ -398,6 +398,14 @@ function Navbar() {
               </Link>
 
               <Link
+                href="/membership"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Membership
+              </Link>
+
+              <Link
                 href="/about"
                 className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
                 onClick={() => setMobileOpen(false)}
@@ -425,14 +433,6 @@ function Navbar() {
                 onClick={() => setMobileOpen(false)}
               >
                 Contact
-              </Link>
-
-              <Link
-                href="/membership"
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
-                onClick={() => setMobileOpen(false)}
-              >
-                Membership
               </Link>
 
               <div className="rounded-lg bg-white/5 px-3 py-2.5">
