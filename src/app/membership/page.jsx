@@ -89,6 +89,34 @@ export default function MembershipPage() {
   const [expandedPlan, setExpandedPlan] = useState(null);
   const [activeRateTab, setActiveRateTab] = useState("member");
 
+  // Full-width membership banner with text overlay
+  const MembershipBanner = () => (
+    <div className="relative w-full h-[600px] overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/membership.jpg"
+          alt="Premium Car Membership"
+          fill
+          className="object-cover w-full h-full"
+          style={{ objectPosition: 'center 20%' }}
+          priority
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent">
+        <div className="container mx-auto h-full flex items-center">
+          <div className="max-w-2xl text-white px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              UNLOCK PREMIUM<br />EXPERIENCES
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl">
+              Discover our tiered membership program, designed to cater to every luxury driving enthusiast. Choose from our Silver, Gold, or Platinum tiers, each offering escalating benefits and access to our premium fleet.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   const togglePlan = (planName) => {
     setExpandedPlan((prev) => (prev === planName ? null : planName));
   };
@@ -157,101 +185,168 @@ export default function MembershipPage() {
   };
 
   return (
-    <main className="min-h-screen overflow-x-hidden pt-28 pb-20 bg-gradient-to-b from-white to-[#F7FAFF] text-[#0A1A2F]">
-      {/* Choose a Plan Section */}
-      <section className="mx-auto mb-16 sm:mb-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Choose a plan</p>
-          <h1 className="mt-4 text-2xl sm:text-4xl font-bold text-slate-900" style={{ fontFamily: "Poppins, sans-serif" }}>
-            CHOOSE A PLAN
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-500">
-            Tailored memberships for frequent Dubai travelers.
-          </p>
-        </div>
+    <div className="min-h-screen bg-slate-50">
+      <MembershipBanner />
+      
+      <div className="px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Vertical stacking for mobile only */}
-        <div className="mt-8 space-y-6 md:hidden">
-          {plans.map((plan) => (
-            <div key={plan.name}>
-              {renderPlanCard(plan)}
-            </div>
-          ))}
-        </div>
-
-        {/* Tablet & Desktop grid - unchanged */}
-        <div className="mt-10 hidden md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-          {plans.map(renderPlanCard)}
-        </div>
-      </section>
-
-      {/* Final Member vs Non-Member Discount Section */}
-      <section className="mx-auto mt-10 sm:mt-16 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
-          {/* Left: image styled like WhyChooseUs car, constrained */}
-          <div className="flex justify-center items-center px-4 sm:px-6 md:px-0 lg:pr-10">
-            <Image
-              src="/car_black.png"
-              alt="Membership discount example car"
-              width={900}
-              height={500}
-              className="mx-auto w-full max-w-lg h-auto object-contain scale-100 drop-shadow-2xl"
-            />
+        {/* Spacer */}
+        <div className="h-12"></div>
+        
+        {/* Choose a Plan Section */}
+        <section className="mb-16 sm:mb-20 pt-8">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Choose a plan</p>
+            <h1 className="mt-4 text-2xl sm:text-4xl font-bold text-slate-900">
+              CHOOSE A PLAN
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-base text-slate-500">
+              Tailored memberships for frequent Dubai travelers.
+            </p>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-xl">
-            <div className="rounded-2xl border border-slate-200 p-4 sm:p-5">
-              {activeRateTab === "member" ? (
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Member rate</p>
-                  <p className="text-3xl font-bold text-[#0057FF]">AED 2,420</p>
-                  <p className="text-sm text-slate-500">Based on Platinum plan savings</p>
-                </div>
-              ) : (
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Non-member rate</p>
-                  <p className="text-3xl font-bold text-slate-900">AED 2,940</p>
-                  <p className="text-sm text-slate-500">Standard weekly rental</p>
-                </div>
-              )}
+
+          {/* Mobile View */}
+          <div className="mt-8 space-y-6 md:hidden">
+            {plans.map((plan) => (
+              <div key={plan.name}>
+                {renderPlanCard(plan)}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop View */}
+          <div className="mt-10 hidden md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+            {plans.map(renderPlanCard)}
+          </div>
+        </section>
+
+        {/* Member vs Non-Member Discount Section */}
+        <section className="mt-10 sm:mt-16">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="flex justify-center items-center px-4 sm:px-6 md:px-0 lg:pr-10">
+              <Image
+                src="/car_black.png"
+                alt="Membership discount example car"
+                width={900}
+                height={500}
+                className="mx-auto w-full max-w-lg h-auto object-contain scale-100 drop-shadow-2xl"
+              />
             </div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() => setActiveRateTab("member")}
-                className="flex-1 min-w-[130px] rounded-full bg-[#0057FF] border border-[#0057FF] px-4 py-2.5 text-xs md:text-sm font-semibold text-white shadow-lg transition-all hover:bg-white hover:text-[#0057FF]"
-              >
-                Member Rate
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveRateTab("non")}
-                className="flex-1 min-w-[130px] rounded-full bg-white border border-slate-200 px-4 py-2.5 text-xs md:text-sm font-semibold text-slate-700 transition-all hover:border-[#0057FF] hover:text-[#0057FF]"
-              >
-                Non-Member Rate
-              </button>
-            </div>
-            <div className="mt-6 space-y-3">
-              {discountRows.map((row) => (
-                <div key={row.tier} className="flex items-center justify-between rounded-2xl border border-slate-100 px-4 py-3 text-sm">
-                  <div className="flex items-center gap-3">
-                    <span className="h-8 w-8 rounded-full bg-slate-50 text-center leading-8 font-semibold text-slate-600">
-                      {row.tier.charAt(0)}
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-700">{row.tier}</p>
-                      <p className="text-xs text-slate-400">Includes concierge support</p>
+            <div className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-xl">
+              <div className="rounded-2xl border border-slate-200 p-4 sm:p-5">
+                {activeRateTab === "member" ? (
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Member rate</p>
+                    <p className="text-3xl font-bold text-[#0057FF]">AED 2,420</p>
+                    <p className="text-sm text-slate-500">Based on Platinum plan savings</p>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Non-member rate</p>
+                    <p className="text-3xl font-bold text-slate-900">AED 2,940</p>
+                    <p className="text-sm text-slate-500">Standard weekly rental</p>
+                  </div>
+                )}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => setActiveRateTab("member")}
+                  className="flex-1 min-w-[130px] rounded-full bg-[#0057FF] border border-[#0057FF] px-4 py-2.5 text-xs md:text-sm font-semibold text-white shadow-lg transition-all hover:bg-white hover:text-[#0057FF]"
+                >
+                  Member Rate
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveRateTab("non")}
+                  className="flex-1 min-w-[130px] rounded-full bg-white border border-slate-200 px-4 py-2.5 text-xs md:text-sm font-semibold text-slate-700 transition-all hover:border-[#0057FF] hover:text-[#0057FF]"
+                >
+                  Non-Member Rate
+                </button>
+              </div>
+              <div className="mt-6 space-y-3">
+                {discountRows.map((row) => (
+                  <div key={row.tier} className="flex items-center justify-between rounded-2xl border border-slate-100 px-4 py-3 text-sm">
+                    <div className="flex items-center gap-3">
+                      <span className="h-8 w-8 rounded-full bg-slate-50 text-center leading-8 font-semibold text-slate-600">
+                        {row.tier.charAt(0)}
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-700">{row.tier}</p>
+                        <p className="text-xs text-slate-400">Includes concierge support</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-semibold text-slate-900">{row.rate}</p>
+                      <p className="text-xs text-[#0057FF]">{row.savings}</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm font-semibold text-slate-900">{row.rate}</p>
-                    <p className="text-xs text-[#0057FF]">{row.savings}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Terms & Conditions Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-[#0A1A2F]" style={{ fontFamily: 'Poppins, sans-serif' }}>TERMS & CONDITIONS</h2>
+          <div className="max-w-4xl mx-auto text-gray-700 leading-relaxed">
+            <ul className="list-disc list-inside space-y-3">
+              <li>Membership is granted via a non-transferable membership card.</li>
+              <li>Gold and Platinum memberships are available exclusively for residents.</li>
+              <li>Members must be at least 23 years old and hold a valid driver's license and UAE Residence visa.</li>
+              <li>Members are financially responsible for any vehicle damages during their rental period.</li>
+              <li>Membership includes access to vehicles, exclusive discounts, and priority booking.</li>
+              <li>Initial membership term is one year, with annual renewal upon payment of the renewal fee.</li>
+              <li>Membership fees are non-refundable, and additional charges may apply for damages or services.</li>
+              <li>Members must comply with all traffic laws and regulations during vehicle use.</li>
+              <li>The company can terminate the agreement for violations, non-payment, or failure to meet eligibility requirements.</li>
+              <li>Members must provide at least one month's written notice to terminate or not renew their membership.</li>
+              <li>The agreement is governed by the laws of Dubai and the U.A.E.</li>
+              <li>The Agreements under offers (POF Members, Esaad, Fazaa), Adding an additional driver will incur charges of AED 250 + VAT per day for Luxury & Premium cars and AED 350 + VAT per day for Sports & Performance cars.</li>
+            </ul>
           </div>
         </div>
       </section>
-    </main>
+
+      {/* Composite Image Section */}
+      <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+        {/* Background Layer - membership1 */}
+        <div className="absolute inset-0">
+          <Image
+            src="/membership1.png"
+            alt="Premium Car Membership Background"
+            fill
+            className="object-cover w-full h-full"
+            style={{ objectPosition: 'center 20%' }}
+            priority
+          />
+        </div>
+        
+        {/* Car Overlay Layer - membership2 */}
+        <div className="absolute inset-0 flex items-center justify-end">
+          <div className="relative w-1/2 h-full">
+            <Image
+              src="/membership2.png"
+              alt="Premium Car"
+              fill
+              className="object-contain object-right"
+              style={{ 
+                objectPosition: 'right center',
+                maxWidth: '60%',
+                maxHeight: '60%',
+                margin: 'auto'
+              }}
+              priority
+            />
+          </div>
+        </div>
+        
+        {/* Subtle overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </section>
+    </div>
   );
 }
