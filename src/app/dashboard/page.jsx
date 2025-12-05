@@ -29,16 +29,13 @@ export default function Dashboard() {
       try {
         const session = await getUserSession();
         if (!session) {
-          // For now, allow access without auth as requested
-          // router.push('/signin');
+          router.push('/signin');
+          return;
         }
-        setUser(session?.user || { email: 'guest@example.com', user_metadata: { full_name: 'Guest User' } });
+        setUser(session?.user);
         loadUserData();
       } catch (error) {
-        console.error('Auth check failed:', error);
-        // Continue with guest user
-        setUser({ email: 'guest@example.com', user_metadata: { full_name: 'Guest User' } });
-        loadUserData();
+        router.push('/signin');
       } finally {
         setLoading(false);
       }
