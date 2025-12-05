@@ -1,6 +1,7 @@
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FloatingActionButtons from "@/components/FloatingActionButtons";
 import "./globals.css";
 import { HighlightProvider } from "@/context/HighlightContext";
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         <HighlightProvider>
           <Navbar />
           {children}
+          <FloatingActionButtons />
           <Footer />
         </HighlightProvider>
       </body>
