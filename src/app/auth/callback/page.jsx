@@ -11,23 +11,28 @@ export default function AuthCallback() {
   useEffect(() => {
     const handleCallback = async () => {
       try {
+        // Parse hash parameters
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get("access_token");
         const refreshToken = hashParams.get("refresh_token");
         const error = hashParams.get("error");
+        const errorDescription = hashParams.get("error_description");
 
+        // Handle OAuth errors
         if (error) {
           setStatus("error");
-          setTimeout(() => router.push("/"), 2000);
+          setTimeout(() => router.push("/signin"), 2000);
           return;
         }
 
+        // Validate tokens
         if (!accessToken || !refreshToken) {
           setStatus("error");
-          setTimeout(() => router.push("/"), 2000);
+          setTimeout(() => router.push("/signin"), 2000);
           return;
         }
 
+        // Set session with tokens
         const { data, error: sessionError } = await supabaseBrowserClient.auth.setSession({
           access_token: accessToken,
           refresh_token: refreshToken,
@@ -35,16 +40,28 @@ export default function AuthCallback() {
 
         if (sessionError || !data?.session) {
           setStatus("error");
-          setTimeout(() => router.push("/"), 2000);
+          setTimeout(() => router.push("/signin"), 2000);
           return;
         }
 
+        // Verify session is properly stored
+        const { data: sessionData } = await supabaseBrowserClient.auth.getSession();
+        if (!sessionData?.session) {
+          setStatus("error");
+          setTimeout(() => router.push("/signin"), 2000);
+          return;
+        }
+
+        // Clear hash from URL for security
         setStatus("success");
         window.history.replaceState(null, "", window.location.pathname);
+        
+        // Small delay to ensure cookies are set
+        await new Promise(resolve => setTimeout(resolve, 100));
         router.push("/dashboard");
       } catch (err) {
         setStatus("error");
-        setTimeout(() => router.push("/"), 2000);
+        setTimeout(() => router.push("/signin"), 2000);
       }
     };
 
