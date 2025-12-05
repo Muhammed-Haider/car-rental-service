@@ -23,8 +23,8 @@ export default function GallerySection() {
             We offer an exclusive collection of top-tier luxury manufacturers
           </p>
           <div className="relative inline-block">
-            <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
-            <span className="absolute -right-3 -top-3 text-[#0057FF]">
+            <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
+            <span className="absolute -right-3 -top-3 text-[#B844E8]">
               <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <g transform="translate(64,0) scale(-1,1)">
                   <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.95" />
@@ -43,10 +43,10 @@ export default function GallerySection() {
               tabIndex={0}
               role="button"
               aria-label={`${brand.name} brand logo`}
-              className="group cursor-pointer rounded-xl bg-white/5 p-4 ring-1 ring-black/5 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057FF] focus:ring-offset-2"
+              className="group cursor-pointer rounded-xl bg-white/5 p-4 ring-1 ring-black/5 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B844E8] focus:ring-offset-2"
             >
               <div className="flex h-24 flex-col items-center justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-black/5 p-2 transition-colors duration-300 group-hover:bg-[#0057FF]/10">
+                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-black/5 p-2 transition-colors duration-300 group-hover:bg-[#B844E8]/10">
                   <img
                     src={brand.logo}
                     alt={brand.name}
@@ -54,7 +54,7 @@ export default function GallerySection() {
                     loading="eager"
                   />
                 </div>
-                <span className="mt-3 block text-sm font-medium text-gray-900 group-hover:text-[#0057FF]">
+                <span className="mt-3 block text-sm font-medium text-gray-900 group-hover:text-[#B844E8]">
                   {brand.name}
                 </span>
               </div>

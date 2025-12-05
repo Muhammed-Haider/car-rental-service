@@ -6,7 +6,7 @@ import FinalCTA from "./components/FinalCTA";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gradient-to-b from-[#000000] to-[#0D0D0D]">
       <AboutHero />
       <LuxuryCarsCTA />
       <VisionMission />
