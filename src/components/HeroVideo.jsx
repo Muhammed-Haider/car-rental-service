@@ -101,17 +101,6 @@ export default function HeroVideo() {
                   </span>
                 </div>
               ))}
-              <div
-                role="listitem"
-                className="col-span-2 flex items-center justify-center gap-2 rounded-lg p-3 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none md:col-auto md:w-auto md:px-4 md:py-2"
-                tabIndex={0}
-                aria-label="All categories"
-              >
-                <span className="font-semibold text-orange-600 text-sm md:text-base">All</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-orange-600">
-                  <path d="M7 12h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
             </div>
           </div>
         </div>
