@@ -111,6 +111,11 @@ export default function MembershipPage() {
             <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl">
               Discover our tiered membership program, designed to cater to every luxury driving enthusiast. Choose from our Silver, Gold, or Platinum tiers, each offering escalating benefits and access to our premium fleet.
             </p>
+            <div className="mt-8">
+              <button className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-base md:text-lg rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
+                Explore Membership
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -130,7 +135,7 @@ export default function MembershipPage() {
         className={`relative rounded-3xl border ${plan.border} bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl`}
       >
         {plan.tag && (
-          <span className="absolute -top-4 right-6 rounded-full bg-[#0057FF] px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-white shadow-lg">
+          <span className="absolute -top-4 right-6 rounded-full bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-white shadow-lg">
             {plan.tag}
           </span>
         )}
@@ -151,7 +156,7 @@ export default function MembershipPage() {
           <ul className="mt-6 space-y-3 text-sm text-slate-600">
             {plan.highlights.map((perk) => (
               <li key={perk} className="flex items-start gap-2">
-                <span className="mt-1 h-2 w-2 rounded-full bg-[#0057FF]"></span>
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#B844E8]"></span>
                 <span>{perk}</span>
               </li>
             ))}
@@ -159,7 +164,7 @@ export default function MembershipPage() {
           <button
             type="button"
             onClick={() => togglePlan(plan.name)}
-            className="mt-6 flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-[#0057FF] transition-colors hover:border-[#0057FF]/30"
+            className="mt-6 flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-[#B844E8] transition-colors hover:border-[#B844E8]/30"
           >
             See full benefits
             <span className={`transition-transform ${isExpanded ? "rotate-180" : ""}`}>▾</span>
@@ -176,7 +181,7 @@ export default function MembershipPage() {
               ))}
             </ul>
           </div>
-          <button className="mt-6 w-full rounded-2xl bg-[#0057FF] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-white hover:text-[#0057FF]">
+          <button className="mt-6 w-full rounded-2xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90">
             Get Started
           </button>
         </div>
@@ -237,7 +242,7 @@ export default function MembershipPage() {
                 {activeRateTab === "member" ? (
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Member rate</p>
-                    <p className="text-3xl font-bold text-[#0057FF]">AED 2,420</p>
+                    <p className="text-3xl font-bold text-[#B844E8]">AED 2,420</p>
                     <p className="text-sm text-slate-500">Based on Platinum plan savings</p>
                   </div>
                 ) : (
@@ -252,14 +257,14 @@ export default function MembershipPage() {
                 <button
                   type="button"
                   onClick={() => setActiveRateTab("member")}
-                  className="flex-1 min-w-[130px] rounded-full bg-[#0057FF] border border-[#0057FF] px-4 py-2.5 text-xs md:text-sm font-semibold text-white shadow-lg transition-all hover:bg-white hover:text-[#0057FF]"
+                  className="flex-1 min-w-[130px] rounded-full bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] px-4 py-2.5 text-xs md:text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90"
                 >
                   Member Rate
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveRateTab("non")}
-                  className="flex-1 min-w-[130px] rounded-full bg-white border border-slate-200 px-4 py-2.5 text-xs md:text-sm font-semibold text-slate-700 transition-all hover:border-[#0057FF] hover:text-[#0057FF]"
+                  className="flex-1 min-w-[130px] rounded-full bg-white border border-slate-200 px-4 py-2.5 text-xs md:text-sm font-semibold text-slate-700 transition-all hover:border-[#B844E8] hover:text-[#B844E8]"
                 >
                   Non-Member Rate
                 </button>
@@ -278,7 +283,7 @@ export default function MembershipPage() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-semibold text-slate-900">{row.rate}</p>
-                      <p className="text-xs text-[#0057FF]">{row.savings}</p>
+                      <p className="text-xs text-[#B844E8]">{row.savings}</p>
                     </div>
                   </div>
                 ))}
