@@ -126,7 +126,7 @@ export default function CompareTable({ cars }) {
                         <div className="flex flex-col space-y-3">
                           <Link 
                             href={`/cars/${car.id}`} 
-                            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+                            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] text-white font-bold rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
                           >
                             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -211,7 +211,7 @@ export default function CompareTable({ cars }) {
               <div className="mt-6">
                 <Link 
                   href={`/cars/${car.id}`} 
-                  className="block w-full text-center px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+                  className="block w-full text-center px-6 py-4 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] text-white font-bold rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
                 >
                   <svg className="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

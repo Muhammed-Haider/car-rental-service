@@ -12,7 +12,7 @@ export default function CarDetailPage({ params }) {
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#0A1A2F] text-white">
         <h1 className="text-4xl font-bold mb-4">Car Not Found</h1>
         <p className="text-lg mb-8">Sorry, we couldn't find the car you're looking for.</p>
-        <Link href="/" className="px-6 py-3 bg-[#0057FF] rounded-lg font-semibold hover:bg-white hover:text-[#0057FF] transition-all">
+        <Link href="/" className="px-6 py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-purple-500/25">
           Back to Home
         </Link>
       </div>
@@ -20,7 +20,7 @@ export default function CarDetailPage({ params }) {
   }
 
   return (
-    <div className="bg-[#0A1A2F] text-white min-h-screen">
+    <div className="bg-gradient-to-b from-[#000000] to-[#0D0D0D] text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Back to listings link */}
         <div className="mb-8">
@@ -82,7 +82,7 @@ export default function CarDetailPage({ params }) {
                 <span className="text-2xl font-bold text-white">{car.durationPrice.toLocaleString()} AED</span>
               </div>
               <div className="pt-4">
-                <button className="w-full py-4 bg-[#0057FF] rounded-xl text-lg font-bold hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg shadow-blue-500/25">
+                <button className="w-full py-4 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] rounded-xl text-lg font-bold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
                   Rent Now
                 </button>
               </div>

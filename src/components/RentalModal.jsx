@@ -69,7 +69,7 @@ export default function RentalModal({ car, show, onClose }) {
       role="dialog"
     >
       <div
-        className={`relative m-4 w-full max-w-5xl rounded-3xl bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 text-white shadow-2xl ring-1 ring-white/10 backdrop-blur-xl transform transition-all duration-300 hover:shadow-blue-500/10`}
+        className={`relative m-4 w-full max-w-5xl rounded-3xl bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 text-white shadow-2xl ring-1 ring-white/10 backdrop-blur-xl transform transition-all duration-300 hover:shadow-purple-500/10`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -111,7 +111,7 @@ export default function RentalModal({ car, show, onClose }) {
                 </p>
                 <button
                   onClick={onClose}
-                  className="w-full max-w-xs rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-center text-lg font-bold text-white transition-all hover:from-blue-700 hover:to-blue-800 active:scale-95 shadow-lg shadow-blue-500/25 transform hover:scale-105"
+                  className="w-full max-w-xs rounded-xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] py-4 text-center text-lg font-bold text-white transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-purple-500/25 transform hover:scale-105"
                 >
                   Got it
                 </button>
@@ -121,7 +121,7 @@ export default function RentalModal({ car, show, onClose }) {
                 <div className="mb-8">
                   <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
                     We will contact you 
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">in a minute</span>
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#B844E8] to-[#D8A5FF]">in a minute</span>
                   </h2>
                   <p className="text-white/70 text-lg">
                     Share your contact details and we'll call you back to arrange your dream car rental.
@@ -141,7 +141,7 @@ export default function RentalModal({ car, show, onClose }) {
                       name="name"
                       placeholder="Enter your full name*"
                       required
-                      className="w-full rounded-xl border border-white/20 bg-white/5 px-6 py-4 text-white placeholder-white/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all backdrop-blur-sm text-lg"
+                      className="w-full rounded-xl border border-white/20 bg-white/5 px-6 py-4 text-white placeholder-white/50 focus:border-[#B844E8] focus:ring-2 focus:ring-[#B844E8]/50 transition-all backdrop-blur-sm text-lg"
                     />
                   </div>
 
@@ -179,7 +179,7 @@ export default function RentalModal({ car, show, onClose }) {
                             id={method} 
                             name="contact-method" 
                             type="radio" 
-                            className="h-5 w-5 accent-blue-500 bg-white/10 border-white/30 focus:ring-2 focus:ring-blue-500/50" 
+                            className="h-5 w-5 accent-[#B844E8] bg-white/10 border-white/30 focus:ring-2 focus:ring-[#B844E8]/50" 
                             defaultChecked={method === 'Phone'} 
                           />
                           <label htmlFor={method} className="ml-3 block text-sm font-medium text-white/90">{method}</label>
@@ -191,7 +191,7 @@ export default function RentalModal({ car, show, onClose }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-center text-lg font-bold text-white transition-all hover:from-white hover:to-white hover:text-blue-600 hover:border-2 hover:border-blue-600 active:scale-95 shadow-lg shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full rounded-xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] py-4 text-center text-lg font-bold text-white transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Submitting...' : 'Contact Me Now'}
                   </button>
@@ -219,8 +219,8 @@ export default function RentalModal({ car, show, onClose }) {
                     
                     <div className="flex items-center space-x-6 text-white/90">
                       <div className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-8 h-8 bg-[#B844E8]/20 rounded-lg flex items-center justify-center">
+                          <svg className="w-4 h-4 text-[#B844E8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         </div>
@@ -232,25 +232,25 @@ export default function RentalModal({ car, show, onClose }) {
                     {car?.specs && (
                       <div className="grid grid-cols-2 gap-3">
                         <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#B844E8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                           </svg>
                           <span className="text-sm text-white/90">{car.specs.horsepower}hp</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#B844E8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                           </svg>
                           <span className="text-sm text-white/90">{car.specs.seats} seats</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#B844E8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <span className="text-sm text-white/90">{car.specs.acceleration}s</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#B844E8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
@@ -286,8 +286,8 @@ export default function RentalModal({ car, show, onClose }) {
           backdrop-filter: blur(10px);
         }
         .phone-input-custom input:focus {
-          border-color: #3b82f6 !important;
-          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+          border-color: #B844E8 !important;
+          box-shadow: 0 0 0 2px rgba(184, 68, 232, 0.5) !important;
           outline: none !important;
         }
         .phone-input-custom input::placeholder {
@@ -300,7 +300,7 @@ export default function RentalModal({ car, show, onClose }) {
           border-radius: 8px !important;
         }
         .phone-input-custom .react-phone-number-input__country-select:focus {
-          border-color: #3b82f6 !important;
+          border-color: #B844E8 !important;
           outline: none !important;
         }
       `}</style>
