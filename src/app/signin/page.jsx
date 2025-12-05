@@ -25,6 +25,9 @@ export default function SignIn() {
         options: {
           redirectTo: redirectUrl,
           skipBrowserRedirect: false,
+          queryParams: {
+            prompt: 'select_account'
+          }
         },
       });
     } catch (error) {
