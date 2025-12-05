@@ -25,8 +25,10 @@ export default function SignUp() {
         provider: "google",
         options: {
           redirectTo: redirectUrl,
-          skipBrowserRedirect: false
-
+          skipBrowserRedirect: false,
+          queryParams: {
+            prompt: 'select_account'
+          }
         },
       });
     } catch (error) {
