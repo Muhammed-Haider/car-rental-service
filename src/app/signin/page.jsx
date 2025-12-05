@@ -20,19 +20,13 @@ export default function SignIn() {
     try {
       const redirectUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`;
       
-      const { error, data } = await supabaseClient.auth.signInWithOAuth({
-        provider: 'google',
+      await supabaseClient.auth.signInWithOAuth({
+        provider: "google",
         options: {
           redirectTo: redirectUrl,
+          skipBrowserRedirect: false,
         },
       });
-      
-      if (error) throw error;
-      
-      // Redirect to OAuth provider
-      if (data?.url) {
-        window.location.href = data.url;
-      }
     } catch (error) {
       setError(error.message);
     } finally {
