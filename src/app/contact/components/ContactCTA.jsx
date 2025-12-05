@@ -9,7 +9,7 @@ export default function ContactCTA() {
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a
               href="tel:+971554079239"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
             >
               Call Us
             </a>
@@ -17,7 +17,7 @@ export default function ContactCTA() {
               href="https://wa.me/971554079239"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#B844E8] hover:text-[#B844E8] transition-all duration-300"
             >
               WhatsApp
             </a>
