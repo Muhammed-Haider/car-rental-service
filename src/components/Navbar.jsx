@@ -71,7 +71,7 @@ function Navbar() {
             : "invisible -translate-y-4 opacity-0"
             }`}
         >
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0A1A2F]/95 backdrop-blur-xl shadow-2xl ring-1 ring-black/5">
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#1A1A1A]/95 backdrop-blur-xl shadow-2xl ring-1 ring-black/5">
             <div className="grid grid-cols-1 gap-8 p-8 sm:grid-cols-12">
               {/* Column 1: Browse by type (3 cols) */}
               <div className="sm:col-span-3">
@@ -142,7 +142,7 @@ function Navbar() {
                   {['Dubai', 'Abu Dhabi', 'Sharjah'].map((loc) => (
                     <li key={loc}>
                       <Link href="#" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#0057FF]"></span>
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#B844E8]"></span>
                         {loc}
                       </Link>
                     </li>
@@ -150,7 +150,7 @@ function Navbar() {
                   <li className="mt-6">
                     <Link
                       href="/compare"
-                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0057FF] to-[#0048d1] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-blue-500/25 hover:scale-[1.02]"
+                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-purple-500/25 hover:scale-[1.02]"
                       onClick={() => setCarsOpen(false)}
                     >
                       <span>View Special Deals</span>
@@ -189,7 +189,7 @@ function Navbar() {
             : "invisible -translate-y-4 opacity-0"
             }`}
         >
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0A1A2F]/95 backdrop-blur-xl">
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A]/95 backdrop-blur-xl">
             <div className="p-6">
               <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -263,7 +263,7 @@ function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-[60]">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mt-3 rounded-2xl md:rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
+        <div className="mt-3 rounded-2xl md:rounded-full border border-white/10 bg-[#1A1A1A]/80 backdrop-blur supports-[backdrop-filter]:bg-[#1A1A1A]/60">
           <nav className="relative flex items-center justify-between px-4 py-2 md:px-4 md:py-2">
             {/* Desktop: Brand on left */}
             <div className="hidden md:flex items-center gap-3">
@@ -307,7 +307,7 @@ function Navbar() {
                 </Link>
                 <Link
                   href="/signup"
-                  className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-xs md:text-sm rounded-full hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-xs md:text-sm rounded-full hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
                 >
                   Sign Up
                 </Link>
@@ -504,7 +504,7 @@ function Navbar() {
                   </Link>
                   <Link
                     href="/signup"
-                    className="flex items-center justify-center rounded-full bg-[#0057FF] border border-[#0057FF] py-2.5 text-sm font-semibold text-white hover:bg-white hover:text-[#0057FF] transition-colors"
+                    className="flex items-center justify-center rounded-full bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     Sign Up

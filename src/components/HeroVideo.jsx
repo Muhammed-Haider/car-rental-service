@@ -15,7 +15,7 @@ export default function HeroVideo() {
         >
           <source src="/herovideo.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A2F]/30 to-[#0A1A2F]/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/30 to-[#000000]/50" />
         <div className="relative z-[50] mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
           <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
             Drive Your Dream Car Today
@@ -26,7 +26,7 @@ export default function HeroVideo() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-base md:text-lg rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 mb-8"
+            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-base md:text-lg rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 mb-8"
           >
             Book Your Ride
           </Link>
@@ -55,7 +55,7 @@ export default function HeroVideo() {
                   className="group cursor-pointer rounded-xl bg-white/5 px-2 py-2 ring-1 ring-white/10 transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 focus:scale-105 focus:-translate-y-1"
                 >
                   <div className="flex h-16 sm:h-20 flex-col items-center justify-center text-center">
-                    <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg bg-black/20 ring-1 ring-white/10 transition-colors transition-shadow duration-300 group-hover:bg-[#0057FF]/20 group-hover:ring-2 group-hover:ring-white/25 group-hover:shadow-lg group-focus:bg-[#0057FF]/20">
+                    <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg bg-black/20 ring-1 ring-white/10 transition-colors transition-shadow duration-300 group-hover:bg-[#B844E8]/20 group-hover:ring-2 group-hover:ring-white/25 group-hover:shadow-lg group-focus:bg-[#B844E8]/20">
                       <img
                         src={b.src}
                         alt={b.alt}
@@ -73,9 +73,9 @@ export default function HeroVideo() {
       </section>
 
       {/* Categories bar under the brand strip */}
-      <div className="relative z-30 mt-0 sm:mt-0 w-full bg-white">
+      <div className="relative z-30 mt-0 sm:mt-0 w-full bg-gradient-to-br from-[#1A1A1A] to-[#2B2B2B]">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-white p-4 md:p-5 shadow-xl ring-1 ring-black/5">
+          <div className="rounded-2xl bg-[#1A1A1A]/80 p-4 md:p-5 shadow-xl ring-1 ring-white/10 backdrop-blur-xl">
             <div className="grid grid-cols-2 gap-4 md:flex md:flex-row md:items-center md:justify-center md:gap-6" role="list">
               {[
                 { label: 'SUV', src: '/suv.png' },
@@ -96,7 +96,7 @@ export default function HeroVideo() {
                     className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110 md:h-12"
                     loading="eager"
                   />
-                  <span className="text-sm font-medium text-[#0A1A2F] group-hover:text-[#0057FF] md:text-base">
+                  <span className="text-sm font-medium text-[#1A1A1A] group-hover:text-[#B844E8] md:text-base">
                     {item.label}
                   </span>
                 </div>

@@ -3,8 +3,8 @@
 export default function AboutUs() {
   return (
     <section className="w-full relative overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-24 text-[#0A1A2F]">
-      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#E6F0FF] blur-3xl opacity-60"></div>
-      <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-[#EAF6FF] blur-3xl opacity-60"></div>
+      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#8B3FBF]/5 blur-3xl opacity-60"></div>
+      <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-[#B844E8]/5 blur-3xl opacity-60"></div>
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start md:items-center">
 
@@ -21,8 +21,8 @@ export default function AboutUs() {
             </h1>
             {/* decorative underline + car icon under main heading */}
             <div className="relative inline-block mt-1 mb-7 mx-auto md:mx-0">
-              <div className="h-[2px] w-44 md:w-56 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
-              <span className="absolute -right-32 -top-2 text-[#0057FF]">
+              <div className="h-[2px] w-44 md:w-56 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
+              <span className="absolute -right-32 -top-2 text-[#B844E8]">
 
                 <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <g transform="translate(64,0) scale(-1,1)">
@@ -47,7 +47,7 @@ export default function AboutUs() {
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <span>Experience premium car rentals crafted for comfort, performance, and style. Whether it&apos;s a quick business trip </span>
-                  <span className="bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent transition-colors duration-500 group-hover:from-slate-700 group-hover:to-slate-500">or a long weekend getaway, our fleet is designed to elevate your journey.</span>
+                  <span className="bg-gradient-to-r from-[#B844E8] to-[#9D5FFF] bg-clip-text text-transparent transition-colors duration-500 group-hover:from-[#9D5FFF] group-hover:to-[#B844E8]">or a long weekend getaway, our fleet is designed to elevate your journey.</span>
                 </p>
               </div>
 

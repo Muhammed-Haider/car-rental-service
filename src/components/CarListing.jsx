@@ -68,14 +68,14 @@ export default function CarListing() {
     };
   }, [currentPage]);
   return (
-        <section id="car-listings" className="w-full bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24 text-[#0A1A2F]">
+        <section id="car-listings" className="w-full bg-gradient-to-b from-[#000000] to-[#0D0D0D] py-16 md:py-24 text-white">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading Block */}
         <div className="text-center mb-12 md:mb-16">
           {/* Top label */}
           <div className="text-center mb-6">
             <h2
-              className="text-2xl md:text-3xl font-bold tracking-[0.15em] text-slate-700 uppercase mb-4"
+              className="text-2xl md:text-3xl font-bold tracking-[0.15em] text-white/80 uppercase mb-4"
               style={{ fontFamily: "Poppins, sans-serif", letterSpacing: "0.2em" }}
             >
               Featured Cars
@@ -83,8 +83,8 @@ export default function CarListing() {
 
             {/* decorative underline + car icon */}
             <div className="relative inline-block mx-auto sm:mx-0">
-              <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
-              <span className="absolute -right-3 -top-3 text-[#0057FF] sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
+              <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
+              <span className="absolute -right-3 -top-3 text-[#B844E8] sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
                 <svg
                   width="32"
                   height="14"
@@ -110,13 +110,13 @@ export default function CarListing() {
           {/* Main headline */}
           <div className="text-center mb-12 md:mb-16">
             <p
-              className="text-sm font-semibold uppercase tracking-widest text-slate-500 mb-4"
+              className="text-sm font-semibold uppercase tracking-widest text-white/60 mb-4"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               DRIVE LUXURY LIVE FREEDOM
             </p>
             <h3
-            className="text-center text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-[-0.02em] mb-6 text-slate-900 px-4"
+            className="text-center text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-[-0.02em] mb-6 text-white px-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Our Vehicle Fleet
@@ -124,7 +124,7 @@ export default function CarListing() {
 
             {/* Supporting paragraph */}
             <p
-              className="mx-auto max-w-2xl text-center text-base md:text-lg text-slate-600/90 leading-[1.7] mb-0 px-4"
+              className="mx-auto max-w-2xl text-center text-base md:text-lg text-white/80 leading-[1.7] mb-0 px-4"
               style={{ fontFamily: "Inter, sans-serif", letterSpacing: "0.01em" }}
             >
               Driving your dreams to reality with an exquisite fleet of versatile vehicles for unforgettable journeys.
@@ -136,10 +136,10 @@ export default function CarListing() {
           {currentCars.map((car) => (
             <div
               key={car.id}
-              className="group car-card bg-white rounded-3xl shadow-sm hover:shadow-2xl ring-1 ring-slate-100 transition-all duration-500 hover:-translate-y-2"
+              className="group car-card bg-[#1A1A1A] rounded-3xl shadow-sm hover:shadow-2xl ring-1 ring-white/10 transition-all duration-500 hover:-translate-y-2"
             >
               {/* Car Image */}
-              <div className="relative w-full h-64 md:h-72 bg-slate-50 overflow-hidden">
+              <div className="relative w-full h-64 md:h-72 bg-[#2B2B2B] overflow-hidden">
                 <img
                   src={car.image}
                   alt={car.name}
@@ -157,14 +157,14 @@ export default function CarListing() {
                 {/* Car Name */}
                 <div>
                   <h3
-                    className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 leading-tight group-hover:text-[#0057FF] transition-colors duration-300"
+                    className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight group-hover:text-[#B844E8] transition-colors duration-300"
                     style={{ fontFamily: "Poppins, sans-serif" }}
                   >
                     {car.name}
                   </h3>
                   {/* Specs */}
                   <p
-                    className="text-sm md:text-base text-slate-500 leading-relaxed font-medium"
+                    className="text-sm md:text-base text-white/70 leading-relaxed font-medium"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     {car.specs.seats} seats, {car.specs.horsepower}hp, {car.specs.engine}, 0-100: {car.specs.acceleration}s
@@ -172,23 +172,23 @@ export default function CarListing() {
                 </div>
 
                 {/* Pricing Section */}
-                <div className="space-y-3 pt-4 border-t border-slate-100">
+                <div className="space-y-3 pt-4 border-t border-white/10">
                   <div className="flex items-baseline gap-2">
                     <span
-                      className="text-3xl md:text-4xl font-bold text-slate-900"
+                      className="text-3xl md:text-4xl font-bold text-white"
                       style={{ fontFamily: "Poppins, sans-serif" }}
                     >
-                      {car.price.toLocaleString()} <span className="text-lg text-slate-400 font-medium">AED</span>
+                      {car.price.toLocaleString()} <span className="text-lg text-white/60 font-medium">AED</span>
                     </span>
                     <span
-                      className="text-sm text-slate-400 font-medium uppercase tracking-wide"
+                      className="text-sm text-white/60 font-medium uppercase tracking-wide"
                       style={{ fontFamily: "Inter, sans-serif" }}
                     >
                       / day
                     </span>
                   </div>
                   <motion.div
-                    className="relative flex items-center gap-2 text-slate-500 bg-slate-50 w-fit px-3 py-1 rounded-lg"
+                    className="relative flex items-center gap-2 text-white/70 bg-[#2B2B2B] w-fit px-3 py-1 rounded-lg"
                     animate={highlight ? "highlighted" : "initial"}
                     variants={{
                       initial: { scale: 1, zIndex: 1, boxShadow: '0px 0px 0px rgba(0,0,0,0)' },
@@ -210,7 +210,7 @@ export default function CarListing() {
                   {/* Call Button */}
                   <a
                     href="tel:+971554079239"
-                    className="flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-[#0057FF] text-white shadow-lg transition-all duration-200 hover:bg-[#0048d1] hover:scale-110 active:scale-95"
+                    className="flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] text-white shadow-lg transition-all duration-200 hover:opacity-90 hover:scale-110 active:scale-95"
                     aria-label="Call us"
                   >
                     <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -240,21 +240,21 @@ export default function CarListing() {
                       console.log('Rent button clicked for:', car.name);
                       openModal(car);
                     }}
-                    className="flex-1 px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer"
+                    className="flex-1 px-4 py-3 bg-[#1A1A1A] border border-white/20 text-white font-semibold text-sm rounded-xl hover:border-[#B844E8] hover:text-[#B844E8] transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 cursor-pointer"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Rent
                   </button>
                   <Link
                     href={`/cars/${car.id}`}
-                    className="shine-button flex-[2] text-center px-4 py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                    className="shine-button flex-[2] text-center px-4 py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Details
                   </Link>
                   <Link
                     href="/compare"
-                    className="flex-1 text-center px-4 py-3 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-[#0057FF] hover:text-[#0057FF] transition-all duration-300"
+                    className="flex-1 text-center px-4 py-3 bg-[#1A1A1A] border border-white/20 text-white font-semibold text-sm rounded-xl hover:border-[#B844E8] hover:text-[#B844E8] transition-all duration-300"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Compare
@@ -278,8 +278,8 @@ export default function CarListing() {
             disabled={currentPage === 1}
             className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
               currentPage === 1 
-                ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
-                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-[#0057FF]'
+                ? 'bg-white/10 text-white/50 cursor-not-allowed' 
+                : 'bg-[#1A1A1A] border border-white/20 text-white hover:bg-[#2B2B2B] hover:border-[#B844E8]'
             }`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -301,8 +301,8 @@ export default function CarListing() {
                 }}
                 className={`w-10 h-10 rounded-lg flex items-center justify-center font-semibold transition-all duration-200 ${
                   currentPage === pageNumber
-                    ? 'bg-[#0057FF] text-white shadow-lg'
-                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-[#0057FF]'
+                    ? 'bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] text-white shadow-lg'
+                    : 'bg-[#1A1A1A] border border-white/20 text-white hover:bg-[#2B2B2B] hover:border-[#B844E8]'
                 }`}
               >
                 {pageNumber}
@@ -321,8 +321,8 @@ export default function CarListing() {
             disabled={currentPage === totalPages}
             className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
               currentPage === totalPages 
-                ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
-                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-[#0057FF]'
+                ? 'bg-white/10 text-white/50 cursor-not-allowed' 
+                : 'bg-[#1A1A1A] border border-white/20 text-white hover:bg-[#2B2B2B] hover:border-[#B844E8]'
             }`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

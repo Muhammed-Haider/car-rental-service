@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="relative w-full overflow-hidden bg-gradient-to-br from-[#0A1A2F] via-[#0E1B2E] to-[#050D1A]">
+        <footer className="relative w-full overflow-hidden bg-gradient-to-br from-[#000000] via-[#0D0D0D] to-[#000000]">
             {/* Sophisticated Background Overlays */}
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute -left-40 top-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#0057FF]/15 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tl from-[#0057FF]/15 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
-                <div className="absolute left-1/3 top-1/3 h-80 w-80 rounded-full bg-[#0057FF]/5 blur-3xl" />
+                <div className="absolute -left-40 top-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#8B3FBF]/15 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+                <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tl from-[#B844E8]/15 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
+                <div className="absolute left-1/3 top-1/3 h-80 w-80 rounded-full bg-[#B844E8]/5 blur-3xl" />
             </div>
 
             {/* Main Footer Content */}
@@ -20,11 +20,11 @@ export default function Footer() {
                         <div className="space-y-3">
                             <h3 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">WTB</span>
-                                <span className="bg-gradient-to-r from-[#0057FF] to-[#0080FF] bg-clip-text text-transparent">DXB</span>
+                                <span className="bg-gradient-to-r from-[#8B3FBF] to-[#B844E8] bg-clip-text text-transparent">DXB</span>
                             </h3>
                             <div className="flex items-center gap-2 justify-center md:justify-start">
-                                <div className="h-0.5 w-12 bg-gradient-to-r from-[#0057FF] via-[#0080FF] to-transparent rounded-full" />
-                                <div className="h-0.5 w-6 bg-gradient-to-r from-[#0057FF]/50 to-transparent rounded-full" />
+                                <div className="h-0.5 w-12 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full" />
+                                <div className="h-0.5 w-6 bg-gradient-to-r from-[#8B3FBF]/50 to-transparent rounded-full" />
                             </div>
                         </div>
 
@@ -34,9 +34,9 @@ export default function Footer() {
 
                         <div className="pt-2 flex flex-col items-center md:items-start">
                             <div className="space-y-3 w-fit">
-                                <a href="tel:+971554079239" className="group flex items-center gap-3 text-slate-400 hover:text-[#0057FF] transition-all duration-300 text-left">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:bg-[#0057FF]/10 group-hover:border-[#0057FF]/30 transition-all duration-300">
-                                        <svg className="h-5 w-5 text-[#0057FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <a href="tel:+971554079239" className="group flex items-center gap-3 text-slate-400 hover:text-[#B844E8] transition-all duration-300 text-left">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:bg-[#B844E8]/10 group-hover:border-[#B844E8]/30 transition-all duration-300">
+                                        <svg className="h-5 w-5 text-[#B844E8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                         </svg>
                                     </div>
@@ -46,9 +46,9 @@ export default function Footer() {
                                     </div>
                                 </a>
 
-                                <a href="mailto:info@wtbdxb.ae" className="group flex items-center gap-3 text-slate-400 hover:text-[#0057FF] transition-all duration-300 text-left">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:bg-[#0057FF]/10 group-hover:border-[#0057FF]/30 transition-all duration-300">
-                                        <svg className="h-5 w-5 text-[#0057FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <a href="mailto:info@wtbdxb.ae" className="group flex items-center gap-3 text-slate-400 hover:text-[#B844E8] transition-all duration-300 text-left">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:bg-[#B844E8]/10 group-hover:border-[#B844E8]/30 transition-all duration-300">
+                                        <svg className="h-5 w-5 text-[#B844E8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
                                     </div>
@@ -67,7 +67,7 @@ export default function Footer() {
                             <h4 className="text-lg font-bold text-white tracking-wide" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Explore
                             </h4>
-                            <div className="h-0.5 w-10 bg-gradient-to-r from-[#0057FF] to-transparent rounded-full mx-auto md:mx-0" />
+                            <div className="h-0.5 w-10 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full mx-auto md:mx-0" />
                         </div>
                         <ul className="space-y-3.5">
                             {[
@@ -83,7 +83,7 @@ export default function Footer() {
                                     className="group flex items-center gap-3 text-[15px] text-slate-400 hover:text-white transition-all duration-300 justify-center md:justify-start"
                                     style={{ fontFamily: "Inter, sans-serif" }}
                                 >
-                                    <svg className="h-1.5 w-1.5 text-[#0057FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 8 8">
+                                    <svg className="h-1.5 w-1.5 text-[#B844E8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 8 8">
                                         <circle cx="4" cy="4" r="3" />
                                     </svg>
                                     <span className="group-hover:translate-x-1 transition-transform duration-300">{item.text}</span>
@@ -99,7 +99,7 @@ export default function Footer() {
                             <h4 className="text-lg font-bold text-white tracking-wide" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Stay Updated
                             </h4>
-                            <div className="h-0.5 w-10 bg-gradient-to-r from-[#0057FF] to-transparent rounded-full mx-auto md:mx-0" />
+                            <div className="h-0.5 w-10 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full mx-auto md:mx-0" />
                         </div>
 
                         <p className="text-[15px] text-slate-400 leading-relaxed font-light" style={{ fontFamily: "Inter, sans-serif" }}>
@@ -112,12 +112,12 @@ export default function Footer() {
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0057FF]/50 focus:border-[#0057FF]/50 focus:bg-white/[0.05] text-sm backdrop-blur-xl transition-all duration-300"
+                                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#B844E8]/50 focus:border-[#B844E8]/50 focus:bg-white/[0.05] text-sm backdrop-blur-xl transition-all duration-300"
                                     style={{ fontFamily: "Inter, sans-serif" }}
                                 />
-                                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#0057FF]/0 to-[#0057FF]/0 group-hover:from-[#0057FF]/5 group-hover:to-transparent pointer-events-none transition-all duration-300" />
+                                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#B844E8]/0 to-[#B844E8]/0 group-hover:from-[#B844E8]/5 group-hover:to-transparent pointer-events-none transition-all duration-300" />
                             </div>
-                            <button className="w-full md:w-auto flex items-center justify-center px-6 py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 md:px-8" style={{ fontFamily: "Poppins, sans-serif" }}>
+                            <button className="w-full md:w-auto flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 md:px-8" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Subscribe Now
                             </button>
                         </div>
@@ -135,7 +135,7 @@ export default function Footer() {
                                     <a
                                         key={idx}
                                         href="#"
-                                        className="group relative flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 hover:bg-gradient-to-br hover:from-[#0057FF] hover:to-[#0048d1] hover:border-[#0057FF] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#0057FF]/40"
+                                        className="group relative flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 hover:bg-gradient-to-br hover:from-[#6B4FE8] hover:to-[#9D5FFF] hover:border-[#6B4FE8] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#B844E8]/40"
                                         aria-label={social.label}
                                     >
                                         <svg className="h-[18px] w-[18px] text-slate-400 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
@@ -155,9 +155,9 @@ export default function Footer() {
                     </div>
                     <div className="relative flex justify-center">
                         <div className="flex items-center gap-2">
-                            <div className="h-1.5 w-1.5 rounded-full bg-[#0057FF]/50" />
-                            <div className="h-2 w-2 rounded-full bg-[#0057FF] ring-4 ring-[#0A1A2F] shadow-lg shadow-[#0057FF]/50" />
-                            <div className="h-1.5 w-1.5 rounded-full bg-[#0057FF]/50" />
+                            <div className="h-1.5 w-1.5 rounded-full bg-[#B844E8]/50" />
+                            <div className="h-2 w-2 rounded-full bg-[#B844E8] ring-4 ring-[#000000] shadow-lg shadow-[#B844E8]/50" />
+                            <div className="h-1.5 w-1.5 rounded-full bg-[#B844E8]/50" />
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@ export default function Footer() {
                             <div key={item} className="flex items-center gap-4">
                                 <a
                                     href="#"
-                                    className="text-sm text-slate-500 hover:text-[#0057FF] transition-colors duration-200 font-light"
+                                    className="text-sm text-slate-500 hover:text-[#B844E8] transition-colors duration-200 font-light"
                                     style={{ fontFamily: "Inter, sans-serif" }}
                                 >
                                     {item}

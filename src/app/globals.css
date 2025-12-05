@@ -1,12 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-primary: #0057FF;
-  --color-navy: #0A1A2F;
-  --color-lightgrey: #E9ECEF;
-  --color-sky: #D6E9FF;
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --color-primary: linear-gradient(135deg, #8B3FBF 0%, #B844E8 100%);
+  --color-primary-solid: #8B3FBF;
+  --color-button: linear-gradient(135deg, #6B4FE8 0%, #9D5FFF 100%);
+  --color-button-solid: #6B4FE8;
+  --color-link: #B844E8;
+  --color-link-hover: #9D5FFF;
+  --color-card-bg: #1A1A1A;
+  --color-card-bg-alt: #2B2B2B;
+  --color-section-alt: #0D0D0D;
+  --color-accent-gold: #FFD700;
+  --color-success: #25D366;
+  --color-whatsapp: #25D366;
+  --color-border: rgba(229, 229, 229, 0.1);
+  --color-text-secondary: #808080;
+  --color-text-secondary-alt: #A0A0A0;
+  --color-text-on-light: #1A1A1A;
+  --color-heading-gradient: linear-gradient(135deg, #8B3FBF 0%, #B844E8 100%);
 }
 
 @theme inline {
@@ -18,8 +31,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #FFFFFF;
   }
 }
 
@@ -71,8 +84,8 @@ label,
 }
 
 .phone-input-custom:focus-within {
-  border-color: #00E0B8;
-  box-shadow: 0 0 0 2px rgba(0, 224, 184, 0.5);
+  border-color: #B844E8;
+  box-shadow: 0 0 0 2px rgba(184, 68, 232, 0.3);
 }
 
 .PhoneInputCountry {
@@ -81,10 +94,10 @@ label,
 }
 
 .PhoneInputCountrySelect {
-  background-color: #0A1A2F !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background-color: #1A1A1A !important;
+  border: 1px solid var(--color-border) !important;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .PhoneInputCountryOption {
@@ -95,7 +108,7 @@ label,
 
 .PhoneInputCountryOption:hover,
 .PhoneInputCountryOption--focus {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(184, 68, 232, 0.1) !important;
 }
 
 .PhoneInputCountryIcon--border {
@@ -114,7 +127,7 @@ label,
   inset: 0;
   border-radius: 1.5rem; /* rounded-3xl */
   border: 2px solid transparent;
-  background: radial-gradient(400px at var(--x, 0px) var(--y, 0px), rgba(0, 87, 255, 0.25), transparent 80%) border-box;
+  background: radial-gradient(400px at var(--x, 0px) var(--y, 0px), rgba(139, 63, 191, 0.25), transparent 80%) border-box;
   mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);

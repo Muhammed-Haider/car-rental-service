@@ -36,7 +36,7 @@ export default function VisionMission() {
           <div className="flex justify-center md:justify-start">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm md:text-base rounded-full hover:bg-transparent hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+              className="inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm md:text-base rounded-full hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Contact Now
@@ -47,15 +47,15 @@ export default function VisionMission() {
         {/* Bottom section: Vision and Mission cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
           {/* Vision Card */}
-          <div className="group bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 ease-out hover:scale-105 border border-white/20 hover:border-white/40">
+          <div className="group bg-[#1A1A1A]/95 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl hover:bg-[#1A1A1A] transition-all duration-300 ease-out hover:scale-105 border border-white/10 hover:border-white/20">
             <h3
-              className="text-xl md:text-2xl lg:text-3xl font-extrabold text-slate-900 mb-3 md:mb-4 lg:mb-6 group-hover:text-[#0057FF] transition-colors duration-300"
+              className="text-xl md:text-2xl lg:text-3xl font-extrabold text-white mb-3 md:mb-4 lg:mb-6 group-hover:text-[#B844E8] transition-colors duration-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Vision
             </h3>
             <p
-              className="text-sm md:text-base lg:text-lg text-slate-700 leading-relaxed group-hover:text-slate-800 transition-colors duration-300"
+              className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               To become Dubai's leading luxury car rental provider, offering a seamless blend of quality, convenience, and innovation.
@@ -63,15 +63,15 @@ export default function VisionMission() {
           </div>
 
           {/* Mission Card */}
-          <div className="group bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 ease-out hover:scale-105 border border-white/20 hover:border-white/40">
+          <div className="group bg-[#1A1A1A]/95 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl hover:bg-[#1A1A1A] transition-all duration-300 ease-out hover:scale-105 border border-white/10 hover:border-white/20">
             <h3
-              className="text-xl md:text-2xl lg:text-3xl font-extrabold text-slate-900 mb-3 md:mb-4 lg:mb-6 group-hover:text-[#0057FF] transition-colors duration-300"
+              className="text-xl md:text-2xl lg:text-3xl font-extrabold text-white mb-3 md:mb-4 lg:mb-6 group-hover:text-[#B844E8] transition-colors duration-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Our Mission
             </h3>
             <p
-              className="text-sm md:text-base lg:text-lg text-slate-700 leading-relaxed group-hover:text-slate-800 transition-colors duration-300"
+              className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               To deliver world-class car rental services with a strong focus on customer satisfaction and exceptional experiences.

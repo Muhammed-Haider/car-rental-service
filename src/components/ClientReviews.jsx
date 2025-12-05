@@ -26,21 +26,21 @@ export default function ClientReviews() {
     ];
 
     return (
-        <section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24" id="clientreview">
+        <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#000000] to-[#0D0D0D] py-16 md:py-24" id="clientreview">
             {/* Gradient overlays */}
-            <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#0057FF]/5 blur-3xl" />
-            <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#0057FF]/5 blur-3xl" />
+            <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#8B3FBF]/5 blur-3xl" />
+            <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#B844E8]/5 blur-3xl" />
 
             <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="mb-12 md:mb-16 text-center">
-                    <p className="text-sm md:text-base text-[#0057FF] font-semibold uppercase tracking-wider mb-3 md:mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
+                    <p className="text-sm md:text-base text-[#B844E8] font-semibold uppercase tracking-wider mb-3 md:mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
                         TESTIMONIALS
                     </p>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 md:mb-6" style={{ fontFamily: "Poppins, sans-serif" }}>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6" style={{ fontFamily: "Poppins, sans-serif" }}>
                         Client Reviews
                     </h2>
-                    <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+                    <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
                         See what our satisfied customers have to say about their experience
                     </p>
                 </div>
@@ -50,7 +50,7 @@ export default function ClientReviews() {
                     {testimonials.map((testimonial) => (
                         <div
                             key={testimonial.id}
-                            className="group relative overflow-hidden rounded-2xl h-[400px] md:h-[450px] shadow-lg ring-1 ring-slate-200/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                            className="group relative overflow-hidden rounded-2xl h-[400px] md:h-[450px] shadow-lg ring-1 ring-white/10 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
                         >
                             {/* Background Image */}
                             <img
@@ -65,7 +65,7 @@ export default function ClientReviews() {
 
                             {/* Quote Icon */}
                             <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg z-10">
-                                <svg className="h-6 w-6 text-[#0057FF]" fill="currentColor" viewBox="0 0 24 24">
+                                <svg className="h-6 w-6 text-[#B844E8]" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                                 </svg>
                             </div>

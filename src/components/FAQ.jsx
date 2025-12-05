@@ -32,21 +32,21 @@ export default function FAQ() {
     };
 
     return (
-        <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#F8FAFC] to-white py-16 md:py-24">
+        <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#000000] to-[#0D0D0D] py-16 md:py-24">
             {/* Gradient overlays */}
-            <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#0057FF]/5 blur-3xl" />
-            <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#0057FF]/5 blur-3xl" />
+            <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#8B3FBF]/5 blur-3xl" />
+            <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#B844E8]/5 blur-3xl" />
 
             <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="mb-12 md:mb-16 text-center">
-                    <p className="text-sm md:text-base text-[#0057FF] font-semibold uppercase tracking-wider mb-3 md:mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
+                    <p className="text-sm md:text-base text-[#B844E8] font-semibold uppercase tracking-wider mb-3 md:mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
                         FAQ
                     </p>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 md:mb-6" style={{ fontFamily: "Poppins, sans-serif" }}>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6" style={{ fontFamily: "Poppins, sans-serif" }}>
                         Got questions? We've got answers!
                     </h2>
-                    <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+                    <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
                         Your go-to source for common questions about our car rental service. With clear answers to all things cars.
                     </p>
                 </div>
@@ -58,18 +58,18 @@ export default function FAQ() {
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-xl shadow-md ring-1 ring-slate-200/50 overflow-hidden transition-all duration-300 hover:shadow-lg"
+                                className="bg-[#1A1A1A] rounded-xl shadow-md ring-1 ring-white/10 overflow-hidden transition-all duration-300 hover:shadow-lg"
                             >
                                 {/* Question */}
                                 <button
                                     onClick={() => toggleFAQ(index)}
-                                    className="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors duration-200 hover:bg-slate-50"
+                                    className="w-full flex items-center justify-between p-5 md:p-6 text-left transition-colors duration-200 hover:bg-[#2B2B2B]"
                                 >
-                                    <span className="text-base md:text-lg font-semibold text-slate-900 pr-4" style={{ fontFamily: "Poppins, sans-serif" }}>
+                                    <span className="text-base md:text-lg font-semibold text-white pr-4" style={{ fontFamily: "Poppins, sans-serif" }}>
                                         {faq.question}
                                     </span>
                                     <svg
-                                        className={`flex-shrink-0 h-5 w-5 md:h-6 md:w-6 text-[#0057FF] transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''
+                                        className={`flex-shrink-0 h-5 w-5 md:h-6 md:w-6 text-[#B844E8] transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''
                                             }`}
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ export default function FAQ() {
                                         }`}
                                 >
                                     <div className="px-5 md:px-6 pb-5 md:pb-6 pt-2">
-                                        <p className="text-sm md:text-base text-slate-600 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>
+                                        <p className="text-sm md:text-base text-white/70 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>
                                             {faq.answer}
                                         </p>
                                     </div>
@@ -95,7 +95,7 @@ export default function FAQ() {
                     </div>
 
                     {/* Right Side - FAQ Image (order-1 on mobile, order-2 on desktop) */}
-                    <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-slate-200/50 order-1 lg:order-2">
+                    <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10 order-1 lg:order-2">
                         <img
                             src="/faq_image.jpeg"
                             alt="Luxury Car"

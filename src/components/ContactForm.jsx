@@ -36,25 +36,25 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-[#F8FAFC] to-white py-16 md:py-24">
+    <section className="w-full bg-gradient-to-b from-[#000000] to-[#0D0D0D] py-16 md:py-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Side: Form */}
-          <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg ring-1 ring-slate-100">
+          <div className="bg-[#1A1A1A] p-8 md:p-10 rounded-3xl shadow-lg ring-1 ring-white/10">
             <h2 
-              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+              className="text-3xl md:text-4xl font-bold text-white mb-6"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               {isSubmitted ? '✅ Message Sent!' : 'We will contact you in a minute'}
             </h2>
             {isSubmitted ? (
               <div className="text-center py-8">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">
-                  <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100/20 mb-4">
+                  <svg className="h-8 w-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-gray-600 text-lg">Thank you for your message! We'll get back to you soon.</p>
+                <p className="text-white/80 text-lg">Thank you for your message! We'll get back to you soon.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -66,7 +66,7 @@ export default function ContactForm() {
                     name="name"
                     placeholder="Name"
                     required
-                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0057FF]/50 focus:border-[#0057FF]/50 text-sm transition-all duration-300"
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#B844E8]/50 focus:border-[#B844E8]/50 text-sm transition-all duration-300"
                   />
                 </div>
                 <div>
@@ -77,7 +77,7 @@ export default function ContactForm() {
                     name="phone"
                     placeholder="Phone Number"
                     required
-                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0057FF]/50 focus:border-[#0057FF]/50 text-sm transition-all duration-300"
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#B844E8]/50 focus:border-[#B844E8]/50 text-sm transition-all duration-300"
                   />
                 </div>
                 <div>
@@ -88,7 +88,7 @@ export default function ContactForm() {
                     name="email"
                     placeholder="Email"
                     required
-                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0057FF]/50 focus:border-[#0057FF]/50 text-sm transition-all duration-300"
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#B844E8]/50 focus:border-[#B844E8]/50 text-sm transition-all duration-300"
                   />
                 </div>
                 <div>
@@ -99,13 +99,13 @@ export default function ContactForm() {
                     rows="5"
                     placeholder="Your Message"
                     required
-                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0057FF]/50 focus:border-[#0057FF]/50 text-sm transition-all duration-300"
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#B844E8]/50 focus:border-[#B844E8]/50 text-sm transition-all duration-300"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3.5 bg-[#0057FF] border border-[#0057FF] text-white font-semibold text-sm rounded-xl hover:bg-white hover:text-[#0057FF] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
