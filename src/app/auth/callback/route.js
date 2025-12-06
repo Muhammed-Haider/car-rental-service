@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const code = searchParams.get("code");
+export async function GET(request) {
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get("code");
+  const origin = requestUrl.origin;
+
   if (code) {
-    const supabase = createSupabaseServerClient();
+    const supabase = await createSupabaseServerClient();
     await supabase.auth.exchangeCodeForSession(code);
   }
-  return NextResponse.redirect(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`
-  );
+
+  // URL to redirect to after sign in process completes
+  return NextResponse.redirect(`${origin}/dashboard`);
 }
