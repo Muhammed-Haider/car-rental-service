@@ -19,18 +19,17 @@ export default function SignUp() {
     setError("");
     
     try {
-      const redirectUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`;
-      
-      await supabaseClient.auth.signInWithOAuth({
+      const { error } = await supabaseClient.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: redirectUrl,
-          skipBrowserRedirect: false,
+          redirectTo: `${window.location.origin}/auth/callback`,
           queryParams: {
             prompt: 'select_account'
           }
         },
       });
+      
+      if (error) throw error;
     } catch (error) {
       setError(error.message);
     } finally {

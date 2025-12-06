@@ -1,5 +1,3 @@
-"use server";
-
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
@@ -11,34 +9,18 @@ export async function createSupabaseServerClient() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies: {
-        get(name) {
-          return cookieStore.get(name)?.value;
+        getAll() {
+          return cookieStore.getAll();
         },
-        set(name, value, options) {
+        setAll(cookiesToSet) {
           try {
-            cookieStore.set({
-              name,
-              value,
-              ...options,
-              path: options?.path || "/",
-              sameSite: options?.sameSite || "lax",
-              secure: process.env.NODE_ENV === "production",
-            });
-          } catch (error) {
-            // Cookie setting can fail in middleware
-          }
-        },
-        remove(name, options) {
-          try {
-            cookieStore.set({
-              name,
-              value: "",
-              ...options,
-              path: options?.path || "/",
-              maxAge: 0,
-            });
-          } catch (error) {
-            // Cookie removal can fail in middleware
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            );
+          } catch {
+            // The `setAll` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
           }
         },
       },
