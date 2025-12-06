@@ -2,7 +2,12 @@
 
 import { createBrowserClient } from "@supabase/ssr";
 
-export const supabaseBrowserClient = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+export function createClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+}
+
+// Backward compatibility - create a singleton instance
+export const supabaseBrowserClient = createClient();

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { supabaseBrowserClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -11,17 +11,17 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const supabaseClient = supabaseBrowserClient;
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
     setError("");
     
     try {
-      const { error } = await supabaseClient.auth.signInWithOAuth({
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
           queryParams: {
             prompt: 'select_account'
           }
@@ -42,7 +42,8 @@ export default function SignIn() {
     setError("");
 
     try {
-      const { error } = await supabaseClient.auth.signInWithPassword({
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });

@@ -27,3 +27,6 @@ export async function createSupabaseServerClient() {
     }
   );
 }
+
+// Alias for consistency with client pattern
+export const createClient = createSupabaseServerClient;
