@@ -29,7 +29,7 @@ export default function VisionMission() {
             className="max-w-2xl text-sm md:text-base lg:text-lg text-white/90 leading-relaxed mb-6 md:mb-8"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            We strive to offer an unparalleled luxury car rental experience, combining quality, comfort, and innovation to ensure customer satisfaction and exceed expectations.
+            Experience the pinnacle of automotive luxury with our premium fleet. We deliver exceptional service that transforms every journey into an unforgettable experience, setting new standards in elegance and sophistication.
           </p>
 
           {/* Contact Now Button - Centered */}
@@ -58,7 +58,7 @@ export default function VisionMission() {
               className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              To become Dubai's leading luxury car rental provider, offering a seamless blend of quality, convenience, and innovation.
+              To be the most trusted and preferred luxury car rental service in the UAE, redefining excellence through innovation, sustainability, and creating memorable experiences that inspire our customers to return.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export default function VisionMission() {
               className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              To deliver world-class car rental services with a strong focus on customer satisfaction and exceptional experiences.
+              To provide an unmatched luxury car rental experience by offering an exquisite fleet, personalized service, transparent pricing, and seamless booking processes that consistently exceed our customers' expectations.
             </p>
           </div>
         </div>
