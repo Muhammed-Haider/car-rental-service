@@ -167,21 +167,21 @@ export default function Footer() {
                     <p className="text-sm text-slate-500 font-light" style={{ fontFamily: "Inter, sans-serif", letterSpacing: '0.02em' }}>
                         © 2025 <span className="text-slate-300 font-semibold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">WTB DXB</span>. Handcrafted with passion in Dubai, UAE.
                     </p>
-                    <div className="flex flex-wrap justify-center items-center gap-4">
+                    <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
                         {[
                             { text: 'Privacy Policy', link: '/privacy-policy' },
                             { text: 'Terms of Service', link: '/terms-of-service' },
                             { text: 'Cookie Policy', link: '/cookie-policy' }
                         ].map((item, idx, arr) => (
-                            <div key={item.text} className="flex items-center gap-4">
+                            <div key={item.text} className="flex items-center gap-2 md:gap-4">
                                 <Link
                                     href={item.link}
-                                    className="text-sm text-slate-500 hover:text-[#B844E8] transition-colors duration-200 font-light"
+                                    className="text-sm md:text-sm text-slate-500 hover:text-[#B844E8] active:text-[#B844E8] transition-colors duration-200 font-light py-2 px-1 md:px-0 touch-manipulation"
                                     style={{ fontFamily: "Inter, sans-serif" }}
                                 >
                                     {item.text}
                                 </Link>
-                                {idx < arr.length - 1 && <span className="text-slate-700 text-xs">•</span>}
+                                {idx < arr.length - 1 && <span className="text-slate-700 text-xs hidden md:inline">•</span>}
                             </div>
                         ))}
                     </div>

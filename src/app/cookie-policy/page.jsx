@@ -4,7 +4,7 @@ export default function CookiePolicy() {
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Cookie Policy
           </h1>
           <div className="flex items-center justify-center gap-2 mb-6">
@@ -16,9 +16,9 @@ export default function CookiePolicy() {
         </div>
 
         {/* Content */}
-        <div className="space-y-8 text-slate-300 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <div className="space-y-8 md:space-y-12 text-slate-300 leading-relaxed text-left" style={{ fontFamily: 'Inter, sans-serif' }}>
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               1. What Are Cookies?
             </h2>
             <p>
@@ -27,7 +27,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               2. How We Use Cookies
             </h2>
             <p className="mb-4">WTB DXB uses cookies for various purposes:</p>
@@ -43,11 +43,11 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3. Types of Cookies We Use
             </h2>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.1 Essential Cookies
             </h3>
             <p className="mb-4">
@@ -62,7 +62,7 @@ export default function CookiePolicy() {
               </ul>
             </div>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.2 Performance Cookies
             </h3>
             <p className="mb-4">
@@ -77,7 +77,7 @@ export default function CookiePolicy() {
               </ul>
             </div>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.3 Functional Cookies
             </h3>
             <p className="mb-4">
@@ -93,7 +93,7 @@ export default function CookiePolicy() {
               </ul>
             </div>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.4 Targeting/Advertising Cookies
             </h3>
             <p className="mb-4">
@@ -111,7 +111,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               4. Third-Party Cookies
             </h2>
             <p className="mb-4">
@@ -131,18 +131,18 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5. Cookie Duration
             </h2>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5.1 Session Cookies
             </h3>
             <p className="mb-4">
               These are temporary cookies that expire when you close your browser. They are used to maintain your session as you navigate through our website.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5.2 Persistent Cookies
             </h3>
             <p className="mb-4">
@@ -151,14 +151,14 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               6. How to Control Cookies
             </h2>
             <p className="mb-4">
               You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights by setting your preferences in your browser settings.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Browser Settings
             </h3>
             <p className="mb-4">Most browsers allow you to:</p>
@@ -170,7 +170,7 @@ export default function CookiePolicy() {
               <li>Delete all cookies when you close your browser</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Browser-Specific Instructions
             </h3>
             <div className="space-y-3">
@@ -194,7 +194,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               7. Do Not Track Signals
             </h2>
             <p>
@@ -203,7 +203,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               8. Mobile Devices
             </h2>
             <p className="mb-4">
@@ -216,7 +216,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               9. Changes to This Cookie Policy
             </h2>
             <p>
@@ -225,7 +225,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               10. More Information
             </h2>
             <p className="mb-4">
@@ -234,7 +234,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               11. Contact Us
             </h2>
             <p className="mb-4">

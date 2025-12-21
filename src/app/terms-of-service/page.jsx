@@ -4,7 +4,7 @@ export default function TermsOfService() {
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Terms of Service
           </h1>
           <div className="flex items-center justify-center gap-2 mb-6">
@@ -16,9 +16,9 @@ export default function TermsOfService() {
         </div>
 
         {/* Content */}
-        <div className="space-y-8 text-slate-300 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <div className="space-y-8 md:space-y-12 text-slate-300 leading-relaxed text-left" style={{ fontFamily: 'Inter, sans-serif' }}>
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               1. Acceptance of Terms
             </h2>
             <p>
@@ -27,7 +27,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               2. Eligibility Requirements
             </h2>
             <p className="mb-4">To rent a vehicle from WTB DXB, you must:</p>
@@ -42,24 +42,24 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3. Booking and Reservations
             </h2>
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.1 Reservation Process
             </h3>
             <p className="mb-4">
               All reservations must be made through our website, mobile app, or authorized channels. A valid payment method is required to confirm your booking.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.2 Confirmation
             </h3>
             <p className="mb-4">
               Your booking is confirmed only when you receive a confirmation email from us. We reserve the right to refuse any reservation at our discretion.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               3.3 Modification and Cancellation
             </h3>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -72,17 +72,17 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               4. Rental Terms
             </h2>
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               4.1 Vehicle Condition
             </h3>
             <p className="mb-4">
               All vehicles are provided in excellent condition. You must inspect the vehicle before accepting it and report any pre-existing damage immediately.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               4.2 Use of Vehicle
             </h3>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -93,7 +93,7 @@ export default function TermsOfService() {
               <li>Vehicles may not be taken outside UAE without prior written consent</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               4.3 Additional Drivers
             </h3>
             <p>
@@ -102,24 +102,24 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5. Payment Terms
             </h2>
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5.1 Rental Fees
             </h3>
             <p className="mb-4">
               Rental fees are quoted in UAE Dirhams (AED) and include basic insurance. VAT is additional as per UAE regulations.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5.2 Security Deposit
             </h3>
             <p className="mb-4">
               A refundable security deposit is required for all rentals. The amount varies based on vehicle class and will be authorized on your credit card. The deposit is released 7-14 business days after vehicle return, subject to no damages or violations.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               5.3 Additional Charges
             </h3>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -133,17 +133,17 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               6. Insurance and Liability
             </h2>
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               6.1 Basic Insurance
             </h3>
             <p className="mb-4">
               All rentals include basic third-party liability insurance as required by UAE law.
             </p>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               6.2 Damage Responsibility
             </h3>
             <p className="mb-4">
@@ -157,7 +157,7 @@ export default function TermsOfService() {
               <li>Tire and rim damage</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               6.3 Gold Members
             </h3>
             <p>
@@ -166,10 +166,10 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               7. Membership Programs
             </h2>
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               7.1 Membership Terms
             </h3>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -180,7 +180,7 @@ export default function TermsOfService() {
               <li>We reserve the right to modify membership benefits with 30 days notice</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-white mt-6 mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-white mt-6 mb-3 md:mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               7.2 Termination
             </h3>
             <p>
@@ -189,7 +189,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               8. Traffic Violations and Fines
             </h2>
             <p className="mb-4">
@@ -198,7 +198,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               9. Prohibited Uses
             </h2>
             <p className="mb-4">You may not use our vehicles for:</p>
@@ -214,7 +214,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               10. Limitation of Liability
             </h2>
             <p>
@@ -223,7 +223,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               11. Force Majeure
             </h2>
             <p>
@@ -232,7 +232,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               12. Governing Law
             </h2>
             <p>
@@ -241,7 +241,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               13. Changes to Terms
             </h2>
             <p>
@@ -250,7 +250,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
               14. Contact Information
             </h2>
             <p className="mb-4">
