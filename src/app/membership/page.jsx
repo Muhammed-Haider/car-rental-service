@@ -310,7 +310,7 @@ export default function MembershipPage() {
               <li>The company can terminate the agreement for violations, non-payment, or failure to meet eligibility requirements.</li>
               <li>Members must provide at least one month's written notice to terminate or not renew their membership.</li>
               <li>The agreement is governed by the laws of Dubai and the U.A.E.</li>
-              <li>The Agreements under offers (POF Members, Esaad, Fazaa), Adding an additional driver will incur charges of AED 250 + VAT per day for Luxury & Premium cars and AED 350 + VAT per day for Sports & Performance cars.</li>
+              <li>The Agreements under offers (WTB DXB Members, Esaad, Fazaa), Adding an additional driver will incur charges of AED 250 + VAT per day for Luxury & Premium cars and AED 350 + VAT per day for Sports & Performance cars.</li>
             </ul>
           </div>
         </div>

@@ -12,16 +12,17 @@ export default function CarListing() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
   const paginationRef = useRef(null);
   const { highlight } = useHighlight();
   
   const carsPerPage = 6;
   const totalPages = Math.ceil(cars.length / carsPerPage);
   
-  // Get current page cars
+  // Get current page cars or all cars
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
-  const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar);
+  const currentCars = showAll ? cars : cars.slice(indexOfFirstCar, indexOfLastCar);
 
   const openModal = (car) => {
     setSelectedCar(car);
@@ -265,6 +266,7 @@ export default function CarListing() {
         </div>
         
         {/* Pagination */}
+        {!showAll && (
         <div ref={paginationRef} className="flex justify-center items-center mt-12 space-x-2">
           {/* Previous Button */}
           <button
@@ -329,6 +331,19 @@ export default function CarListing() {
             </svg>
           </button>
         </div>
+        )}
+
+        {/* View All Cars Button */}
+        {!showAll && (
+          <div className="flex justify-center mt-12 md:mt-16">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-base md:text-lg rounded-full hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+            >
+              View All Cars
+            </button>
+          </div>
+        )}
       </div>
       <RentalModal car={selectedCar} show={isModalOpen} onClose={closeModal} />
     </section>
