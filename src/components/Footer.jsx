@@ -168,15 +168,19 @@ export default function Footer() {
                         © 2025 <span className="text-slate-300 font-semibold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">WTB DXB</span>. Handcrafted with passion in Dubai, UAE.
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-4">
-                        {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Sitemap'].map((item, idx, arr) => (
-                            <div key={item} className="flex items-center gap-4">
-                                <a
-                                    href="#"
+                        {[
+                            { text: 'Privacy Policy', link: '/privacy-policy' },
+                            { text: 'Terms of Service', link: '/terms-of-service' },
+                            { text: 'Cookie Policy', link: '/cookie-policy' }
+                        ].map((item, idx, arr) => (
+                            <div key={item.text} className="flex items-center gap-4">
+                                <Link
+                                    href={item.link}
                                     className="text-sm text-slate-500 hover:text-[#B844E8] transition-colors duration-200 font-light"
                                     style={{ fontFamily: "Inter, sans-serif" }}
                                 >
-                                    {item}
-                                </a>
+                                    {item.text}
+                                </Link>
                                 {idx < arr.length - 1 && <span className="text-slate-700 text-xs">•</span>}
                             </div>
                         ))}
