@@ -154,12 +154,12 @@ export default function HeroSearchBar() {
             placeholder="Search luxury cars, models, or brands..."
             className={`
               h-10 sm:h-12 w-full rounded-full pl-10 sm:pl-12 pr-28 sm:pr-36 
-              text-xs sm:text-sm text-[#1A1A1A]
-              placeholder:text-white/60 shadow-lg ring-1 ring-white/20 backdrop-blur-md
+              text-xs sm:text-sm font-bold
+              placeholder:text-[#9D5FFF] placeholder:font-bold shadow-lg ring-1 ring-white/20 backdrop-blur-md
               transition-all duration-400 ease-out focus:outline-none
               ${isFocused 
-                ? 'bg-white/95 text-[#1A1A1A] ring-2 ring-[#B844E8] shadow-2xl shadow-purple-500/25' 
-                : 'bg-white/90 text-[#1A1A1A] hover:bg-white hover:ring-white/30'
+                ? 'bg-white/95 text-[#6B4FE8] ring-2 ring-[#B844E8] shadow-2xl shadow-purple-500/25' 
+                : 'bg-white/90 text-[#9D5FFF] hover:bg-white hover:ring-white/30'
               }
             `}
           />

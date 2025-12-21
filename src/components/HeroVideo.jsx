@@ -17,7 +17,7 @@ export default function HeroVideo() {
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/30 to-[#000000]/50" />
         <div className="relative z-[50] mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="mb-4 text-4xl font-semibold text-white sm:text-5xl md:text-6xl" style={{ fontFamily: 'var(--font-heading)' }}>
+          <h1 className="mb-4 text-4xl font-black text-white sm:text-5xl md:text-6xl lg:text-7xl tracking-tight drop-shadow-2xl" style={{ fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em' }}>
             Drive Your Dream Car Today
           </h1>
           <HeroSearchBar />
