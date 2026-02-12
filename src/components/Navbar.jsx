@@ -4,14 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useHighlight } from "@/context/HighlightContext";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
-// Map car types to their corresponding car IDs for navigation
-const carTypeToIdMap = {
-  'Sedan': 1,        // Ferrari Roma
-  'SUV': 2,          // Lamborghini Urus
-  'Sports': 3,       // McLaren Artura
-  'Luxury': 4,       // Rolls-Royce Cullinan
-  'Convertible': 5   // McLaren 750S Spider
+// Map car types to their corresponding filter values
+const carTypeToFilterMap = {
+  'Sedan': 'Sedan',
+  'SUV': 'SUV',
+  'Sports': 'Sports',
+  'Luxury': 'Luxury',
+  'Convertible': 'Convertible'
 };
 
 function Navbar() {
@@ -42,8 +43,8 @@ function Navbar() {
   const MenuLinks = (
     <ul className="hidden md:flex items-center gap-2">
       <li>
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className={`${navLinkBase} ${pathname === '/' ? 'text-white' : ''} ${underline}`}
           onClick={handleHomeClick}
         >
@@ -75,19 +76,21 @@ function Navbar() {
             <div className="grid grid-cols-1 gap-8 p-8 sm:grid-cols-12">
               {/* Column 1: Browse by type (3 cols) */}
               <div className="sm:col-span-3">
-                <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                  Browse by Type
-                </h4>
+                <Link
+                  href="/cars"
+                  className="group mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white hover:text-[#B844E8] transition-colors w-fit border-b border-transparent hover:border-[#B844E8]"
+                  onClick={() => setCarsOpen(false)}
+                >
+                  Browse All Cars
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
                 <ul className="space-y-1">
                   {['Sedan', 'SUV', 'Sports', 'Convertible', 'Luxury'].map((type) => {
-                    const carId = carTypeToIdMap[type];
+                    const filterType = carTypeToFilterMap[type];
                     return (
                       <li key={type}>
                         <Link
-                          href={`/cars/${carId}`}
+                          href={`/cars?type=${filterType}`}
                           className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white hover:pl-5"
                           onClick={() => setCarsOpen(false)}
                         >
@@ -239,8 +242,8 @@ function Navbar() {
         </Link>
       </li>
       <li>
-        <Link 
-          href="/#clientreview" 
+        <Link
+          href="/#clientreview"
           className={`${navLinkBase} ${underline}`}
           onClick={(e) => {
             if (pathname === '/') {
@@ -283,20 +286,26 @@ function Navbar() {
             {MenuLinks}
 
             {/* Right: Contact + Auth (Desktop only) */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-3">
               <a
                 href="tel:+971554079239"
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
+                className="group flex items-center justify-center w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 relative overflow-hidden"
+                aria-label="Call Us"
               >
-                ☎ +971 55 407 9239
+                <FaPhoneAlt className="w-3.5 h-3.5 relative z-10" />
+                <span className="absolute left-full ml-1 w-0 overflow-hidden whitespace-nowrap text-xs font-medium text-white group-hover:w-auto group-hover:ml-2 group-hover:pr-2 transition-all duration-300">
+                  +971 55 407 9239
+                </span>
+                <span className="sr-only">Call Us</span>
               </a>
               <a
                 href="https://wa.me/971554079239"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white transition-all duration-300 shadow-lg shadow-green-500/10 hover:shadow-green-500/40"
+                aria-label="WhatsApp Us"
               >
-                💬 WhatsApp
+                <FaWhatsapp className="w-4 h-4" />
               </a>
               <div className="flex gap-2">
                 <Link
@@ -352,11 +361,11 @@ function Navbar() {
                       <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Browse by Type</h5>
                       <div className="grid grid-cols-2 gap-2">
                         {['Sedan', 'SUV', 'Sports', 'Luxury'].map((type) => {
-                          const carId = carTypeToIdMap[type];
+                          const filterType = carTypeToFilterMap[type];
                           return (
-                            <Link 
-                              key={type} 
-                              href={`/cars/${carId}`} 
+                            <Link
+                              key={type}
+                              href={`/cars?type=${filterType}`}
                               className="rounded-lg bg-white/5 px-2 py-1.5 text-center text-xs text-white/80 hover:bg-white/10 transition-colors"
                               onClick={() => {
                                 setCarsOpen(false);
@@ -426,7 +435,7 @@ function Navbar() {
                   <div className="overflow-hidden">
                     <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Rental Services</h5>
                     <div className="space-y-1">
-                      {[ 
+                      {[
                         {
                           label: 'Daily Basis Rental',
                           icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
@@ -442,12 +451,12 @@ function Navbar() {
                             triggerHighlight();
                           }
                         },
-                        { 
-                          label: 'Monthly Basis Rental', 
-                          icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z' 
+                        {
+                          label: 'Monthly Basis Rental',
+                          icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z'
                         },
-                        { 
-                          label: 'Daily Rental with Chauffeuring', 
+                        {
+                          label: 'Daily Rental with Chauffeuring',
                           icon: 'M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM16 14H8C6.89543 14 6 14.8954 6 16V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V16C18 14.8954 17.1046 14 16 14ZM20 8L22 10L20 12M12 11V14'
                         },
                       ].map((service, index) => (

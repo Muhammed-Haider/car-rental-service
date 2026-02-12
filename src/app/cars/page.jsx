@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp, FaPhoneAlt, FaHeart, FaRegHeart, FaChevronDown, FaSearch, FaTimes, FaSlidersH, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { cars } from '@/lib/cardata';
@@ -10,6 +10,7 @@ import { cars } from '@/lib/cardata';
 /* ── helpers ── */
 const brands = [...new Set(cars.map(c => c.name.split(' ')[0]))].sort();
 const engineTypes = [...new Set(cars.map(c => c.specs.engine.split(' ').pop()))].sort();
+const carTypes = [...new Set(cars.map(c => c.type))].sort();
 const maxPrice = Math.max(...cars.map(c => c.price));
 const minPrice = Math.min(...cars.map(c => c.price));
 
@@ -179,7 +180,7 @@ function Sidebar({ filters, setFilters, mobileOpen, setMobileOpen, onOpenCalenda
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold text-white tracking-wide">Filter by</h2>
                 <button
-                    onClick={() => setFilters({ brand: 'All', priceRange: maxPrice, seats: 'All', engine: 'All', search: '', startDate: null, endDate: null })}
+                    onClick={() => setFilters({ brand: 'All', type: 'All', priceRange: maxPrice, seats: 'All', engine: 'All', search: '', startDate: null, endDate: null })}
                     className="text-xs text-gray-500 hover:text-purple-400 transition-colors cursor-pointer"
                 >
                     Reset all
@@ -252,6 +253,25 @@ function Sidebar({ filters, setFilters, mobileOpen, setMobileOpen, onOpenCalenda
                     <option value="All">All Brands</option>
                     {brands.map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
+            </div>
+
+            {/* Car Type (New) */}
+            <div>
+                <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-[0.15em] mb-3">Car Type</p>
+                <div className="flex flex-wrap gap-2">
+                    {['All', ...carTypes].map(t => (
+                        <button
+                            key={t}
+                            onClick={() => setFilters(f => ({ ...f, type: t }))}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${filters.type === t
+                                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20'
+                                : 'bg-[#1A1A1A] text-gray-400 border border-white/5 hover:border-purple-500/30'
+                                }`}
+                        >
+                            {t}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Seats */}
@@ -483,8 +503,13 @@ function CarCard({ car, index, days }) {
 
 /* ── Main Page ── */
 export default function AllCarsPage() {
+    const searchParams = useSearchParams();
+    const router = useRouter(); // Use main router
+
+    // Initialize filters, potentially from URL
     const [filters, setFilters] = useState({
         brand: 'All',
+        type: 'All', // New Type Filter
         priceRange: maxPrice,
         seats: 'All',
         engine: 'All',
@@ -492,6 +517,15 @@ export default function AllCarsPage() {
         startDate: null,
         endDate: null
     });
+
+    // Effect: Handle URL Search Params for "type"
+    useEffect(() => {
+        const typeParam = searchParams.get('type');
+        if (typeParam) {
+            setFilters(prev => ({ ...prev, type: typeParam }));
+        }
+    }, [searchParams]);
+
     const [sortBy, setSortBy] = useState('default');
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -499,6 +533,7 @@ export default function AllCarsPage() {
     const filtered = useMemo(() => {
         let result = cars.filter(car => {
             if (filters.brand !== 'All' && !car.name.startsWith(filters.brand)) return false;
+            if (filters.type !== 'All' && car.type !== filters.type) return false;
             if (car.price > filters.priceRange) return false;
             if (filters.seats !== 'All' && car.specs.seats !== +filters.seats) return false;
             if (filters.engine !== 'All' && !car.specs.engine.includes(filters.engine)) return false;
@@ -612,7 +647,7 @@ export default function AllCarsPage() {
                                     <h2 className="text-lg font-bold mb-1">No vehicles found</h2>
                                     <p className="text-sm text-gray-500 mb-4">Try adjusting your filters</p>
                                     <button
-                                        onClick={() => setFilters({ brand: 'All', priceRange: maxPrice, seats: 'All', engine: 'All', search: '', startDate: null, endDate: null })}
+                                        onClick={() => setFilters({ brand: 'All', type: 'All', priceRange: maxPrice, seats: 'All', engine: 'All', search: '', startDate: null, endDate: null })}
                                         className="px-5 py-2 bg-purple-600 text-white text-sm rounded-xl hover:bg-purple-700 transition-colors cursor-pointer"
                                     >
                                         Reset Filters
