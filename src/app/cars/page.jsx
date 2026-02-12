@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -502,7 +502,7 @@ function CarCard({ car, index, days }) {
 }
 
 /* ── Main Page ── */
-export default function AllCarsPage() {
+function AllCarsContent() {
     const searchParams = useSearchParams();
     const router = useRouter(); // Use main router
 
@@ -659,5 +659,13 @@ export default function AllCarsPage() {
                 </div>
             </main>
         </div>
+    );
+}
+
+export default function AllCarsPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A] text-white flex items-center justify-center">Loading...</div>}>
+            <AllCarsContent />
+        </Suspense>
     );
 }
