@@ -518,11 +518,29 @@ function AllCarsContent() {
         endDate: null
     });
 
-    // Effect: Handle URL Search Params for "type"
+    // Effect: Handle URL Search Params for "type" and "period"
     useEffect(() => {
         const typeParam = searchParams.get('type');
+        const periodParam = searchParams.get('period');
+
         if (typeParam) {
             setFilters(prev => ({ ...prev, type: typeParam }));
+        }
+
+        if (periodParam) {
+            const today = new Date();
+            const endDate = new Date();
+
+            if (periodParam === 'weekly') {
+                endDate.setDate(today.getDate() + 7);
+                setFilters(prev => ({ ...prev, startDate: today, endDate: endDate }));
+            } else if (periodParam === 'monthly') {
+                endDate.setDate(today.getDate() + 30);
+                setFilters(prev => ({ ...prev, startDate: today, endDate: endDate }));
+            } else if (periodParam === 'daily') {
+                endDate.setDate(today.getDate() + 1);
+                setFilters(prev => ({ ...prev, startDate: today, endDate: endDate }));
+            }
         }
     }, [searchParams]);
 
