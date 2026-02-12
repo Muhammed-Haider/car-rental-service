@@ -332,7 +332,7 @@ function Sidebar({ filters, setFilters, mobileOpen, setMobileOpen, onOpenCalenda
 }
 
 /* ── Car Card with Video Preview ── */
-function CarCard({ car, index }) {
+function CarCard({ car, index, days }) {
     const [fav, setFav] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const router = useRouter();
@@ -434,8 +434,17 @@ function CarCard({ car, index }) {
 
                 <div className="flex items-end justify-between pt-3 border-t border-white/5">
                     <div>
-                        <span className="text-xl font-bold text-white">{car.price.toLocaleString()}</span>
-                        <span className="text-[10px] text-gray-500 ml-1">AED/day</span>
+                        {days > 0 ? (
+                            <div className="flex flex-col">
+                                <span className="text-xl font-bold text-white">{(car.price * days).toLocaleString()} <span className="text-sm font-normal text-gray-400">AED</span></span>
+                                <span className="text-[10px] text-gray-500">Total for {days} days</span>
+                            </div>
+                        ) : (
+                            <div>
+                                <span className="text-xl font-bold text-white">{car.price.toLocaleString()}</span>
+                                <span className="text-[10px] text-gray-500 ml-1">AED/day</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -504,6 +513,14 @@ export default function AllCarsPage() {
 
         return result;
     }, [filters, sortBy]);
+
+    // Calculate days
+    const days = useMemo(() => {
+        if (!filters.startDate || !filters.endDate) return 0;
+        const diffTime = Math.abs(filters.endDate - filters.startDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays;
+    }, [filters.startDate, filters.endDate]);
 
     return (
         <div className="flex min-h-screen bg-[#0A0A0A] text-white pt-20">
@@ -582,7 +599,7 @@ export default function AllCarsPage() {
                             {/* Grid */}
                             <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 pb-20">
                                 {filtered.map((car, i) => (
-                                    <CarCard key={car.id} car={car} index={i} />
+                                    <CarCard key={car.id} car={car} index={i} days={days} />
                                 ))}
                             </div>
 
