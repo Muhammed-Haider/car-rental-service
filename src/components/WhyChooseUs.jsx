@@ -61,10 +61,10 @@ export default function WhyChooseUs() {
         <div className="mt-8 md:mt-12 relative z-10">
           <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-0">
 
-            {/* Left Column - Right Aligned Text */}
-            <div className="flex-1 flex flex-col gap-10 items-end text-right md:pr-12 md:list-none border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0">
-              <div className="group flex items-center justify-end gap-5 w-full md:max-w-md transition-all duration-300 hover:-translate-x-2">
-                <div className="flex flex-col">
+            {/* Left Column - Right Aligned Text on Desktop, Centered on Mobile */}
+            <div className="flex-1 flex flex-col gap-10 items-center text-center md:items-end md:text-right md:pr-12 md:list-none md:border-r border-white/10 pb-8 md:pb-0">
+              <div className="group flex flex-col-reverse md:flex-row items-center justify-center md:justify-end gap-5 w-full md:max-w-md transition-all duration-300 hover:-translate-y-2 md:hover:-translate-x-2 md:hover:translate-y-0">
+                <div className="flex flex-col items-center md:items-end">
                   <h4 className="font-bold text-xl text-white mb-1 group-hover:text-[#B844E8] transition-colors">Premium Fleet</h4>
                   <p className="text-sm text-white/60 leading-relaxed font-light">Curated top-tier vehicles for the discerning driver.</p>
                 </div>
@@ -77,8 +77,8 @@ export default function WhyChooseUs() {
                 </div>
               </div>
 
-              <div className="group flex items-center justify-end gap-5 w-full md:max-w-md transition-all duration-300 hover:-translate-x-2">
-                <div className="flex flex-col">
+              <div className="group flex flex-col-reverse md:flex-row items-center justify-center md:justify-end gap-5 w-full md:max-w-md transition-all duration-300 hover:-translate-y-2 md:hover:-translate-x-2 md:hover:translate-y-0">
+                <div className="flex flex-col items-center md:items-end">
                   <h4 className="font-bold text-xl text-white mb-1 group-hover:text-[#B844E8] transition-colors">Instant Delivery</h4>
                   <p className="text-sm text-white/60 leading-relaxed font-light">From booking to driving in record time.</p>
                 </div>
@@ -91,29 +91,29 @@ export default function WhyChooseUs() {
               </div>
             </div>
 
-            {/* Right Column - Left Aligned Text */}
-            <div className="flex-1 flex flex-col gap-10 items-start text-left md:pl-12 pt-0 md:pt-0">
-              <div className="group flex flex-row-reverse md:flex-row items-center justify-start gap-5 w-full md:max-w-md transition-all duration-300 hover:translate-x-2">
+            {/* Right Column - Left Aligned Text on Desktop, Centered on Mobile */}
+            <div className="flex-1 flex flex-col gap-10 items-center text-center md:items-start md:text-left md:pl-12 pt-0 md:pt-0">
+              <div className="group flex flex-col md:flex-row items-center justify-center md:justify-start gap-5 w-full md:max-w-md transition-all duration-300 hover:-translate-y-2 md:hover:translate-x-2 md:hover:translate-y-0">
                 <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center shadow-lg group-hover:shadow-[0_0_20px_rgba(184,68,232,0.15)] group-hover:border-[#B844E8]/30 transition-all duration-300">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-white/80 group-hover:text-[#B844E8] transition-colors">
                     <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     <circle cx="7" cy="7" r="1.5" fill="currentColor" />
                   </svg>
                 </div>
-                <div className="flex flex-col items-end md:items-start text-right md:text-left">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <h4 className="font-bold text-xl text-white mb-1 group-hover:text-[#B844E8] transition-colors">Flexible Terms</h4>
                   <p className="text-sm text-white/60 leading-relaxed font-light">Daily, weekly, or monthly plans tailored to you.</p>
                 </div>
               </div>
 
-              <div className="group flex flex-row-reverse md:flex-row items-center justify-start gap-5 w-full md:max-w-md transition-all duration-300 hover:translate-x-2">
+              <div className="group flex flex-col md:flex-row items-center justify-center md:justify-start gap-5 w-full md:max-w-md transition-all duration-300 hover:-translate-y-2 md:hover:translate-x-2 md:hover:translate-y-0">
                 <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center shadow-lg group-hover:shadow-[0_0_20px_rgba(184,68,232,0.15)] group-hover:border-[#B844E8]/30 transition-all duration-300">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-white/80 group-hover:text-[#B844E8] transition-colors">
                     <path d="M21 13l-6.5-6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     <circle cx="9" cy="15" r="3" stroke="currentColor" strokeWidth="1.5" />
                   </svg>
                 </div>
-                <div className="flex flex-col items-end md:items-start text-right md:text-left">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <h4 className="font-bold text-xl text-white mb-1 group-hover:text-[#B844E8] transition-colors">Pristine Condition</h4>
                   <p className="text-sm text-white/60 leading-relaxed font-light">Every vehicle is detailed to perfection.</p>
                 </div>
