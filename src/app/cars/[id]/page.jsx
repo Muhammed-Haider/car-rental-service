@@ -1,6 +1,7 @@
 "use client";
 
 import { cars } from '../../../lib/cardata';
+import Link from 'next/link';
 import { use, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
