@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useHighlight } from "@/context/HighlightContext";
+import { FaPhone, FaWhatsapp } from "react-icons/fa6";
+
 
 // Map car types to their corresponding car IDs for navigation
 const carTypeToIdMap = {
@@ -286,17 +288,17 @@ function Navbar() {
             <div className="hidden md:flex items-center gap-2">
               <a
                 href="tel:+971554079239"
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
+                className="flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
               >
-                ☎ +971 55 407 9239
+               <FaPhone size={12} /> +971 55 407 9239
               </a>
               <a
                 href="https://wa.me/971554079239"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
+                className="flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
               >
-                💬 WhatsApp
+                <FaWhatsapp size={14} /> WhatsApp
               </a>
               <div className="flex gap-2">
                 <Link
