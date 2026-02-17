@@ -37,10 +37,10 @@ export default function Footer() {
 
             {/* Main Footer Content */}
             <div className="relative mx-auto w-full max-w-7xl px-6 pt-16 md:pt-20 pb-8 md:pb-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-12 md:mb-16 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-y-12 gap-x-12 mb-12 md:mb-16 items-start">
 
                     {/* Column 1 - Brand & Contact */}
-                    <div className="space-y-6 text-center md:text-left flex flex-col items-center md:items-start text-balance">
+                    <div className="space-y-3 md:space-y-6 text-center md:text-left flex flex-col items-center md:items-start text-balance">
                         <div className="space-y-0">
                             <h3 className="text-3xl md:text-4xl font-bold tracking-tighter pb-1" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 <span className="bg-gradient-to-r from-white via-slate-100 to-slate-200 bg-clip-text text-transparent uppercase">WTB</span>
@@ -49,11 +49,11 @@ export default function Footer() {
                             <HeaderUnderline />
                         </div>
 
-                        <p className="text-[15px] leading-relaxed text-slate-400 font-light max-w-md mx-auto md:mx-0" style={{ fontFamily: "Inter, sans-serif", letterSpacing: '0.01em' }}>
+                        <p className="text-[14px] md:text-[15px] leading-relaxed text-slate-400 font-light max-w-[280px] sm:max-w-md mx-auto md:mx-0" style={{ fontFamily: "Inter, sans-serif", letterSpacing: '0.01em' }}>
                             Experience unparalleled luxury with Dubai's premier exotic car rental service. From Lamborghinis to Ferraris, we deliver excellence.
                         </p>
 
-                        <div className="pt-2 flex flex-col items-center md:items-start w-full">
+                        <div className="pt-1 md:pt-2 flex flex-col items-center md:items-start w-full">
                             <div className="space-y-4 w-full max-w-xs">
                                 <a href="tel:+971554079239" className="group flex items-center gap-4 text-slate-400 hover:text-white transition-all duration-300">
                                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-[#B844E8]/50 transition-all duration-300">
@@ -83,7 +83,7 @@ export default function Footer() {
                     </div>
 
                     {/* Column 2 - Explore */}
-                    <div className="space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
+                    <div className="space-y-3 md:space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
                         <div className="space-y-0">
                             <h4 className="text-sm font-bold text-white uppercase tracking-[0.3em] pb-1" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Explore
