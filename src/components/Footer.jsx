@@ -55,25 +55,25 @@ export default function Footer() {
 
                         <div className="pt-1 md:pt-2 flex flex-col items-center md:items-start w-full">
                             <div className="space-y-4 w-full max-w-xs">
-                                <a href="tel:+971554079239" className="group flex items-center gap-4 text-slate-400 hover:text-white transition-all duration-300">
+                                <a href="tel:+971554079239" className="group flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 text-slate-400 hover:text-white transition-all duration-300">
                                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-[#B844E8]/50 transition-all duration-300">
                                         <svg className="h-4 w-4 text-[#B844E8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                         </svg>
                                     </div>
-                                    <div className="text-left">
+                                    <div className="text-center md:text-left">
                                         <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">24/7 Helpline</p>
                                         <p className="text-sm font-semibold">+971 55 407 9239</p>
                                     </div>
                                 </a>
 
-                                <a href="mailto:info@wtbdxb.ae" className="group flex items-center gap-4 text-slate-400 hover:text-white transition-all duration-300">
+                                <a href="mailto:info@wtbdxb.ae" className="group flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 text-slate-400 hover:text-white transition-all duration-300">
                                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-[#B844E8]/50 transition-all duration-300">
                                         <svg className="h-4 w-4 text-[#B844E8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
                                     </div>
-                                    <div className="text-left">
+                                    <div className="text-center md:text-left">
                                         <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Inquiries</p>
                                         <p className="text-sm font-semibold">info@wtbdxb.ae</p>
                                     </div>
