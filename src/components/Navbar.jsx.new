@@ -131,7 +131,7 @@ export default function Navbar() {
                 ☎ +971 55 407 9239
               </a>
               <a
-                href="https://wa.me/971554079239"
+                href="https://wa.me/971554079239?text=Welcome%20to%20WTB%20DXB.%0A%0AThank%20you%20for%20contacting%20us.%20Please%20share%20your%20preferred%20car%20and%20rental%20dates%20so%20we%20can%20assist%20you%20right%20away.%0A%0AOur%20team%20is%20ready%20to%20serve%20you."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
@@ -248,7 +248,7 @@ export default function Navbar() {
                   <span>☎</span> Call
                 </a>
                 <a 
-                  href="https://wa.me/971554079239" 
+                  href="https://wa.me/971554079239?text=Welcome%20to%20WTB%20DXB.%0A%0AThank%20you%20for%20contacting%20us.%20Please%20share%20your%20preferred%20car%20and%20rental%20dates%20so%20we%20can%20assist%20you%20right%20away.%0A%0AOur%20team%20is%20ready%20to%20serve%20you." 
                   className="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-2 text-xs font-medium text-white hover:bg-white/10 transition-colors"
                 >
                   <span>💬</span> WhatsApp

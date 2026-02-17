@@ -1,21 +1,182 @@
 "use client";
 
 import { cars } from '../../../lib/cardata';
+import Link from 'next/link';
 import { use, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { FaPhone, FaWhatsapp, FaCalendarAlt, FaGlobe } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaPhone, FaWhatsapp, FaCalendarAlt, FaGlobe, FaShareAlt, FaHeart, FaRegHeart, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdCheckCircle } from 'react-icons/md';
+
+/* ── Calendar Components ── */
+const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+function Calendar({ monthOffset, currentMonth, year, selectedStart, selectedEnd, onDateClick, hoveringDate, setHoveringDate }) {
+  const monthIndex = (currentMonth + monthOffset) % 12;
+  const yearOffset = Math.floor((currentMonth + monthOffset) / 12);
+  const displayYear = year + yearOffset;
+
+  const firstDay = new Date(displayYear, monthIndex, 1).getDay();
+  const daysInMonth = new Date(displayYear, monthIndex + 1, 0).getDate();
+
+  const dates = [];
+  for (let i = 0; i < firstDay; i++) dates.push(null);
+  for (let i = 1; i <= daysInMonth; i++) dates.push(new Date(displayYear, monthIndex, i));
+
+  return (
+    <div className="w-full">
+      <div className="text-center font-bold text-white mb-4">
+        {months[monthIndex]} {displayYear}
+      </div>
+      <div className="grid grid-cols-7 gap-1 mb-2">
+        {daysOfWeek.map(day => (
+          <div key={day} className="text-center text-xs text-gray-500 font-medium">{day}</div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-1">
+        {dates.map((date, i) => {
+          if (!date) return <div key={i} className="h-8" />;
+
+          const isSelectedStart = selectedStart && date.toDateString() === selectedStart.toDateString();
+          const isSelectedEnd = selectedEnd && date.toDateString() === selectedEnd.toDateString();
+          const isInRange = selectedStart && selectedEnd && date > selectedStart && date < selectedEnd;
+          const isHoverRange = selectedStart && !selectedEnd && hoveringDate && date > selectedStart && date <= hoveringDate;
+
+          return (
+            <button
+              key={i}
+              onClick={() => onDateClick(date)}
+              onMouseEnter={() => setHoveringDate(date)}
+              className={`h-8 w-8 rounded-full text-xs flex items-center justify-center transition-all relative z-10
+                ${isSelectedStart || isSelectedEnd ? 'bg-purple-600 text-white font-bold shadow-lg shadow-purple-500/30' : 'text-gray-300 hover:bg-white/10'}
+                ${(isInRange || isHoverRange) && !(isSelectedStart || isSelectedEnd) ? 'bg-purple-500/20 text-purple-200 rounded-none' : ''}
+                ${isSelectedStart && (isInRange || isHoverRange) ? 'rounded-r-none' : ''}
+                ${isSelectedEnd && isInRange ? 'rounded-l-none' : ''}
+              `}
+            >
+              {date.getDate()}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function DatePickerModal({ isOpen, onClose, filters, setFilters }) {
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [hoveringDate, setHoveringDate] = useState(null);
+
+  const handleDateClick = (date) => {
+    if (!filters.start || (filters.start && filters.end)) {
+      setFilters(f => ({ ...f, start: date, end: null }));
+    } else {
+      if (date < filters.start) {
+        setFilters(f => ({ ...f, start: date, end: null }));
+      } else {
+        setFilters(f => ({ ...f, end: date }));
+      }
+    }
+  };
+
+  const quickPick = (days) => {
+    const start = new Date();
+    const end = new Date();
+    end.setDate(start.getDate() + days);
+    setFilters(f => ({ ...f, start: start, end: end }));
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="fixed inset-0 m-auto w-[90%] md:w-fit h-fit bg-[#141414] border border-white/10 rounded-3xl p-6 shadow-2xl z-50 flex flex-col gap-6 max-h-[90vh] overflow-y-auto"
+          >
+            {/* Quick Picks */}
+            <div className="flex gap-2 pb-4 border-b border-white/5 overflow-x-auto">
+              <button onClick={() => quickPick(0)} className="px-3 py-1.5 bg-white/5 hover:bg-purple-600/20 text-xs rounded-full text-gray-300 hover:text-purple-300 transition-colors whitespace-nowrap">Today</button>
+              <button onClick={() => quickPick(2)} className="px-3 py-1.5 bg-white/5 hover:bg-purple-600/20 text-xs rounded-full text-gray-300 hover:text-purple-300 transition-colors whitespace-nowrap">This Weekend</button>
+              <button onClick={() => quickPick(7)} className="px-3 py-1.5 bg-white/5 hover:bg-purple-600/20 text-xs rounded-full text-gray-300 hover:text-purple-300 transition-colors whitespace-nowrap">Next Week</button>
+              <button onClick={() => quickPick(30)} className="px-3 py-1.5 bg-white/5 hover:bg-purple-600/20 text-xs rounded-full text-gray-300 hover:text-purple-300 transition-colors whitespace-nowrap">Next Month</button>
+            </div>
+
+            {/* Calendars */}
+            <div className="flex flex-col md:flex-row gap-8 relative">
+              <button
+                onClick={() => setCurrentMonth(prev => prev - 1)}
+                className="absolute left-0 top-0 p-2 hover:text-purple-400 z-10"
+              >
+                <FaChevronLeft />
+              </button>
+              <button
+                onClick={() => setCurrentMonth(prev => prev + 1)}
+                className="absolute right-0 top-0 p-2 hover:text-purple-400 z-10"
+              >
+                <FaChevronRight />
+              </button>
+
+              <Calendar
+                monthOffset={0} currentMonth={currentMonth} year={year}
+                selectedStart={filters.start} selectedEnd={filters.end}
+                onDateClick={handleDateClick} hoveringDate={hoveringDate} setHoveringDate={setHoveringDate}
+              />
+              <div className="hidden md:block w-px bg-white/5" />
+              <div className="hidden md:block">
+                <Calendar
+                  monthOffset={1} currentMonth={currentMonth} year={year}
+                  selectedStart={filters.start} selectedEnd={filters.end}
+                  onDateClick={handleDateClick} hoveringDate={hoveringDate} setHoveringDate={setHoveringDate}
+                />
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="flex justify-between items-center pt-4 border-t border-white/5">
+              <div className="text-xs text-gray-400">
+                {filters.start ? filters.start.toLocaleDateString() : 'Select start'}
+                {' - '}
+                {filters.end ? filters.end.toLocaleDateString() : 'Select end'}
+              </div>
+              <div className="flex gap-3">
+                <button onClick={onClose} className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Cancel</button>
+                <button
+                  onClick={onClose}
+                  disabled={!filters.start || !filters.end}
+                  className="px-6 py-2 bg-purple-600 text-white text-sm font-bold rounded-xl hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
 
 export default function CarDetailPage({ params }) {
   const resolvedParams = use(params);
   const car = cars.find((c) => c.id.toString() === resolvedParams.id);
   const [activeTab, setActiveTab] = useState('specifications');
-  const [selectedDates, setSelectedDates] = useState({ start: '', end: '' });
+  const [selectedDates, setSelectedDates] = useState({ start: null, end: null });
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [openQuestion, setOpenQuestion] = useState(null);
   const [showAllReviews, setShowAllReviews] = useState(false);
-  
+
   // Sample reviews data - in a real app, this would come from an API
   const allReviews = [
     {
@@ -38,8 +199,8 @@ export default function CarDetailPage({ params }) {
     ...Array(22).fill().map((_, i) => ({
       id: i + 3,
       name: ['Sarah M.', 'Michael T.', 'Emma R.', 'David K.', 'Olivia P.', 'James W.', 'Sophia L.', 'William B.', 'Ava M.', 'Noah J.',
-             'Isabella C.', 'Liam P.', 'Mia H.', 'Benjamin F.', 'Charlotte R.', 'Elijah M.', 'Amelia S.', 'Lucas W.', 'Harper L.', 'Mason B.',
-             'Evelyn R.', 'Ethan C.'][i % 22],
+        'Isabella C.', 'Liam P.', 'Mia H.', 'Benjamin F.', 'Charlotte R.', 'Elijah M.', 'Amelia S.', 'Lucas W.', 'Harper L.', 'Mason B.',
+        'Evelyn R.', 'Ethan C.'][i % 22],
       rating: [5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5][i % 22],
       date: `${i + 2} weeks ago`,
       text: `Great experience with the ${car.name}. ${[
@@ -69,7 +230,7 @@ export default function CarDetailPage({ params }) {
       avatar: ['SM', 'MT', 'ER', 'DK', 'OP', 'JW', 'SL', 'WB', 'AM', 'NJ', 'IC', 'LP', 'MH', 'BF', 'CR', 'EM', 'AS', 'LW', 'HL', 'MB', 'ER', 'EC'][i % 22]
     }))
   ];
-  
+
   const toggleQuestion = (index) => {
     setOpenQuestion(openQuestion === index ? null : index);
   };
@@ -88,6 +249,12 @@ export default function CarDetailPage({ params }) {
 
   return (
     <div className="bg-black text-white min-h-screen">
+      <DatePickerModal
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
+        filters={selectedDates}
+        setFilters={setSelectedDates}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumbs */}
         <div className="mb-6">
@@ -100,11 +267,32 @@ export default function CarDetailPage({ params }) {
           </nav>
         </div>
 
-        {/* Main Title */}
-        <div className="mb-8">
+        {/* Main Title and Actions */}
+        <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-2">
             Rent <span className="bg-gradient-to-r from-[#8B3FBF] to-[#B844E8] bg-clip-text text-transparent">{car.name}</span> in Dubai
           </h1>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+              }}
+              className="px-4 py-2 rounded-xl bg-[#1A1A1A] border border-white/10 text-white hover:border-purple-500/50 hover:text-purple-400 transition-all flex items-center gap-2 text-sm font-medium"
+            >
+              <FaShareAlt /> Share
+            </button>
+            <button
+              onClick={() => setIsFavorite(!isFavorite)}
+              className={`px-4 py-2 rounded-xl border transition-all flex items-center gap-2 text-sm font-medium ${isFavorite
+                ? 'bg-purple-600/10 border-purple-500 text-purple-400'
+                : 'bg-[#1A1A1A] border-white/10 text-white hover:border-purple-500/50'
+                }`}
+            >
+              {isFavorite ? <FaHeart className="text-purple-400" /> : <FaRegHeart />}
+              {isFavorite ? 'Saved' : 'Save'}
+            </button>
+          </div>
         </div>
 
         {/* Two Column Layout - Extra wide image, compact form */}
@@ -123,17 +311,6 @@ export default function CarDetailPage({ params }) {
                   priority
                 />
               </div>
-              {/* Gallery Navigation Arrows */}
-              <button className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
 
             {/* Car Specifications with Compare Button */}
@@ -154,8 +331,8 @@ export default function CarDetailPage({ params }) {
                   </div>
                 </div>
               </div>
-              <Link 
-                href="/compare" 
+              <Link
+                href="/compare"
                 className="absolute -top-3 right-4 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] hover:opacity-90 text-white text-sm font-medium px-4 py-1.5 rounded-full shadow-lg hover:shadow-[#9D5FFF]/30 transition-all"
               >
                 Compare Cars
@@ -168,31 +345,28 @@ export default function CarDetailPage({ params }) {
               <div className="flex border-b border-gray-800/50">
                 <button
                   onClick={() => setActiveTab('specifications')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                    activeTab === 'specifications'
-                      ? 'text-[#00d4aa] border-b-2 border-[#00d4aa]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
+                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${activeTab === 'specifications'
+                    ? 'text-[#00d4aa] border-b-2 border-[#00d4aa]'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
                 >
                   Specifications
                 </button>
                 <button
                   onClick={() => setActiveTab('conditions')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                    activeTab === 'conditions'
-                      ? 'text-[#00d4aa] border-b-2 border-[#00d4aa]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
+                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${activeTab === 'conditions'
+                    ? 'text-[#00d4aa] border-b-2 border-[#00d4aa]'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
                 >
                   Rental Conditions
                 </button>
                 <button
                   onClick={() => setActiveTab('terms')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                    activeTab === 'terms'
-                      ? 'text-[#00d4aa] border-b-2 border-[#00d4aa]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
+                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${activeTab === 'terms'
+                    ? 'text-[#00d4aa] border-b-2 border-[#00d4aa]'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
                 >
                   Terms of Rental
                 </button>
@@ -279,25 +453,25 @@ export default function CarDetailPage({ params }) {
                 <div className="whitespace-pre-line text-gray-300">
                   Dubai is known for its over-the-top luxury experiences, and driving a {car.name} takes that to the next level. This Italian, eye-catching vehicle combines cutting-edge technology with the flair of a classic sports car to create an unmatched drive.
 
-Why rent {car.name} in Dubai?
-Renting a {car.name} takes you to a new level of luxury. Cruising along palm tree-lined boulevards or showing off the muscular curves of the vehicle at luxury hotels lets you soak up the ambiance of the dynamic city. The powerful torque and throaty engine will turn heads wherever you ride.
+                  Why rent {car.name} in Dubai?
+                  Renting a {car.name} takes you to a new level of luxury. Cruising along palm tree-lined boulevards or showing off the muscular curves of the vehicle at luxury hotels lets you soak up the ambiance of the dynamic city. The powerful torque and throaty engine will turn heads wherever you ride.
 
-Specifications of {car.name}
-- Engine: {car.specs.engine}
-- Horsepower: {car.specs.horsepower} HP
-- 0-100 km/h: {car.specs.acceleration}s
-- Seating: {car.specs.seats} Seats
-- Top Speed: 300+ km/h
+                  Specifications of {car.name}
+                  - Engine: {car.specs.engine}
+                  - Horsepower: {car.specs.horsepower} HP
+                  - 0-100 km/h: {car.specs.acceleration}s
+                  - Seating: {car.specs.seats} Seats
+                  - Top Speed: 300+ km/h
 
-Features of {car.name}
-- Premium leather interior with luxury finishes
-- Advanced infotainment system with touchscreen
-- Climate control and premium sound system
-- Advanced safety features
-- Sport-tuned suspension
+                  Features of {car.name}
+                  - Premium leather interior with luxury finishes
+                  - Advanced infotainment system with touchscreen
+                  - Climate control and premium sound system
+                  - Advanced safety features
+                  - Sport-tuned suspension
 
-Hire {car.name} With Trinity Rental in Dubai
-Trinity Rental provides the once-in-a-lifetime opportunity to experience the {car.name} in Dubai. With prices starting at {car.price.toLocaleString()} AED per day, you can make your luxury supercar dreams come true without buying one. Whether zipping along Jumeirah Beach or exploring the awe-inspiring desert, this model delivers an incredible experience.
+                  Hire {car.name} With Trinity Rental in Dubai
+                  Trinity Rental provides the once-in-a-lifetime opportunity to experience the {car.name} in Dubai. With prices starting at {car.price.toLocaleString()} AED per day, you can make your luxury supercar dreams come true without buying one. Whether zipping along Jumeirah Beach or exploring the awe-inspiring desert, this model delivers an incredible experience.
                 </div>
               </div>
             </div>
@@ -339,9 +513,8 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
                     >
                       <h4 className="text-lg font-semibold text-white pr-4">{item.question}</h4>
                       <svg
-                        className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
-                          openQuestion === index ? 'transform rotate-180' : ''
-                        }`}
+                        className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${openQuestion === index ? 'transform rotate-180' : ''
+                          }`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -355,14 +528,43 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
                       </svg>
                     </button>
                     <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        openQuestion === index ? 'max-h-40 pb-4' : 'max-h-0'
-                      }`}
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${openQuestion === index ? 'max-h-40 pb-4' : 'max-h-0'
+                        }`}
                     >
                       <p className="text-gray-400">{item.answer}</p>
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Related Cars Section */}
+            <div className="mt-8 bg-[#1A1A1A] rounded-2xl p-6 border border-gray-800/50">
+              <h3 className="text-xl font-bold text-white mb-6">You Might Also Like</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {cars
+                  .filter(c => c.id !== car.id && (c.specs.engine === car.specs.engine || Math.abs(c.price - car.price) < 500))
+                  .slice(0, 3)
+                  .map((relatedCar) => (
+                    <Link href={`/cars/${relatedCar.id}`} key={relatedCar.id} className="group bg-[#0A0A0A] rounded-xl border border-white/5 overflow-hidden hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 transition-all">
+                      <div className="relative h-32 w-full">
+                        <Image
+                          src={relatedCar.image}
+                          alt={relatedCar.name}
+                          layout="fill"
+                          objectFit="contain"
+                          className="group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-3">
+                        <h4 className="text-sm font-bold text-white truncate">{relatedCar.name}</h4>
+                        <div className="flex justify-between items-center mt-2">
+                          <span className="text-xs text-gray-400">{relatedCar.specs.horsepower} HP</span>
+                          <span className="text-sm font-bold text-purple-400">{relatedCar.price.toLocaleString()} <span className="text-[10px] text-gray-500">AED</span></span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
               </div>
             </div>
 
@@ -416,7 +618,7 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
                 ))}
 
                 {/* View All Reviews Button */}
-                <button 
+                <button
                   onClick={() => setShowAllReviews(true)}
                   className="w-full py-3 border border-[#6B4FE8] text-[#6B4FE8] font-medium rounded-lg hover:bg-[#6B4FE8] hover:bg-opacity-10 transition-colors"
                 >
@@ -431,7 +633,7 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
                 <div className="bg-[#1A1A1A] rounded-2xl p-6 w-full max-w-3xl max-h-[90vh] overflow-y-auto">
                   <div className="flex justify-between items-center mb-6 sticky top-0 bg-[#1A1A1A] pt-4 pb-2">
                     <h3 className="text-2xl font-bold text-white">All Reviews</h3>
-                    <button 
+                    <button
                       onClick={() => setShowAllReviews(false)}
                       className="text-gray-400 hover:text-white"
                     >
@@ -440,7 +642,7 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
                       </svg>
                     </button>
                   </div>
-                  
+
                   <div className="space-y-6">
                     {allReviews.map((review) => (
                       <div key={review.id} className="border-b border-gray-800/50 pb-6">
@@ -501,24 +703,19 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
             {/* Rental Dates */}
             <div className="bg-[#1a1a1a] rounded-xl border border-gray-800 p-3">
               <label className="block text-xs font-medium text-gray-400 mb-1">Rental Dates</label>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="relative">
-                  <input
-                    type="date"
-                    value={selectedDates.start}
-                    onChange={(e) => setSelectedDates({...selectedDates, start: e.target.value})}
-                    className="w-full bg-[#2a2a2a] text-white text-xs px-2 py-1.5 pr-6 rounded-lg outline-none focus:ring-1 focus:ring-[#00d4aa]"
-                  />
-                  <FaCalendarAlt className="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 text-[10px]" />
-                </div>
-                <div className="relative">
-                  <input
-                    type="date"
-                    value={selectedDates.end}
-                    onChange={(e) => setSelectedDates({...selectedDates, end: e.target.value})}
-                    className="w-full bg-[#2a2a2a] text-white text-xs px-2 py-1.5 pr-6 rounded-lg outline-none focus:ring-1 focus:ring-[#00d4aa]"
-                  />
-                  <FaCalendarAlt className="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 text-[10px]" />
+              <div
+                onClick={() => setIsCalendarOpen(true)}
+                className="w-full bg-[#2a2a2a] text-white text-xs px-3 py-2.5 rounded-lg flex items-center justify-between cursor-pointer hover:bg-[#333] transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <FaCalendarAlt className="text-[#00d4aa]" />
+                  <span className={selectedDates.start ? 'text-white' : 'text-gray-500'}>
+                    {selectedDates.start ? selectedDates.start.toLocaleDateString() : 'Pick-up'}
+                  </span>
+                  <span className="text-gray-600">→</span>
+                  <span className={selectedDates.end ? 'text-white' : 'text-gray-500'}>
+                    {selectedDates.end ? selectedDates.end.toLocaleDateString() : 'Drop-off'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -562,7 +759,7 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
                 <FaPhone className="text-white text-lg" />
               </a>
               <a
-                href="https://wa.me/971554079239"
+                href="https://wa.me/971554079239?text=Welcome%20to%20WTB%20DXB.%0A%0AThank%20you%20for%20contacting%20us.%20Please%20share%20your%20preferred%20car%20and%20rental%20dates%20so%20we%20can%20assist%20you%20right%20away.%0A%0AOur%20team%20is%20ready%20to%20serve%20you."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] px-2 py-1.5 rounded-lg hover:bg-[#128C7E] transition-colors text-xs hover:shadow-lg hover:shadow-[#25D366]/20"
@@ -603,6 +800,19 @@ Trinity Rental provides the once-in-a-lifetime opportunity to experience the {ca
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Sticky Mobile Action Bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#1A1A1A] border-t border-gray-800 p-4 z-50 pb-safe">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <span className="text-xs text-gray-400 block">Total Price</span>
+            <span className="text-lg font-bold text-white">{car.price.toLocaleString()} <span className="text-xs font-normal text-gray-400">AED/day</span></span>
+          </div>
+          <button className="flex-1 py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] text-white font-bold rounded-xl shadow-lg shadow-purple-500/20">
+            Rent Now
+          </button>
         </div>
       </div>
     </div>

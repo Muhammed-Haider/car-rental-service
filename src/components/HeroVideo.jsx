@@ -83,8 +83,9 @@ export default function HeroVideo() {
                 { label: 'Luxury', src: '/luxury.png' },
                 { label: 'Convertible', src: '/convertible-1.png' },
               ].map((item) => (
-                <div
+                <Link
                   key={item.label}
+                  href={`/cars?type=${item.label}`} // Dynamically link to filter
                   role="listitem"
                   className="group flex flex-col items-center justify-center gap-2 rounded-lg p-3 transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none md:flex-row md:w-auto md:px-4 md:py-2"
                   tabIndex={0}
@@ -96,10 +97,10 @@ export default function HeroVideo() {
                     className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110 md:h-12"
                     loading="eager"
                   />
-                  <span className="text-sm font-medium text-[#1A1A1A] group-hover:text-[#B844E8] md:text-base">
+                  <span className="text-sm font-medium text-white/90 group-hover:text-[#B844E8] md:text-base">
                     {item.label}
                   </span>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
