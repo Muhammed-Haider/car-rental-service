@@ -10,7 +10,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -18,21 +18,32 @@ export default function ContactForm() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    // Send email with form data
-    const result = await submitForm(data, 'Contact Page Form');
+    // Format message for WhatsApp
+    const message = `
+*New Contact Inquiry*
+------------------
+*Name:* ${data.name}
+*Phone:* ${data.phone}
+*Email:* ${data.email}
+------------------
+*Message:*
+${data.message}
+    `.trim();
 
-    if (result.success) {
-      setIsSubmitted(true);
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        e.target.reset();
-        setIsSubmitted(false);
-      }, 3000);
-    } else {
-      alert('Failed to send message. Please try again.');
-    }
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/971554079239?text=${encodedMessage}`;
+
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
 
     setIsSubmitting(false);
+    setIsSubmitted(true);
+    e.target.reset();
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   return (
@@ -41,7 +52,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Side: Form */}
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg ring-1 ring-slate-100">
-            <h2 
+            <h2
               className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >

@@ -15,7 +15,7 @@ const SupercarIcon = () => (
 const HeaderUnderline = () => (
     <div className="relative w-full max-w-[140px] mt-2 mb-6 mx-auto md:mx-0">
         <div className="h-[2px] w-full bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full" />
-        <motion.div 
+        <motion.div
             initial={{ x: -10, opacity: 0 }}
             animate={{ x: 100, opacity: 1 }}
             transition={{ duration: 1.8, ease: "easeOut", delay: 0.5 }}
@@ -116,33 +116,13 @@ export default function Footer() {
                     <div className="space-y-8 text-center md:text-left flex flex-col items-center md:items-start">
                         <div className="space-y-0">
                             <h4 className="text-sm font-bold text-white uppercase tracking-[0.3em] pb-1" style={{ fontFamily: "Poppins, sans-serif" }}>
-                                Stay Updated
+                                Follow Us
                             </h4>
                             <HeaderUnderline />
                         </div>
 
-                        <div className="space-y-6 w-full text-center md:text-left">
-                            <p className="text-sm text-slate-400 leading-relaxed font-light" style={{ fontFamily: "Inter, sans-serif" }}>
-                                Subscribe for exclusive deals and luxury insights.
-                            </p>
-
-                            <div className="flex flex-col gap-4 items-center md:items-start">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    aria-label="Email for newsletter"
-                                    className="w-full px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all duration-300 text-sm"
-                                />
-                                <div className="w-full flex justify-center">
-                                    <button className="w-full sm:w-2/3 md:w-1/2 px-8 py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] text-white font-bold text-[10px] uppercase tracking-widest rounded-full shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:scale-105 transition-all duration-300">
-                                        Subscribe Now
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
                         {/* Social Media */}
-                        <div className="pt-2 w-full">
+                        <div className="w-full">
                             <div className="flex gap-6 justify-center md:justify-start">
                                 {[
                                     { icon: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z', label: 'Facebook' },

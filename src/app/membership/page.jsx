@@ -112,7 +112,10 @@ export default function MembershipPage() {
               Discover our tiered membership program, designed to cater to every luxury driving enthusiast. Choose from our Silver, Gold, or Platinum tiers, each offering escalating benefits and access to our premium fleet.
             </p>
             <div className="mt-8">
-              <button className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-base md:text-lg rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
+              <button
+                onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })}
+                className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-base md:text-lg rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+              >
                 Explore Membership
               </button>
             </div>
@@ -181,9 +184,14 @@ export default function MembershipPage() {
               ))}
             </ul>
           </div>
-          <button className="mt-6 w-full rounded-2xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90">
+          <a
+            href={`https://wa.me/971554079239?text=I'm interested in the ${plan.name} Membership. Please provide more details.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 w-full rounded-2xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90 flex justify-center items-center"
+          >
             Get Started
-          </button>
+          </a>
         </div>
       </div>
     );
@@ -192,14 +200,14 @@ export default function MembershipPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       <MembershipBanner />
-      
+
       <div className="px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Spacer */}
         <div className="h-12"></div>
-        
+
         {/* Choose a Plan Section */}
-        <section className="mb-16 sm:mb-20 pt-8">
+        <section id="plans" className="mb-16 sm:mb-20 pt-8 scroll-mt-24">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Choose a plan</p>
             <h1 className="mt-4 text-2xl sm:text-4xl font-bold text-slate-900">
@@ -329,7 +337,7 @@ export default function MembershipPage() {
             priority
           />
         </div>
-        
+
         {/* Car Overlay Layer - membership2 */}
         <div className="absolute inset-0 flex items-center justify-end">
           <div className="relative w-1/2 h-full">
@@ -338,7 +346,7 @@ export default function MembershipPage() {
               alt="Premium Car"
               fill
               className="object-contain object-right"
-              style={{ 
+              style={{
                 objectPosition: 'right center',
                 maxWidth: '60%',
                 maxHeight: '60%',
@@ -348,7 +356,7 @@ export default function MembershipPage() {
             />
           </div>
         </div>
-        
+
         {/* Subtle overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
       </section>

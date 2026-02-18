@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export default function HowItWorks() {
     const [visibleSteps, setVisibleSteps] = useState([]);
@@ -67,12 +68,12 @@ export default function HowItWorks() {
                             </h2>
                         </div>
 
-                        <button className="inline-flex items-center justify-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm md:text-base rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25" style={{ fontFamily: "Poppins, sans-serif" }}>
+                        <Link href="/cars" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-sm md:text-base rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25" style={{ fontFamily: "Poppins, sans-serif" }}>
                             Rent a car
                             <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Right Side - Steps with connecting line */}
@@ -86,8 +87,8 @@ export default function HowItWorks() {
                                 <div
                                     key={index}
                                     className={`relative flex gap-3 md:gap-4 lg:gap-6 transition-all duration-700 ease-out ${visibleSteps.includes(index)
-                                            ? 'opacity-100 translate-x-0'
-                                            : 'opacity-0 translate-x-8'
+                                        ? 'opacity-100 translate-x-0'
+                                        : 'opacity-0 translate-x-8'
                                         }`}
                                 >
                                     {/* Step Number Circle */}

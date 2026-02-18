@@ -518,13 +518,18 @@ function AllCarsContent() {
         endDate: null
     });
 
-    // Effect: Handle URL Search Params for "type" and "period"
+    // Effect: Handle URL Search Params for "type", "period", and "brand"
     useEffect(() => {
         const typeParam = searchParams.get('type');
         const periodParam = searchParams.get('period');
+        const brandParam = searchParams.get('brand');
 
         if (typeParam) {
             setFilters(prev => ({ ...prev, type: typeParam }));
+        }
+
+        if (brandParam) {
+            setFilters(prev => ({ ...prev, brand: brandParam }));
         }
 
         if (periodParam) {

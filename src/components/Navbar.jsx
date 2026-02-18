@@ -120,8 +120,9 @@ function Navbar() {
                   ].map((m) => (
                     <Link
                       key={m.label}
-                      href="#"
+                      href={`/cars?brand=${m.label}`}
                       className="group flex flex-col items-center gap-3 rounded-xl bg-white/5 p-4 text-center transition-all hover:bg-white/10 hover:scale-105"
+                      onClick={() => setCarsOpen(false)}
                     >
                       <div className="h-12 w-12 flex items-center justify-center">
                         <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain drop-shadow-lg" loading="lazy" />
@@ -306,7 +307,7 @@ function Navbar() {
                 <span className="sr-only">Call Us</span>
               </a>
               <a
-                href="https://wa.me/971554079239?text=Welcome%20to%20WTB%20DXB.%0A%0AThank%20you%20for%20contacting%20us.%20Please%20share%20your%20preferred%20car%20and%20rental%20dates%20so%20we%20can%20assist%20you%20right%20away.%0A%0AOur%20team%20is%20ready%20to%20serve%20you."
+                href="https://wa.me/971554079239?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20car%20rental%20services.%20Please%20assist%20me."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-8 h-8 rounded-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white transition-all duration-300 shadow-lg shadow-green-500/10 hover:shadow-green-500/40"
@@ -398,9 +399,12 @@ function Navbar() {
                         ].map((m) => (
                           <Link
                             key={m.label}
-                            href="#"
+                            href={`/cars?brand=${m.label}`}
                             className="flex flex-col items-center gap-1.5 rounded-lg bg-white/5 p-2 text-center transition-all hover:bg-white/10"
-                            onClick={() => setMobileOpen(false)}
+                            onClick={() => {
+                              setCarsOpen(false);
+                              setMobileOpen(false);
+                            }}
                           >
                             <div className="h-6 w-full flex items-center justify-center">
                               <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain" loading="lazy" />
@@ -447,32 +451,34 @@ function Navbar() {
                           label: 'Daily Basis Rental',
                           icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
                           action: () => {
-                            document.getElementById('car-listings')?.scrollIntoView({ behavior: 'smooth' });
+                            router.push('/cars?period=daily');
+                            setMobileOpen(false);
+                            setServicesOpen(false);
                           }
                         },
                         {
                           label: 'Weekly Basis Rental',
                           icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
                           action: () => {
-                            document.getElementById('car-listings')?.scrollIntoView({ behavior: 'smooth' });
-                            triggerHighlight();
+                            router.push('/cars?period=weekly');
+                            setMobileOpen(false);
+                            setServicesOpen(false);
                           }
                         },
                         {
                           label: 'Monthly Basis Rental',
-                          icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z'
-                        },
-                        {
-                          label: 'Daily Rental with Chauffeuring',
-                          icon: 'M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM16 14H8C6.89543 14 6 14.8954 6 16V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V16C18 14.8954 17.1046 14 16 14ZM20 8L22 10L20 12M12 11V14'
-                        },
+                          icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                          action: () => {
+                            router.push('/cars?period=monthly');
+                            setMobileOpen(false);
+                            setServicesOpen(false);
+                          }
+                        }
                       ].map((service, index) => (
                         <div
                           key={index}
                           onClick={() => {
                             if (service.action) service.action();
-                            setMobileOpen(false);
-                            setServicesOpen(false);
                           }}
                           className="flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1.5 text-xs text-white/80 hover:bg-white/10 transition-colors cursor-pointer"
                         >
