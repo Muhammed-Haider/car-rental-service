@@ -1,59 +1,270 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useHighlight } from "@/context/HighlightContext";
+import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 
-export default function Navbar() {
+// Map car types to their corresponding filter values
+const carTypeToFilterMap = {
+  'Sedan': 'Sedan',
+  'SUV': 'SUV',
+  'Sports': 'Sports',
+  'Luxury': 'Luxury',
+  'Convertible': 'Convertible'
+};
+
+function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [carsOpen, setCarsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const { triggerHighlight } = useHighlight();
 
-  const navLinkBase =
-    "relative inline-flex h-10 items-center rounded-md px-3 text-sm font-medium leading-none text-white/80 hover:text-white transition-colors";
-  const underline =
-    "relative after:absolute after:left-0 after:bottom-0 after:block after:h-[2px] after:w-0 after:bg-white/90 after:transition-all hover:after:w-full";
+  const handleHomeClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      router.refresh();
+    }
+  };
+
+  const handleGoogleAuth = async (e, isSignUp = false) => {
+    e.preventDefault();
+    // Add your Google OAuth logic here
+    console.log(isSignUp ? 'Sign Up' : 'Sign In');
+  };
+
+  const navLinkBase = "relative inline-flex h-10 items-center rounded-md px-3 text-sm font-medium leading-none text-white/80 hover:text-white transition-colors";
+  const underline = "relative after:absolute after:left-0 after:bottom-0 after:block after:h-[2px] after:w-0 after:bg-white/90 after:transition-all hover:after:w-full";
 
   const MenuLinks = (
     <ul className="hidden md:flex items-center gap-2">
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+        <Link
+          href="/"
+          className={`${navLinkBase} ${pathname === '/' ? 'text-white' : ''} ${underline}`}
+          onClick={handleHomeClick}
+        >
           Home
         </Link>
       </li>
-      <li className="relative"
-          onMouseEnter={() => setCarsOpen(true)}
-          onMouseLeave={() => setCarsOpen(false)}>
+      <li
+        className="relative"
+        onMouseEnter={() => setCarsOpen(true)}
+        onMouseLeave={() => setCarsOpen(false)}
+      >
         <button
-          className={`${navLinkBase} gap-1`}
+          className={`${navLinkBase} gap-1 group`}
           onClick={() => setCarsOpen((v) => !v)}
           aria-expanded={carsOpen}
         >
           Cars
-          <span className="text-white/60">▾</span>
+          <span className={`text-white/60 transition-transform duration-300 ${carsOpen ? 'rotate-180' : ''}`}>▾</span>
         </button>
-        {carsOpen && (
-          <div className="absolute left-0 mt-2 w-48 rounded-lg border border-white/10 bg-[#0A1A2F] p-2 shadow-xl">
-            <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">Sedan</Link>
-            <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">SUV</Link>
-            <Link href="#" className="block rounded px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">Sports</Link>
+
+        {/* Dropdown Menu */}
+        <div
+          className={`fixed left-1/2 top-[80px] z-40 w-[90vw] max-w-5xl -translate-x-1/2 transform transition-all duration-300 ease-out ${carsOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-4 opacity-0"
+            }`}
+        >
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#1A1A1A]/95 backdrop-blur-xl shadow-2xl ring-1 ring-black/5">
+            <div className="grid grid-cols-1 gap-8 p-8 sm:grid-cols-12">
+              {/* Column 1: Browse by type (3 cols) */}
+              <div className="sm:col-span-3">
+                <Link
+                  href="/cars"
+                  className="group mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white hover:text-[#B844E8] transition-colors w-fit border-b border-transparent hover:border-[#B844E8]"
+                  onClick={() => setCarsOpen(false)}
+                >
+                  Browse All Cars
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+                <ul className="space-y-1">
+                  {['Sedan', 'SUV', 'Sports', 'Convertible', 'Luxury'].map((type) => {
+                    const filterType = carTypeToFilterMap[type];
+                    return (
+                      <li key={type}>
+                        <Link
+                          href={`/cars?type=${filterType}`}
+                          className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white hover:pl-5"
+                          onClick={() => setCarsOpen(false)}
+                        >
+                          {type}
+                          <span className="opacity-0 transition-opacity group-hover:opacity-100">→</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              {/* Column 2: Popular Models (5 cols) */}
+              <div className="sm:col-span-5 border-l border-white/5 pl-8">
+                <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Popular Models
+                </h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { src: '/lamborghini.png', label: 'Lamborghini' },
+                    { src: '/ferrari.png', label: 'Ferrari' },
+                    { src: '/porsche.png', label: 'Porsche' },
+                    { src: '/mercedes.png', label: 'Mercedes' },
+                  ].map((m) => (
+                    <Link
+                      key={m.label}
+                      href={`/cars?brand=${m.label}`}
+                      className="group flex flex-col items-center gap-3 rounded-xl bg-white/5 p-4 text-center transition-all hover:bg-white/10 hover:scale-105"
+                      onClick={() => setCarsOpen(false)}
+                    >
+                      <div className="h-12 w-12 flex items-center justify-center">
+                        <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain drop-shadow-lg" loading="lazy" />
+                      </div>
+                      <span className="text-sm font-medium text-white/90 group-hover:text-white">{m.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Locations & Offers (4 cols) */}
+              <div className="sm:col-span-4 border-l border-white/5 pl-8">
+                <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Locations & Offers
+                </h4>
+                <ul className="space-y-2">
+                  {['Dubai', 'Abu Dhabi', 'Sharjah'].map((loc) => (
+                    <li key={loc}>
+                      <Link href="#" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#B844E8]"></span>
+                        {loc}
+                      </Link>
+                    </li>
+                  ))}
+                  <li className="mt-6">
+                    <Link
+                      href="/compare"
+                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-purple-500/25 hover:scale-[1.02]"
+                      onClick={() => setCarsOpen(false)}
+                    >
+                      <span>View Special Deals</span>
+                      <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </li>
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
-          Partnership
+        <Link href="/membership" className={`${navLinkBase} ${underline}`}>
+          Membership
         </Link>
       </li>
-      <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+      <li
+        className="relative"
+        onMouseEnter={() => setServicesOpen(true)}
+        onMouseLeave={() => setServicesOpen(false)}
+      >
+        <Link
+          href="/cars"
+          className={`${navLinkBase} gap-1 group`}
+          onClick={() => setServicesOpen(false)}
+        >
           Services
+          <span className={`text-white/60 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}>▾</span>
         </Link>
+
+        {/* Services Dropdown Menu */}
+        <div
+          className={`fixed left-1/2 top-[80px] z-40 w-[90vw] max-w-md -translate-x-1/2 transform transition-all duration-300 ease-out ${servicesOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-4 opacity-0"
+            }`}
+        >
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A]/95 backdrop-blur-xl">
+            <div className="p-6">
+              <h4 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white/50">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                Rental Services
+              </h4>
+              <ul className="space-y-2">
+                {[
+                  {
+                    label: 'Daily Basis Rental',
+                    icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                    action: () => {
+                      router.push('/cars?period=daily');
+                      setServicesOpen(false);
+                    }
+                  },
+                  {
+                    label: 'Weekly Basis Rental',
+                    icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                    action: () => {
+                      router.push('/cars?period=weekly');
+                      setServicesOpen(false);
+                    }
+                  },
+                  {
+                    label: 'Monthly Basis Rental',
+                    icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                    action: () => {
+                      router.push('/cars?period=monthly');
+                      setServicesOpen(false);
+                    }
+                  }
+                ].map((service, index) => (
+                  <li key={index} onClick={service.action}>
+                    <div className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <svg className="h-5 w-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                        </svg>
+                        {service.label}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </li>
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+        <Link href="/about" className={`${navLinkBase} ${underline}`}>
           About
         </Link>
       </li>
       <li>
-        <Link href="#" className={`${navLinkBase} ${underline}`}>
+        <Link
+          href="/#clientreview"
+          className={`${navLinkBase} ${underline}`}
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault();
+              document.getElementById('clientreview')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          Testimonials
+        </Link>
+      </li>
+      <li>
+        <Link href="/contact" className={`${navLinkBase} ${underline}`}>
           Contact
         </Link>
       </li>
@@ -61,85 +272,273 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="mt-3 rounded-full border border-white/10 bg-[#0A1A2F]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0A1A2F]/60">
-          <nav className="flex items-center justify-between px-4 py-2">
-            {/* Left: Brand */}
-            <div className="flex items-center gap-3">
+    <header className="fixed inset-x-0 top-0 z-[60]">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mt-3 rounded-2xl md:rounded-full border border-white/10 bg-[#1A1A1A]/80 backdrop-blur supports-[backdrop-filter]:bg-[#1A1A1A]/60">
+          <nav className="relative flex items-center justify-between px-4 py-2 md:px-4 md:py-2">
+            {/* Desktop: Brand on left */}
+            <div className="hidden md:flex items-center gap-3">
               <Link href="/" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
                 WTB DXB
               </Link>
-              {/* Mobile toggle */}
-              <button
-                className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md text-white/80 hover:text-white"
-                onClick={() => setMobileOpen((v) => !v)}
-                aria-expanded={mobileOpen}
-                aria-label="Toggle menu"
-              >
-                <span className="text-xl">☰</span>
-              </button>
             </div>
 
-            {/* Center: Links */}
-            {MenuLinks}
-
-            {/* Right: Contact + Auth */}
-            <div className="hidden md:flex items-center gap-2">
-              <a
-                href="tel:+971554079239"
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
-              >
-                ☎ +971 55 407 9239
-              </a>
-              <a
-                href="https://wa.me/971554079239"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90 hover:bg-white/10"
-              >
-                💬 WhatsApp
-              </a>
-              <Link
-                href="#signin"
-                className="ml-2 inline-flex items-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#0048d1]"
-              >
-                Sign In
+            {/* Mobile: Centered Brand */}
+            <div className="md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Link href="/" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                WTB DXB
               </Link>
             </div>
+
+            {/* Center: Links (Desktop only) */}
+            {MenuLinks}
+
+            {/* Right: Contact + Auth (Desktop only) */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href="tel:+971554079239"
+                className="group flex items-center justify-center w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 relative overflow-hidden"
+                aria-label="Call Us"
+              >
+                <FaPhone className="w-3.5 h-3.5 relative z-10" />
+                <span className="absolute left-full ml-1 w-0 overflow-hidden whitespace-nowrap text-xs font-medium text-white group-hover:w-auto group-hover:ml-2 group-hover:pr-2 transition-all duration-300">
+                  +971 55 407 9239
+                </span>
+                <span className="sr-only">Call Us</span>
+              </a>
+              <a
+                href="https://wa.me/971554079239?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20car%20rental%20services.%20Please%20assist%20me."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white transition-all duration-300 shadow-lg shadow-green-500/10 hover:shadow-green-500/40"
+                aria-label="WhatsApp Us"
+              >
+                <FaWhatsapp className="w-4 h-4" />
+              </a>
+              <div className="flex gap-2">
+                <Link
+                  href="/signin"
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-transparent border border-white/30 text-white font-semibold text-xs md:text-sm rounded-full hover:bg-white/10 transition-all duration-300"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-xs md:text-sm rounded-full hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            </div>
+
+            {/* Mobile: Menu Toggle (Right) */}
+            <button
+              className="md:hidden ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/80 hover:bg-white/10 transition-colors"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-expanded={mobileOpen}
+              aria-label="Toggle menu"
+            >
+              <span className="text-xl">{mobileOpen ? '✕' : '☰'}</span>
+            </button>
           </nav>
 
-          {/* Mobile drawer */}
-          {mobileOpen && (
-            <div className="md:hidden border-t border-white/10 px-4 pb-4">
-              <ul className="flex flex-col py-2">
-                <li>
-                  <Link href="#" className="block px-2 py-2 text-sm text-white/90">Home</Link>
-                </li>
-                <li>
-                  <details className="px-2 py-2">
-                    <summary className="cursor-pointer list-none text-sm text-white/90">Cars</summary>
-                    <div className="mt-1 pl-3">
-                      <Link href="#" className="block py-1 text-sm text-white/80">Sedan</Link>
-                      <Link href="#" className="block py-1 text-sm text-white/80">SUV</Link>
-                      <Link href="#" className="block py-1 text-sm text-white/80">Sports</Link>
+          {/* Mobile Menu */}
+          <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className="px-4 py-3 space-y-2">
+
+              <Link
+                href="/"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Home
+              </Link>
+
+              <div className="rounded-lg bg-white/5 px-3 py-2.5">
+                <button
+                  onClick={() => setCarsOpen(!carsOpen)}
+                  className="flex w-full items-center justify-between text-sm font-medium text-white/90"
+                >
+                  Cars
+                  <span className={`transition-transform duration-300 ${carsOpen ? 'rotate-180' : ''}`}>▾</span>
+                </button>
+                <div className={`grid transition-all duration-300 ease-in-out ${carsOpen ? 'grid-rows-[1fr] mt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className="overflow-hidden">
+                    {/* Browse by Type */}
+                    <div className="mb-3">
+                      <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Browse by Type</h5>
+                      <div className="grid grid-cols-2 gap-2">
+                        {['Sedan', 'SUV', 'Sports', 'Luxury'].map((type) => {
+                          const filterType = carTypeToFilterMap[type];
+                          return (
+                            <Link
+                              key={type}
+                              href={`/cars?type=${filterType}`}
+                              className="rounded-lg bg-white/5 px-2 py-1.5 text-center text-xs text-white/80 hover:bg-white/10 transition-colors"
+                              onClick={() => {
+                                setCarsOpen(false);
+                                setMobileOpen(false);
+                              }}
+                            >
+                              {type}
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </details>
-                </li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">Partnership</Link></li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">Services</Link></li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">About</Link></li>
-                <li><Link href="#" className="block px-2 py-2 text-sm text-white/90">Contact</Link></li>
-                <li className="mt-2 flex gap-2">
-                  <a href="tel:+971554079239" className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90">☎ Call</a>
-                  <a href="https://wa.me/971554079239" className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/90">💬 WhatsApp</a>
-                  <Link href="#signin" className="ml-auto inline-flex items-center rounded-full bg-[var(--color-primary)] px-3 py-1.5 text-xs font-medium text-white">Sign In</Link>
-                </li>
-              </ul>
+
+                    {/* Popular Models with Logos */}
+                    <div className="mb-3">
+                      <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Popular Models</h5>
+                      <div className="grid grid-cols-2 gap-2">
+                        {[
+                          { src: '/lamborghini.png', label: 'Lamborghini' },
+                          { src: '/ferrari.png', label: 'Ferrari' },
+                          { src: '/porsche.png', label: 'Porsche' },
+                          { src: '/mercedes.png', label: 'Mercedes' },
+                        ].map((m) => (
+                          <Link
+                            key={m.label}
+                            href={`/cars?brand=${m.label}`}
+                            className="flex flex-col items-center gap-1.5 rounded-lg bg-white/5 p-2 text-center transition-all hover:bg-white/10"
+                            onClick={() => {
+                              setCarsOpen(false);
+                              setMobileOpen(false);
+                            }}
+                          >
+                            <div className="h-6 w-full flex items-center justify-center">
+                              <img src={m.src} alt={m.label} className="max-h-full max-w-full object-contain" loading="lazy" />
+                            </div>
+                            <span className="text-[10px] font-medium text-white/90">{m.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/membership"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Membership
+              </Link>
+
+              <Link
+                href="/about"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                About
+              </Link>
+
+              <div className="rounded-lg bg-white/5 px-3 py-2.5">
+                <button
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  className="flex w-full items-center justify-between text-sm font-medium text-white/90"
+                >
+                  Services
+                  <span className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}>▾</span>
+                </button>
+                <div className={`grid transition-all duration-300 ease-in-out ${servicesOpen ? 'grid-rows-[1fr] mt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className="overflow-hidden">
+                    <h5 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">Rental Services</h5>
+                    <div className="space-y-1">
+                      {[
+                        {
+                          label: 'Daily Basis Rental',
+                          icon: 'M17 8.5L12 3.5L7 8.5M12 3.5V16.5M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                          action: () => {
+                            router.push('/cars?period=daily');
+                            setMobileOpen(false);
+                            setServicesOpen(false);
+                          }
+                        },
+                        {
+                          label: 'Weekly Basis Rental',
+                          icon: 'M8 7V3M8 3L5 6M8 3L11 6M16 17V21M16 21L13 18M16 21L19 18M3 12H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                          action: () => {
+                            router.push('/cars?period=weekly');
+                            setMobileOpen(false);
+                            setServicesOpen(false);
+                          }
+                        },
+                        {
+                          label: 'Monthly Basis Rental',
+                          icon: 'M3 8L7 4L11 8M7 4V16M13 16L17 12L21 16M17 12V16M3 20H21M5 16H19C20.1046 16 21 16.8954 21 18V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V18C3 16.8954 3.89543 16 5 16Z',
+                          action: () => {
+                            router.push('/cars?period=monthly');
+                            setMobileOpen(false);
+                            setServicesOpen(false);
+                          }
+                        }
+                      ].map((service, index) => (
+                        <div
+                          key={index}
+                          onClick={() => {
+                            if (service.action) service.action();
+                          }}
+                          className="flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1.5 text-xs text-white/80 hover:bg-white/10 transition-colors cursor-pointer"
+                        >
+                          <svg className="h-4 w-4 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                          </svg>
+                          {service.label}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/#clientreview"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={(e) => {
+                  if (pathname === '/') {
+                    e.preventDefault();
+                    document.getElementById('clientreview')?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                  setMobileOpen(false);
+                }}
+              >
+                Testimonials
+              </Link>
+
+              <Link
+                href="/contact"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Contact
+              </Link>
+              {/* Mobile Auth Buttons */}
+              <div className="pt-4 border-t border-white/10">
+                <div className="grid grid-cols-2 gap-3">
+                  <Link
+                    href="/signin"
+                    className="flex items-center justify-center rounded-full border border-white/30 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="flex items-center justify-center rounded-full bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </header>
   );
 }
+
+export default Navbar;
