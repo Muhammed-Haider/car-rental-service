@@ -46,11 +46,11 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full bg-gradient-to-b from-black to-[#0D0D0D] text-white py-20 md:py-28">
+    <section className="w-full bg-gradient-to-b from-black to-[#0D0D0D] text-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24 px-4">
+        <div className="flex flex-col items-center text-center mb-12 md:mb-20 px-4">
           <h2 
             className="text-2xl md:text-3xl font-bold tracking-[0.15em] text-white/80 uppercase mb-4"
             style={{ fontFamily: "Poppins, sans-serif" }}

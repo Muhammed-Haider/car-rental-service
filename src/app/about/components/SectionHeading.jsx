@@ -1,12 +1,12 @@
 export default function SectionHeading({ children }) {
   return (
     <div className="text-center mb-12">
-      <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
         {children}
       </h2>
-      <div className="relative inline-block">
-        <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#A3BFFA] via-[#D0E3FF] to-transparent rounded-full"></div>
-        <span className="absolute -right-3 -top-3 text-[#0057FF]">
+      <div className="relative inline-block mb-8">
+        <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
+        <span className="absolute -right-3 -top-3 text-[#B844E8]">
           <svg
             width="32"
             height="14"

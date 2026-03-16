@@ -61,6 +61,18 @@ export default function HowItWorks() {
                             <p className="text-xs md:text-sm lg:text-base text-[#B844E8] font-semibold uppercase tracking-wider mb-2 md:mb-3" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 HOW IT WORKS
                             </p>
+                            <div className="relative inline-block mb-8">
+                                <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
+                                <span className="absolute -right-3 -top-3 text-[#B844E8]">
+                                    <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <g transform="translate(64,0) scale(-1,1)">
+                                            <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.95" />
+                                            <circle cx="18" cy="20" r="3" fill="#0F172A" />
+                                            <circle cx="46" cy="20" r="3" fill="#0F172A" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
                             <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight" style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Rent a car just <span className="text-[#B844E8]">with</span>
                                 <br />

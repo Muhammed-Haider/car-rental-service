@@ -3,7 +3,7 @@
 export default function VisionMission() {
   return (
     <section
-      className="relative w-full py-16 md:py-20 lg:py-32 overflow-hidden"
+      className="relative w-full py-16 md:py-24 overflow-hidden"
       style={{
         backgroundImage: "url('/missionsection.png')",
         backgroundSize: "cover",
@@ -17,13 +17,26 @@ export default function VisionMission() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top section: Title, description, and button */}
-        <div className="mb-16 md:mb-20 text-center">
+        <div className="mb-12 md:mb-16 text-center">
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight drop-shadow-xl"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             We are Luxury Car Rental in UAE
           </h2>
+
+          <div className="relative inline-block mb-8">
+            <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
+            <span className="absolute -right-3 -top-3 text-[#B844E8]">
+              <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g transform="translate(64,0) scale(-1,1)">
+                  <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.95" />
+                  <circle cx="18" cy="20" r="3" fill="#0F172A" />
+                  <circle cx="46" cy="20" r="3" fill="#0F172A" />
+                </g>
+              </svg>
+            </span>
+          </div>
 
           <p
             className="mx-auto max-w-3xl text-sm md:text-base lg:text-lg text-white/90 leading-relaxed mb-8 md:mb-10 font-light"

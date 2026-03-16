@@ -102,106 +102,46 @@ export default function HeroSearchBar() {
   };
 
   return (
-    <div 
+    <div
       ref={searchRef}
       className="relative w-full max-w-2xl px-2 sm:px-0 z-[70]"
     >
-      {/* Elegant Search Input with Zoom Animation */}
-      <motion.div
-        animate={{
-          scale: isFocused && window.innerWidth >= 640 ? 1.25 : 1,
-          transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
-        }}
-        className="relative"
-      >
-        <div className="relative group">
-          {/* Search Icon */}
-          <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
-            <motion.svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="text-white/70 transition-colors duration-300"
-              animate={{
-                color: isFocused ? "#ffffff" : "#ffffff70"
-              }}
-            >
-              <path
-                d="M21 21l-3.5-3.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle
-                cx="11"
-                cy="11"
-                r="7"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-            </motion.svg>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+        {/* Search Bar Group */}
+        <div className="flex flex-row items-center w-full sm:w-auto bg-[#444]/60 rounded-full p-1 shadow-lg max-w-full">
+          <div className="flex items-center w-full">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              placeholder="Search for Cars"
+              className="h-12 w-full bg-transparent rounded-full pl-5 pr-2 text-base sm:text-lg font-medium text-white placeholder:text-white/80 focus:outline-none"
+              style={{ minWidth: 0 }}
+            />
           </div>
-
-          {/* Input Field */}
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder="Search luxury cars, models, or brands..."
-            className={`
-              h-10 sm:h-12 w-full rounded-full pl-10 sm:pl-12 pr-28 sm:pr-36 
-              text-xs sm:text-sm font-bold
-              placeholder:text-[#9D5FFF] placeholder:font-bold shadow-lg ring-1 ring-white/20 backdrop-blur-md
-              transition-all duration-400 ease-out focus:outline-none
-              ${isFocused 
-                ? 'bg-white/95 text-[#6B4FE8] ring-2 ring-[#B844E8] shadow-2xl shadow-purple-500/25' 
-                : 'bg-white/90 text-[#9D5FFF] hover:bg-white hover:ring-white/30'
-              }
-            `}
-          />
-
-          {/* Search Button */}
-          <motion.button
+          {/* Arrow Button */}
+          <button
             type="button"
             onClick={() => setShowResults(true)}
-            className={`
-              absolute right-2 top-1/2 -translate-y-1/2 inline-flex 
-              h-7 sm:h-9 items-center justify-center rounded-full 
-              px-2 sm:px-4 text-xs sm:text-sm font-medium text-white shadow-md 
-              transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/70
-              ${isFocused 
-                ? 'bg-[#6B4FE8] hover:bg-[#8B3FBF]' 
-                : 'bg-[#B844E8] hover:bg-[#6B4FE8]'
-              }
-            `}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="ml-2 flex items-center justify-center w-12 h-12 bg-white rounded-full shadow transition hover:bg-gray-200 focus:outline-none"
+            aria-label="Search"
           >
-            Search
-          </motion.button>
-
-          {/* Clear Button */}
-          <AnimatePresence>
-            {searchQuery && (
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                onClick={() => setSearchQuery('')}
-                className="absolute right-12 sm:right-16 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors"
-              >
-                <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </motion.button>
-            )}
-          </AnimatePresence>
+            <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 18l6-6-6-6" />
+            </svg>
+          </button>
         </div>
-      </motion.div>
+        {/* View Collection Button */}
+        <Link
+          href="/#car-listings"
+          className="flex items-center justify-center h-12 px-6 bg-white text-black font-semibold text-lg rounded-full shadow transition hover:bg-gray-100 whitespace-nowrap"
+        >
+          View Collection
+        </Link>
+      </div>
+      {/* ...existing code for dropdown/results... */}
 
       {/* Elegant Search Results Dropdown */}
       <AnimatePresence>

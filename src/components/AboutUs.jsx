@@ -2,7 +2,7 @@
 
 export default function AboutUs() {
   return (
-    <section className="w-full relative overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-24 text-[#0A1A2F]">
+    <section className="w-full relative overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC] py-16 md:py-24 text-[#0A1A2F]">
       <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#8B3FBF]/5 blur-3xl opacity-60"></div>
       <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-[#B844E8]/5 blur-3xl opacity-60"></div>
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -22,11 +22,10 @@ export default function AboutUs() {
             {/* decorative underline + car icon under main heading */}
             <div className="relative inline-block mt-1 mb-7 mx-auto md:mx-0">
               <div className="h-[2px] w-44 md:w-56 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
-              <span className="absolute -right-32 -top-2 text-[#B844E8]">
-
+              <span className="absolute -right-3 -top-3 text-[#B844E8]">
                 <svg width="32" height="14" viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <g transform="translate(64,0) scale(-1,1)">
-                    <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.9" />
+                    <path d="M10 18c-2 0-3.5-1.5-3.5-3.5S8 11 10 11h20c4 0 8-6 12-6h6c3 0 6 3 6 6v7c0 1.1-.9 2-2 2H10z" fill="currentColor" opacity="0.95" />
                     <circle cx="18" cy="20" r="3" fill="#0F172A" />
                     <circle cx="46" cy="20" r="3" fill="#0F172A" />
                   </g>

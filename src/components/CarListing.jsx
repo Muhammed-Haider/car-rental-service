@@ -84,9 +84,9 @@ export default function CarListing() {
             >
               Featured Cars
             </h2>
-            <div className="relative inline-block mx-auto sm:mx-0">
+            <div className="relative inline-block mb-8">
               <div className="h-[2px] w-36 md:w-44 bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
-              <span className="absolute -right-3 -top-3 text-[#B844E8] sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
+              <span className="absolute -right-3 -top-3 text-[#B844E8]">
                 <svg
                   width="32"
                   height="14"

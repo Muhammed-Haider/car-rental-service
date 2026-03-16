@@ -5,31 +5,46 @@ export default function HeroVideo() {
   return (
     <>
       <section className="relative min-h-screen w-full overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: 'center' }}
-        >
-          <source src="/herovideo.mp4" type="video/mp4" />
-        </video>
+        <img
+          src="/heroimg.png"
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-contain object-center"
+          style={{ objectFit: 'contain', objectPosition: 'center', filter: 'brightness(0.98) contrast(1.02)' }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/30 to-[#000000]/50" />
         <div className="relative z-[50] mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="mb-4 text-4xl font-black text-white sm:text-5xl md:text-6xl lg:text-7xl tracking-tight drop-shadow-2xl" style={{ fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em' }}>
-            Drive Your Dream Car Today
-          </h1>
+          <div className="flex flex-col items-center">
+            <span
+              className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-2 font-medium"
+              style={{ fontFamily: 'Montserrat, Poppins, sans-serif', letterSpacing: '-0.01em' }}
+            >
+              Welcome to Wtb Dxb
+            </span>
+            <h1
+              className="mb-4 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight drop-shadow-2xl"
+              style={{ fontFamily: 'Montserrat, Poppins, sans-serif', letterSpacing: '-0.02em' }}
+            >
+              Luxury Car Rental Dubai
+            </h1>
+          </div>
           <HeroSearchBar />
+          {/* Info Bar Below Search Bar */}
+          <div className="flex flex-col items-center w-full mt-4">
+            <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 text-white text-base sm:text-lg font-semibold">
+              <span className="flex items-center gap-1">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.175 0l-3.385 2.46c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                4.9 Google Rating
+              </span>
+              <span className="hidden sm:inline">•</span>
+              <span>No Deposit</span>
+              <span className="hidden sm:inline">•</span>
+              <span>24/7 Available</span>
+            </div>
+          </div>
           <p className="mt-4 mb-8 max-w-2xl text-base text-white/90 sm:text-lg sm:mt-0">
             We offer curated luxury cars, quick booking, and seamless delivery for an unforgettable ride.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-3.5 bg-gradient-to-r from-[#6B4FE8] to-[#9D5FFF] border border-[#6B4FE8] text-white font-semibold text-base md:text-lg rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 mb-8"
-          >
-            Book Your Ride
-          </Link>
+          {/* Book Your Ride button removed as requested */}
         </div>
 
         {/* Brand logos strip pinned to hero bottom; does not affect centered content */}
