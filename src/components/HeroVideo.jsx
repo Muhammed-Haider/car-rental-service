@@ -6,12 +6,14 @@ export default function HeroVideo() {
     <>
       <section className="relative min-h-screen w-full overflow-hidden">
         {/* Mobile: hero1.png, Desktop: heroimage.png */}
-        <img
-          src="/hero1.png"
-          alt="Hero Background Mobile"
-          className="absolute inset-0 w-full h-full object-cover object-center block sm:hidden"
-          style={{ objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.9) contrast(1.05)' }}
-        />
+        <div className="absolute inset-0 flex items-center justify-center sm:hidden">
+          <img
+            src="/hero2.png"
+            alt="Hero Background Mobile"
+            className="w-full h-full object-contain object-center"
+            style={{ objectFit: 'contain', objectPosition: 'center', filter: 'brightness(0.9) contrast(1.05)' }}
+          />
+        </div>
         <img
           src="/heroimage.png"
           alt="Hero Background Desktop"
@@ -48,7 +50,7 @@ export default function HeroVideo() {
               <span>24/7 Available</span>
             </div>
           </div>
-          <p className="mt-4 mb-8 max-w-2xl text-base text-white/90 sm:text-lg sm:mt-0">
+          <p className="mb-8 max-w-2xl text-base text-white/90 sm:text-lg sm:mt-0">
             We offer curated luxury cars, quick booking, and seamless delivery for an unforgettable ride.
           </p>
           {/* Book Your Ride button removed as requested */}
