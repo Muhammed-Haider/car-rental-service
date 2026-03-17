@@ -1,9 +1,7 @@
 import { Inter, Poppins } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import FloatingActionButtons from "@/components/FloatingActionButtons";
 import "./globals.css";
 import { HighlightProvider } from "@/context/HighlightContext";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const inter = Inter({
   variable: "--font-body",
@@ -28,10 +26,9 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${poppins.variable} antialiased`}
       >
         <HighlightProvider>
-          <Navbar />
-          {children}
-          <FloatingActionButtons />
-          <Footer />
+          <LayoutWrapper>
+            {children}
+          </LayoutWrapper>
         </HighlightProvider>
       </body>
     </html>

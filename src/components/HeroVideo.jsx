@@ -6,10 +6,10 @@ export default function HeroVideo() {
     <>
       <section className="relative min-h-screen w-full overflow-hidden">
         <img
-          src="/heroimg.png"
+          src="/heroimage.png"
           alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-contain object-center"
-          style={{ objectFit: 'contain', objectPosition: 'center', filter: 'brightness(0.98) contrast(1.02)' }}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.9) contrast(1.05)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/30 to-[#000000]/50" />
         <div className="relative z-[50] mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
