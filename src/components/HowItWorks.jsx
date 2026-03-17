@@ -48,7 +48,7 @@ export default function HowItWorks() {
     ];
 
     return (
-        <section ref={sectionRef} className="relative w-full overflow-hidden bg-gradient-to-b from-[#000000] to-[#0D0D0D] py-12 md:py-16 lg:py-20">
+        <section ref={sectionRef} className="relative w-full overflow-hidden bg-gradient-to-b from-[#000000] to-[#0D0D0D] py-12 md:py-16 lg:py-20 lg:-mt-16 xl:-mt-24">
             {/* Gradient overlays */}
             <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#8B3FBF]/5 blur-3xl" />
             <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#B844E8]/5 blur-3xl" />
