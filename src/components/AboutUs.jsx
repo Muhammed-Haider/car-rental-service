@@ -19,8 +19,8 @@ export default function AboutUs() {
               <br />
               Freedom
             </h1>
-            {/* decorative underline + car icon under main heading for desktop: directly under heading, not centered */}
-            <div className="relative mt-1 mb-7 mx-auto md:mx-0 w-full">
+            {/* decorative underline + car icon under main heading: center for mobile, right for desktop */}
+            <div className="relative mt-1 mb-7 mx-auto md:mx-0 w-full flex justify-center md:justify-start">
               <div className="relative w-44 md:w-56">
                 <div className="h-[2px] w-full bg-gradient-to-r from-[#8B3FBF] via-[#B844E8] to-transparent rounded-full"></div>
                 <span className="absolute -top-3 right-0 text-[#B844E8]">
@@ -41,7 +41,7 @@ export default function AboutUs() {
             {/* Metrics moved to right column */}
             <div className="mt-10 md:mt-0 md:pl-6">
               {/* Paragraphs (moved above stats) */}
-              <div className="max-w-xl group mx-auto md:mx-0 md:mt-0">
+              <div className="max-w-xl group mx-auto md:mx-0 md:mt-0 mb-8 md:mb-12">
                 <p
                   className="text-[18px] md:text-[20px] leading-[1.9] text-white tracking-[0.01em] text-center md:text-left"
                   style={{ fontFamily: "Inter, sans-serif" }}
@@ -51,7 +51,7 @@ export default function AboutUs() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-slate-200"></div>
+              {/* Removed line under paragraph as requested */}
 
               <div className="flex flex-wrap justify-center sm:grid sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
                 <div className="rounded-xl ring-1 ring-slate-200/70 bg-white/10 backdrop-blur-sm p-3 shadow-[0_6px_18px_rgba(2,6,23,0.06)] transition-transform duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center text-center min-h-[78px] w-[calc(50%-0.375rem)] sm:w-auto">

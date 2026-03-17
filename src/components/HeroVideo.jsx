@@ -5,10 +5,17 @@ export default function HeroVideo() {
   return (
     <>
       <section className="relative min-h-screen w-full overflow-hidden">
+        {/* Mobile: hero1.png, Desktop: heroimage.png */}
+        <img
+          src="/hero1.png"
+          alt="Hero Background Mobile"
+          className="absolute inset-0 w-full h-full object-cover object-center block sm:hidden"
+          style={{ objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.9) contrast(1.05)' }}
+        />
         <img
           src="/heroimage.png"
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          alt="Hero Background Desktop"
+          className="absolute inset-0 w-full h-full object-cover object-center hidden sm:block"
           style={{ objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.9) contrast(1.05)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/30 to-[#000000]/50" />
